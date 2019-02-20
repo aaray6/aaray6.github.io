@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="SpringbootOfficial site Start a new Spring boot projectTool to generate base framework">
+<meta name="description" content="Kali Linux NotesInstall Kali Linux on VirtualBox. The host is ubuntu Set 1G memory and 2 CPUs. MT7601U Wireless Adapter in Kali in VirtualBoxMT7601U Wireless Adapter can be used in my host system. No">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring boot notes">
-<meta property="og:url" content="https://aaray6.github.io/2018/03/22/springboot/index.html">
+<meta property="og:title" content="Kali linux">
+<meta property="og:url" content="https://aaray6.github.io/2019/02/20/kali-linux/index.html">
 <meta property="og:site_name" content="My Notes">
-<meta property="og:description" content="SpringbootOfficial site Start a new Spring boot projectTool to generate base framework">
+<meta property="og:description" content="Kali Linux NotesInstall Kali Linux on VirtualBox. The host is ubuntu Set 1G memory and 2 CPUs. MT7601U Wireless Adapter in Kali in VirtualBoxMT7601U Wireless Adapter can be used in my host system. No">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://aaray6.github.io/myimages/springboot_start.png">
-<meta property="og:updated_time" content="2018-03-22T08:44:16.028Z">
+<meta property="og:image" content="https://aaray6.github.io/myimages/kali_linux_wireless_usb01.png">
+<meta property="og:updated_time" content="2019-02-20T07:09:11.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring boot notes">
-<meta name="twitter:description" content="SpringbootOfficial site Start a new Spring boot projectTool to generate base framework">
-<meta name="twitter:image" content="https://aaray6.github.io/myimages/springboot_start.png">
+<meta name="twitter:title" content="Kali linux">
+<meta name="twitter:description" content="Kali Linux NotesInstall Kali Linux on VirtualBox. The host is ubuntu Set 1G memory and 2 CPUs. MT7601U Wireless Adapter in Kali in VirtualBoxMT7601U Wireless Adapter can be used in my host system. No">
+<meta name="twitter:image" content="https://aaray6.github.io/myimages/kali_linux_wireless_usb01.png">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="https://aaray6.github.io/2018/03/22/springboot/"/>
+  <link rel="canonical" href="https://aaray6.github.io/2019/02/20/kali-linux/"/>
 
 
 
 
 
-  <title>Spring boot notes | My Notes</title>
+  <title>Kali linux | My Notes</title>
   
 
 
@@ -234,7 +234,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2018/03/22/springboot/">
+    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2019/02/20/kali-linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ray Qu">
@@ -251,7 +251,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring boot notes</h1>
+          <h1 class="post-title" itemprop="name headline">Kali linux</h1>
         
 
         <div class="post-meta">
@@ -263,8 +263,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T16:10:50+08:00">
-                2018-03-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T14:33:34+08:00">
+                2019-02-20
               </time>
             
 
@@ -301,9 +301,24 @@
       
 
       
-        <h1 id="Springboot"><a href="#Springboot" class="headerlink" title="Springboot"></a>Springboot</h1><p><a href="https://projects.spring.io/spring-boot/" target="_blank" rel="noopener">Official site</a></p>
-<h2 id="Start-a-new-Spring-boot-project"><a href="#Start-a-new-Spring-boot-project" class="headerlink" title="Start a new Spring boot project"></a>Start a new Spring boot project</h2><p><a href="https://start.spring.io/" target="_blank" rel="noopener">Tool to generate base framework</a></p>
-<p><img src="/myimages/springboot_start.png" alt="Spring Boot Start"></p>
+        <h1 id="Kali-Linux-Notes"><a href="#Kali-Linux-Notes" class="headerlink" title="Kali Linux Notes"></a>Kali Linux Notes</h1><p>Install Kali Linux on VirtualBox. The host is ubuntu</p>
+<p>Set 1G memory and 2 CPUs.</p>
+<h2 id="MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><a href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox" class="headerlink" title="MT7601U Wireless Adapter in Kali in VirtualBox"></a>MT7601U Wireless Adapter in Kali in VirtualBox</h2><p>MT7601U Wireless Adapter can be used in my host system. No need to do any setting. The ubuntu has driver already.</p>
+<p>But in guest VirtualBox Kali linux, it can’t work by default.</p>
+<p>lsusb command shows the device after the adapter pluged and set in VirtualBox USB device.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> lsusb</span><br><span class="line">Bus 001 Device 000: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br></pre></td></tr></table></figure>
+<p>but the iwconfig can’t show the device.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> /sbin/iwconfig</span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">eth0      no wireless extensions.</span><br></pre></td></tr></table></figure>
+<p>dmesg shows message like below</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> dmesg|grep mt7</span><br><span class="line">[ 188.388139] mt7601u: probe of 8-3:1.0 failed with error -110</span><br></pre></td></tr></table></figure>
+<p>The issue is not about the adapter driver. It’s about the USB.</p>
+<p>After change the VirtualBox USB device setting from USB2.0 (EHCI) Controller to USB1.1 (OHCI) Controller and restart guest system, it works.</p>
+<p><img src="/myimages/kali_linux_wireless_usb01.png" alt="VirtualBox USB setting"></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> lsusb</span><br><span class="line">Bus 001 Device 000: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line"><span class="meta">$</span> /sbin/iwconfig</span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">wlan0     IEEE 802.11  ESSID:off/any  </span><br><span class="line">          Mode:Managed  Access Point: Not-Associated   Tx-Power=20 dBm   </span><br><span class="line">          Retry short limit:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Power Management:off</span><br></pre></td></tr></table></figure>
+<h2 id="Install-Chinese-font"><a href="#Install-Chinese-font" class="headerlink" title="Install Chinese font"></a>Install Chinese font</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ttf-wqy-zenhei</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://blog.csdn.net/l1028386804/article/details/83107900" target="_blank" rel="noopener">Kali之——kali精简版安装后中文乱码</a><br><a href="https://blog.csdn.net/qq_29343201/article/details/51880719" target="_blank" rel="noopener">kali linux系统中文乱码问题的解决</a></p>
+</blockquote>
 
       
     </div>
@@ -328,8 +343,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/22/gradle/" rel="next" title="Gradle Notes">
-                <i class="fa fa-chevron-left"></i> Gradle Notes
+              <a href="/2019/02/11/nfc/" rel="next" title="NFC Notes">
+                <i class="fa fa-chevron-left"></i> NFC Notes
               </a>
             
           </div>
@@ -337,10 +352,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/11/nfc/" rel="prev" title="NFC Notes">
-                NFC Notes <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,7 +465,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Springboot"><span class="nav-number">1.</span> <span class="nav-text">Springboot</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Start-a-new-Spring-boot-project"><span class="nav-number">1.1.</span> <span class="nav-text">Start a new Spring boot project</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kali-Linux-Notes"><span class="nav-number">1.</span> <span class="nav-text">Kali Linux Notes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><span class="nav-number">1.1.</span> <span class="nav-text">MT7601U Wireless Adapter in Kali in VirtualBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Chinese-font"><span class="nav-number">1.2.</span> <span class="nav-text">Install Chinese font</span></a></li></ol></li></ol></div>
             
 
           </div>
