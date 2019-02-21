@@ -87,7 +87,7 @@
 <meta property="og:description" content="Kali Linux NotesInstall Kali Linux on VirtualBox. The host is ubuntu Set 1G memory and 2 CPUs. MT7601U Wireless Adapter in Kali in VirtualBoxMT7601U Wireless Adapter can be used in my host system. No">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://aaray6.github.io/myimages/kali_linux_wireless_usb01.png">
-<meta property="og:updated_time" content="2019-02-20T07:09:11.520Z">
+<meta property="og:updated_time" content="2019-02-21T13:54:00.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kali linux">
 <meta name="twitter:description" content="Kali Linux NotesInstall Kali Linux on VirtualBox. The host is ubuntu Set 1G memory and 2 CPUs. MT7601U Wireless Adapter in Kali in VirtualBoxMT7601U Wireless Adapter can be used in my host system. No">
@@ -319,7 +319,35 @@
 <blockquote>
 <p><a href="https://blog.csdn.net/l1028386804/article/details/83107900" target="_blank" rel="noopener">Kali之——kali精简版安装后中文乱码</a><br><a href="https://blog.csdn.net/qq_29343201/article/details/51880719" target="_blank" rel="noopener">kali linux系统中文乱码问题的解决</a></p>
 </blockquote>
-
+<h2 id="add-new-user-by-root-and-add-sudo-group"><a href="#add-new-user-by-root-and-add-sudo-group" class="headerlink" title="add new user by root and add sudo group"></a>add new user by root and add sudo group</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> useradd newuser</span><br><span class="line"><span class="meta">#</span> /sbin/usermod -a -G sudo newuser</span><br><span class="line"><span class="meta">#</span> passwd newuser</span><br></pre></td></tr></table></figure>
+<h2 id="wordlist"><a href="#wordlist" class="headerlink" title="wordlist"></a>wordlist</h2><blockquote>
+<p><a href="https://github.com/danielmiessler/SecLists" target="_blank" rel="noopener">SecLists</a></p>
+</blockquote>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><p><strong> Zip </strong></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip \</span><br><span class="line">  &amp;&amp; unzip SecList.zip \</span><br><span class="line">  &amp;&amp; rm -f SecList.zip</span><br></pre></td></tr></table></figure>
+<p><strong> Git (Small) </strong></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth 1 https://github.com/danielmiessler/SecLists.git</span><br></pre></td></tr></table></figure>
+<p><strong> Git (Complete) </strong></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:danielmiessler/SecLists.git</span><br></pre></td></tr></table></figure>
+<p><strong> Kali Linux </strong><br>(<a href="https://tools.kali.org/password-attacks/seclists" target="_blank" rel="noopener">Tool Page</a>)</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -y install seclists</span><br></pre></td></tr></table></figure>
+<h2 id="Kali-Linux-install-VirtualBox-addition-fails"><a href="#Kali-Linux-install-VirtualBox-addition-fails" class="headerlink" title="Kali Linux install VirtualBox addition fails"></a>Kali Linux install VirtualBox addition fails</h2><p>Both VirtualBox 5.2.x and 6.0.x addition show error message</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VirtualBox Guest Additions: modprobe vboxsf failed</span><br></pre></td></tr></table></figure>
+<p>The /var/log/vboxadd-setup.log shows</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/tmp/vbox.0/utils.c: In function ‘sf_init_inode’:</span><br><span class="line">/tmp/vbox.0/utils.c:165:28: error: passing argument 1 of ‘sf_ftime_from_timespec’ from incompatible pointer type [-Werror=incompatible-pointer-types]</span><br><span class="line">     sf_ftime_from_timespec(&amp;inode-&gt;i_atime, &amp;info-&gt;AccessTime);</span><br><span class="line">                            ^~~~~~~~~~~~~~~</span><br><span class="line">/tmp/vbox.0/utils.c:53:53: note: expected ‘struct timespec *’ but argument is of type ‘struct timespec64 *’</span><br><span class="line"> static void sf_ftime_from_timespec(struct timespec *tv, RTTIMESPEC *ts)</span><br></pre></td></tr></table></figure>
+<p>Reason is the new Kali linux kernal version is 4.19.x, the virtualbox addtion utils.c code has issue from kernal version 4.18</p>
+<p><strong> solution </strong></p>
+<p>Download the Development version addition iso (5.2.97 and 6.0.29). Use this Addition iso. The issue is fixed in latest development version.</p>
+<p><a href="https://www.virtualbox.org/wiki/Testbuilds#Developmentsnapshots" target="_blank" rel="noopener">Virtualbox download page</a></p>
+<p><a href="https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_6.0.97-128917.iso" target="_blank" rel="noopener">VBoxGuestAdditions_6.0.97-128917.iso for VirtualBox6.0.x</a>. So far (2019.02.21), I install latest VirtualBox6.0.4, the Addition in the package doesn’t work. 6.0.97 Addition works.</p>
+<blockquote>
+<p><a href="https://forums.virtualbox.org/viewtopic.php?f=3&amp;t=89455" target="_blank" rel="noopener">topic</a><br><a href="https://superuser.com/questions/1268741/virtualbox-ubuntu-guest-additions-not-installing-modprobe-vboxsf-failed" target="_blank" rel="noopener">topic, Simon South’s answer</a><br><a href="https://www.virtualbox.org/ticket/17981" target="_blank" rel="noopener">ticket</a></p>
+</blockquote>
+<h2 id="How-to-upgrade-VirtualBox-from-5-2-to-6-0"><a href="#How-to-upgrade-VirtualBox-from-5-2-to-6-0" class="headerlink" title="How to upgrade VirtualBox from 5.2 to 6.0"></a>How to upgrade VirtualBox from 5.2 to 6.0</h2><blockquote>
+<p><a href="https://websiteforstudents.com/virtualbox-6-0-is-out-heres-how-to-install-upgrade-on-ubuntu-16-04-18-04-18-10/" target="_blank" rel="noopener">VirtualBox 6.0 Is Out — Here’s How To Install / Upgrade On Ubuntu 16.04 / 18.04 / 18.10</a></p>
+</blockquote>
+<p>Use following command to get current Virtualbox version</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> vboxmanage --version</span><br><span class="line">6.0.4r128413</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -465,7 +493,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kali-Linux-Notes"><span class="nav-number">1.</span> <span class="nav-text">Kali Linux Notes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><span class="nav-number">1.1.</span> <span class="nav-text">MT7601U Wireless Adapter in Kali in VirtualBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Chinese-font"><span class="nav-number">1.2.</span> <span class="nav-text">Install Chinese font</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Kali-Linux-Notes"><span class="nav-number">1.</span> <span class="nav-text">Kali Linux Notes</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><span class="nav-number">1.1.</span> <span class="nav-text">MT7601U Wireless Adapter in Kali in VirtualBox</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Chinese-font"><span class="nav-number">1.2.</span> <span class="nav-text">Install Chinese font</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#add-new-user-by-root-and-add-sudo-group"><span class="nav-number">1.3.</span> <span class="nav-text">add new user by root and add sudo group</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#wordlist"><span class="nav-number">1.4.</span> <span class="nav-text">wordlist</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install"><span class="nav-number">1.4.1.</span> <span class="nav-text">Install</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kali-Linux-install-VirtualBox-addition-fails"><span class="nav-number">1.5.</span> <span class="nav-text">Kali Linux install VirtualBox addition fails</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-to-upgrade-VirtualBox-from-5-2-to-6-0"><span class="nav-number">1.6.</span> <span class="nav-text">How to upgrade VirtualBox from 5.2 to 6.0</span></a></li></ol></li></ol></div>
             
 
           </div>
