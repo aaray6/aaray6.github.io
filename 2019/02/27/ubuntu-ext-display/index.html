@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ubuntu18.04双显示器配置环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口  how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem  First, use cvt to create a new resolution mode. 1234$ sud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu18.04双显示器">
+<meta property="og:url" content="https://aaray6.github.io/2019/02/27/ubuntu-ext-display/index.html">
+<meta property="og:site_name" content="My Notes">
+<meta property="og:description" content="ubuntu18.04双显示器配置环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口  how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem  First, use cvt to create a new resolution mode. 1234$ sud">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://aaray6.github.io/myimages/ubuntu-ext-display-setup.png">
+<meta property="og:updated_time" content="2019-02-27T06:14:48.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu18.04双显示器">
+<meta name="twitter:description" content="ubuntu18.04双显示器配置环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口  how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem  First, use cvt to create a new resolution mode. 1234$ sud">
+<meta name="twitter:image" content="https://aaray6.github.io/myimages/ubuntu-ext-display-setup.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://aaray6.github.io/2019/02/27/ubuntu-ext-display/"/>
+
+
+
+
+
+  <title>ubuntu18.04双显示器 | My Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">I love games</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2019/02/27/ubuntu-ext-display/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ray Qu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ubuntu18.04双显示器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T13:57:57+08:00">
+                2019-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="ubuntu18-04双显示器配置"><a href="#ubuntu18-04双显示器配置" class="headerlink" title="ubuntu18.04双显示器配置"></a>ubuntu18.04双显示器配置</h1><p>环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口</p>
+<blockquote>
+<p><a href="https://askubuntu.com/questions/138408/how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem" target="_blank" rel="noopener">how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem</a></p>
+</blockquote>
+<p>First, use cvt to create a new resolution mode.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo cvt 1920 1080 60</span></span><br><span class="line">[sudo] xxxx 的密码：</span><br><span class="line"><span class="meta">#</span><span class="bash"> 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz</span></span><br><span class="line">Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</span><br></pre></td></tr></table></figure>
+<p>Next, declare a new resolution mode.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo xrandr --newmode <span class="string">"1920x1080_60.00"</span> 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync</span></span><br></pre></td></tr></table></figure>
+<p>Next, find out the name of your video device.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo xrandr -q</span></span><br><span class="line">Screen 0: minimum 320 x 200, current 1280 x 1568, maximum 8192 x 8192</span><br><span class="line">LVDS-1 connected primary 1280x800+0+768 (normal left inverted right x axis y axis) 261mm x 163mm</span><br><span class="line">   1280x800      60.16*+  59.99    59.97    59.81    59.91    50.00  </span><br><span class="line">   1280x720      60.00    59.99    59.86    59.74  </span><br><span class="line">   1024x768      60.04    60.00  </span><br><span class="line">   960x720       60.00  </span><br><span class="line">   928x696       60.05  </span><br><span class="line">   896x672       60.01  </span><br><span class="line">   1024x576      59.95    59.96    59.90    59.82  </span><br><span class="line">   960x600       59.93    60.00  </span><br><span class="line">   960x540       59.96    59.99    59.63    59.82  </span><br><span class="line">   800x600       60.00    60.32    56.25  </span><br><span class="line">   840x525       60.01    59.88  </span><br><span class="line">   864x486       59.92    59.57  </span><br><span class="line">   800x512       60.17  </span><br><span class="line">   700x525       59.98  </span><br><span class="line">   800x450       59.95    59.82  </span><br><span class="line">   640x512       60.02  </span><br><span class="line">   720x450       59.89  </span><br><span class="line">   700x450       59.96    59.88  </span><br><span class="line">   640x480       60.00    59.94  </span><br><span class="line">   720x405       59.51    58.99  </span><br><span class="line">   684x384       59.88    59.85  </span><br><span class="line">   680x384       59.80    59.96  </span><br><span class="line">   640x400       59.88    59.98  </span><br><span class="line">   576x432       60.06  </span><br><span class="line">   640x360       59.86    59.83    59.84    59.32  </span><br><span class="line">   512x384       60.00  </span><br><span class="line">   512x288       60.00    59.92  </span><br><span class="line">   480x270       59.63    59.82  </span><br><span class="line">   400x300       60.32    56.34  </span><br><span class="line">   432x243       59.92    59.57  </span><br><span class="line">   320x240       60.05  </span><br><span class="line">   360x202       59.51    59.13  </span><br><span class="line">   320x180       59.84    59.32  </span><br><span class="line">VGA-1 connected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm</span><br><span class="line">   1024x768      60.00* </span><br><span class="line">   800x600       60.32    56.25  </span><br><span class="line">   848x480       60.00  </span><br><span class="line">   640x480       59.94  </span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">DP-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">  1920x1080_60.00 (0x1c8) 173.000MHz -HSync +VSync</span><br><span class="line">        h: width  1920 start 2048 end 2248 total 2576 skew    0 clock  67.16KHz</span><br><span class="line">        v: height 1080 start 1083 end 1088 total 1120           clock  59.96Hz</span><br></pre></td></tr></table></figure>
+<p>Mine was named “VGA-1”. Finally, add your new resolution mode to the device/system.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">sudo xrandr --addmode VGA-1 1920x1080_60.00</span><br><span class="line">quxr@quxr-ThinkPad-X201:~$ sudo xrandr -q</span><br><span class="line">Screen 0: minimum 320 x 200, current 1280 x 1568, maximum 8192 x 8192</span><br><span class="line">LVDS-1 connected primary 1280x800+0+768 (normal left inverted right x axis y axis) 261mm x 163mm</span><br><span class="line">   1280x800      60.16*+  59.99    59.97    59.81    59.91    50.00  </span><br><span class="line">   1280x720      60.00    59.99    59.86    59.74  </span><br><span class="line">   1024x768      60.04    60.00  </span><br><span class="line">   960x720       60.00  </span><br><span class="line">   928x696       60.05  </span><br><span class="line">   896x672       60.01  </span><br><span class="line">   1024x576      59.95    59.96    59.90    59.82  </span><br><span class="line">   960x600       59.93    60.00  </span><br><span class="line">   960x540       59.96    59.99    59.63    59.82  </span><br><span class="line">   800x600       60.00    60.32    56.25  </span><br><span class="line">   840x525       60.01    59.88  </span><br><span class="line">   864x486       59.92    59.57  </span><br><span class="line">   800x512       60.17  </span><br><span class="line">   700x525       59.98  </span><br><span class="line">   800x450       59.95    59.82  </span><br><span class="line">   640x512       60.02  </span><br><span class="line">   720x450       59.89  </span><br><span class="line">   700x450       59.96    59.88  </span><br><span class="line">   640x480       60.00    59.94  </span><br><span class="line">   720x405       59.51    58.99  </span><br><span class="line">   684x384       59.88    59.85  </span><br><span class="line">   680x384       59.80    59.96  </span><br><span class="line">   640x400       59.88    59.98  </span><br><span class="line">   576x432       60.06  </span><br><span class="line">   640x360       59.86    59.83    59.84    59.32  </span><br><span class="line">   512x384       60.00  </span><br><span class="line">   512x288       60.00    59.92  </span><br><span class="line">   480x270       59.63    59.82  </span><br><span class="line">   400x300       60.32    56.34  </span><br><span class="line">   432x243       59.92    59.57  </span><br><span class="line">   320x240       60.05  </span><br><span class="line">   360x202       59.51    59.13  </span><br><span class="line">   320x180       59.84    59.32  </span><br><span class="line">VGA-1 connected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm</span><br><span class="line">   1024x768      60.00* </span><br><span class="line">   800x600       60.32    56.25  </span><br><span class="line">   848x480       60.00  </span><br><span class="line">   640x480       59.94  </span><br><span class="line">   1920x1080_60.00  59.96  </span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">DP-1 disconnected (normal left inverted right x axis y axis)</span><br></pre></td></tr></table></figure>
+<p>setup in UI</p>
+<p><img src="/myimages/ubuntu-ext-display-setup.png" alt="setup"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/22/kali-usage/" rel="next" title="Kali Linux应用">
+                <i class="fa fa-chevron-left"></i> Kali Linux应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/27/metasploit/" rel="prev" title="metasploit">
+                metasploit <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ray Qu</p>
+              <p class="site-description motion-element" itemprop="description">My Tech Notes and Other stuff</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu18-04双显示器配置"><span class="nav-number">1.</span> <span class="nav-text">ubuntu18.04双显示器配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ray Qu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
