@@ -1,896 +1,400 @@
 <!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--Description-->
+    
+        <meta name="description" content="My Tech Notes and Other stuff">
+    
 
+    <!--Author-->
+    
+        <meta name="author" content="Ray Qu">
+    
 
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="My Notes"/>
+    
 
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="My Tech Notes and Other stuff" />
+    
 
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="My Notes"/>
 
+    <!--Type page-->
+    
+        <meta property="og:type" content="website" />
+    
 
+    <!--Page Cover-->
+    
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="twitter:card" content="summary" />
+    
 
+    <!-- Title -->
+    
+    <title>Archives - My Notes</title>
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
 
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="My Tech Notes and Other stuff">
-<meta property="og:type" content="website">
-<meta property="og:title" content="My Notes">
-<meta property="og:url" content="https://aaray6.github.io/archives/index.html">
-<meta property="og:site_name" content="My Notes">
-<meta property="og:description" content="My Tech Notes and Other stuff">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Notes">
-<meta name="twitter:description" content="My Tech Notes and Other stuff">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://aaray6.github.io/archives/"/>
-
-
-
-
-
-  <title>Archive | My Notes</title>
-  
-
-
-
-
-
-
+    <!-- Google Analytics -->
+    
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-  
-  
-    
-  
+<body>
 
-  <div class="container sidebar-position-left page-archive">
-    <div class="headband"></div>
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">My Notes</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
     </div>
-      
-        <p class="site-subtitle">I love games</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
 </nav>
 
+<div class="container">
 
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Um..! 16 posts in total. Keep on posting.
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/metasploit/" itemprop="url">
-              
-                <span itemprop="name">metasploit</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-27T14:25:12+08:00"
-              content="2019-02-27" >
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/27/ubuntu-ext-display/" itemprop="url">
-              
-                <span itemprop="name">ubuntu18.04双显示器</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-27T13:57:57+08:00"
-              content="2019-02-27" >
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/22/kali-usage/" itemprop="url">
-              
-                <span itemprop="name">Kali Linux应用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-22T09:59:29+08:00"
-              content="2019-02-22" >
-          02-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/20/kali-linux/" itemprop="url">
-              
-                <span itemprop="name">Kali linux</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-20T14:33:34+08:00"
-              content="2019-02-20" >
-          02-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/11/nfc/" itemprop="url">
-              
-                <span itemprop="name">NFC Notes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-02-11T10:16:17+08:00"
-              content="2019-02-11" >
-          02-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/22/springboot/" itemprop="url">
-              
-                <span itemprop="name">Spring boot notes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-22T16:10:50+08:00"
-              content="2018-03-22" >
-          03-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/22/gradle/" itemprop="url">
-              
-                <span itemprop="name">Gradle Notes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-22T16:10:42+08:00"
-              content="2018-03-22" >
-          03-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/03/01/ubuntu1604/" itemprop="url">
-              
-                <span itemprop="name">ubuntu 16.04 notes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-03-01T09:15:57+08:00"
-              content="2018-03-01" >
-          03-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/27/hexo/" itemprop="url">
-              
-                <span itemprop="name">Hexo notes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-27T23:22:57+08:00"
-              content="2018-02-27" >
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/02/27/git/" itemprop="url">
-              
-                <span itemprop="name">git notes</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-02-27T23:04:10+08:00"
-              content="2018-02-27" >
-          02-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-    </div>
-  </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
+    <!-- Main Content -->
     
-    <div class="sidebar-inner">
 
-      
+<div class="row">
+    <div class="col-sm-12">
 
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Ray Qu</p>
-              <p class="site-description motion-element" itemprop="description">My Tech Notes and Other stuff</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">16</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-      </div>
-    </main>
+            <h1 id="main-title" class="title">Archives</h1>
+        
+    </div>
+</header>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Ray Qu</span>
-
-  
+        <section class="main archive-container">
+            
+                <div class="archive-post">
+    <a href="/2018/02/24/My-New-Post/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        My New Post
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/02/27/cmake/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        cmake notes
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/02/27/docker/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        Docker notes
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/02/27/git/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        git notes
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/03/22/gradle/">
+        <span class="archive-date">
+            Mar 2018
+        </span>
+        Gradle Notes
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/02/24/hello-world/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        Hello World
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2019/03/04/hexo-theme-AlphaDust/">
+        <span class="archive-date">
+            Mar 2019
+        </span>
+        hexo_theme_AlphaDust
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/02/27/hexo/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        Hexo notes
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2019/02/20/kali-linux/">
+        <span class="archive-date">
+            Feb 2019
+        </span>
+        Kali linux
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2019/02/22/kali-usage/">
+        <span class="archive-date">
+            Feb 2019
+        </span>
+        Kali Linux应用
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/02/24/lubuntu-eeepc901/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        install lubuntu on eeepc901
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2019/02/27/metasploit/">
+        <span class="archive-date">
+            Feb 2019
+        </span>
+        metasploit
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2019/02/11/nfc/">
+        <span class="archive-date">
+            Feb 2019
+        </span>
+        NFC Notes
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/02/24/openvpn-over-ssr-on-gcloud/">
+        <span class="archive-date">
+            Feb 2018
+        </span>
+        openvpn over ssr on gcloud
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/03/22/springboot/">
+        <span class="archive-date">
+            Mar 2018
+        </span>
+        Spring boot notes
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2019/02/27/ubuntu-ext-display/">
+        <span class="archive-date">
+            Feb 2019
+        </span>
+        ubuntu18.04双显示器
+    </a>
+</div>
+            
+                <div class="archive-post">
+    <a href="/2018/03/01/ubuntu1604/">
+        <span class="archive-date">
+            Mar 2018
+        </span>
+        ubuntu 16.04 notes
+    </a>
+</div>
+            
+        </section>
+    </div>
 </div>
 
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    <a href="about.html">I love games</a>
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/04/hexo-theme-AlphaDust/">hexo_theme_AlphaDust</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/metasploit/">metasploit</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/ubuntu-ext-display/">ubuntu18.04双显示器</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/22/kali-usage/">Kali Linux应用</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/aaray6">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:aaray@21cn.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyleft
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
+
 </html>

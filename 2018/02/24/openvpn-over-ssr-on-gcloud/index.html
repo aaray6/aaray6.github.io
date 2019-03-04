@@ -1,309 +1,160 @@
 <!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--Description-->
+    
+        <meta name="description" content="My Tech Notes and Other stuff">
+    
 
+    <!--Author-->
+    
+        <meta name="author" content="Ray Qu">
+    
 
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="openvpn over ssr on gcloud"/>
+    
 
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="My Tech Notes and Other stuff" />
+    
 
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="My Notes"/>
 
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
 
+    <!--Page Cover-->
+    
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="twitter:card" content="summary" />
+    
 
+    <!-- Title -->
+    
+    <title>openvpn over ssr on gcloud - My Notes</title>
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
 
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="How to setup OpenVPN over ssr on gcloudapply VPC (google cloud compute engine)First, you need to access Google :) Google CloudGoogle Cloud console Click Compute EngineCreate new instance shadowsocks s">
-<meta property="og:type" content="article">
-<meta property="og:title" content="openvpn over ssr on gcloud">
-<meta property="og:url" content="https://aaray6.github.io/2018/02/24/openvpn-over-ssr-on-gcloud/index.html">
-<meta property="og:site_name" content="My Notes">
-<meta property="og:description" content="How to setup OpenVPN over ssr on gcloudapply VPC (google cloud compute engine)First, you need to access Google :) Google CloudGoogle Cloud console Click Compute EngineCreate new instance shadowsocks s">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https://aaray6.github.io/myimages/gcloud_console02.png">
-<meta property="og:image" content="https://aaray6.github.io/myimages/gcloud_console03.png">
-<meta property="og:image" content="https://aaray6.github.io/myimages/gcloud_console04.png">
-<meta property="og:image" content="https://aaray6.github.io/myimages/gcloud_console01.png">
-<meta property="og:updated_time" content="2018-03-22T08:49:25.143Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="openvpn over ssr on gcloud">
-<meta name="twitter:description" content="How to setup OpenVPN over ssr on gcloudapply VPC (google cloud compute engine)First, you need to access Google :) Google CloudGoogle Cloud console Click Compute EngineCreate new instance shadowsocks s">
-<meta name="twitter:image" content="https://aaray6.github.io/myimages/gcloud_console02.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://aaray6.github.io/2018/02/24/openvpn-over-ssr-on-gcloud/"/>
-
-
-
-
-
-  <title>openvpn over ssr on gcloud | My Notes</title>
-  
-
-
-
-
-
-
+    <!-- Google Analytics -->
+    
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-  
-  
-    
-  
+<body>
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">My Notes</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
     </div>
-      
-        <p class="site-subtitle">I love games</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
 </nav>
 
+<div class="container">
 
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
 
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2018/02/24/openvpn-over-ssr-on-gcloud/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
         
-        
-          <h1 class="post-title" itemprop="name headline">openvpn over ssr on gcloud</h1>
-        
+    </div>
+</header>
 
-        <div class="post-meta">
-          <span class="post-time">
+        <section class="main">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-24T19:03:50+08:00">
-                2018-02-24
-              </time>
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2018/02/24/openvpn-over-ssr-on-gcloud/">
+                openvpn over ssr on gcloud
+            </a>
+        </h1>
+        <div class="post-info">
             
-
+                <span class="date">2018-02-24</span>
             
-
             
-          </span>
-
-          
-
-          
             
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+    </div>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+    <div class="content">
 
-      
-      
+        <!-- Gallery -->
+        
 
-      
+        <!-- Post Content -->
         <h1 id="How-to-setup-OpenVPN-over-ssr-on-gcloud"><a href="#How-to-setup-OpenVPN-over-ssr-on-gcloud" class="headerlink" title="How to setup OpenVPN over ssr on gcloud"></a>How to setup OpenVPN over ssr on gcloud</h1><h2 id="apply-VPC-google-cloud-compute-engine"><a href="#apply-VPC-google-cloud-compute-engine" class="headerlink" title="apply VPC (google cloud compute engine)"></a>apply VPC (google cloud compute engine)</h2><p>First, you need to access Google :)</p>
 <p><a href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a><br><a href="https://console.cloud.google.com/home" target="_blank" rel="noopener">Google Cloud console</a></p>
 <p>Click <code>Compute Engine</code><br><img src="/myimages/gcloud_console02.png" alt="gcloud console"><br>Create new instance<br><img src="/myimages/gcloud_console03.png" alt="gcloud console"><br><img src="/myimages/gcloud_console04.png" alt="gcloud console"></p>
@@ -415,359 +266,124 @@
 <p><a href="https://dcamero.azurewebsites.net/shadowsocks-openvpn.html" target="_blank" rel="noopener">OpenVPN over Shadowsocks</a><br><a href="https://gist.github.com/wynemo/149ab6ef43f48b4ce9f32a5d5f868203" target="_blank" rel="noopener">openvpn over shadowsocks.txt</a></p>
 </blockquote>
 
-      
     </div>
-    
-    
-    
 
     
 
     
 
+    <!-- Comments -->
     
 
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/02/24/lubuntu-eeepc901/" rel="next" title="install lubuntu on eeepc901">
-                <i class="fa fa-chevron-left"></i> install lubuntu on eeepc901
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/27/docker/" rel="prev" title="Docker notes">
-                Docker notes <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Ray Qu</p>
-              <p class="site-description motion-element" itemprop="description">My Tech Notes and Other stuff</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">16</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#How-to-setup-OpenVPN-over-ssr-on-gcloud"><span class="nav-number">1.</span> <span class="nav-text">How to setup OpenVPN over ssr on gcloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#apply-VPC-google-cloud-compute-engine"><span class="nav-number">1.1.</span> <span class="nav-text">apply VPC (google cloud compute engine)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocks-server"><span class="nav-number">1.2.</span> <span class="nav-text">shadowsocks server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PC-install-lubuntu-on-eeepc901"><span class="nav-number">1.3.</span> <span class="nav-text">PC (install lubuntu on eeepc901)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shadowsocks-client"><span class="nav-number">1.4.</span> <span class="nav-text">shadowsocks client</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-side-openvpn"><span class="nav-number">1.5.</span> <span class="nav-text">server side openvpn</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#server-F-W-ufw"><span class="nav-number">1.5.1.</span> <span class="nav-text">server F/W (ufw)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gcloud-F-W-gcloud"><span class="nav-number">1.5.2.</span> <span class="nav-text">gcloud F/W (gcloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#client-openvpn"><span class="nav-number">1.5.3.</span> <span class="nav-text">client openvpn</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#server-side-prepare"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">server side prepare</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Transferring-Configuration-to-Client-Devices"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">Transferring Configuration to Client Devices</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#client-linux-ubuntu"><span class="nav-number">1.5.3.3.</span> <span class="nav-text">client (linux ubuntu)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#additional-function-set-PC-as-router"><span class="nav-number">1.5.4.</span> <span class="nav-text">additional function, set PC as router</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shadowsocks-over-KCPTUN"><span class="nav-number">1.5.5.</span> <span class="nav-text">Shadowsocks over KCPTUN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#how-to-make-other-PC-use-the-router"><span class="nav-number">1.5.6.</span> <span class="nav-text">how to make other PC use the router</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#simple-way-the-PC-can-set-default-gateway"><span class="nav-number">1.5.6.1.</span> <span class="nav-text">simple way, the PC can set default gateway</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#the-PC-don’t-have-permission-to-update-default-gateway"><span class="nav-number">1.5.6.2.</span> <span class="nav-text">the PC don’t have permission to update default gateway</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#set-wifi-as-AP"><span class="nav-number">1.5.6.2.1.</span> <span class="nav-text">set wifi as AP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#use-2nd-router’s"><span class="nav-number">1.5.6.2.2.</span> <span class="nav-text">use 2nd router’s</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-number">1.5.7.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
+</div>
         </section>
-      <!--/noindex-->
-      
-
-      
 
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Ray Qu</span>
-
-  
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    <a href="about.html">I love games</a>
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/04/hexo-theme-AlphaDust/">hexo_theme_AlphaDust</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/metasploit/">metasploit</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/ubuntu-ext-display/">ubuntu18.04双显示器</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/22/kali-usage/">Kali Linux应用</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/aaray6">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:aaray@21cn.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyleft
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
 
 
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
+
 </html>

