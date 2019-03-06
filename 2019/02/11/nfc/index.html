@@ -163,7 +163,7 @@
 <p>带的软件里有libnfc.dll, mfoc.dll两个文件。驱动程序就是一个”Prolific Technology, Inc. PL2303 Serial Port“ USB转串口驱动。读卡器是USB接口的，安装驱动之后映射岛了COM3。<br>因此想到是否可以找到其他的软件使用这个读卡器。</p>
 <p>以下记录Linux(ubuntu)下找到的方法</p>
 <h1 id="Ubuntu-Linux下用NFC-reader破解复制M1卡"><a href="#Ubuntu-Linux下用NFC-reader破解复制M1卡" class="headerlink" title="Ubuntu Linux下用NFC reader破解复制M1卡"></a>Ubuntu Linux下用NFC reader破解复制M1卡</h1><p>linux自带了PL2303驱动，插上读卡器后用lsusb命令可以看到<br>”Bus 001 Device 018: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port“</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 002 Device 003: ID 046d:c534 Logitech, Inc. Unifying Receiver</span><br><span class="line">Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 001 Device 005: ID 17ef:4816 Lenovo Integrated Webcam</span><br><span class="line">Bus 001 Device 004: ID 0a5c:217f Broadcom Corp. BCM2045B (BDC-2.1)</span><br><span class="line">Bus 001 Device 003: ID 147e:2016 Upek Biometric Touchchip/Touchstrip Fingerprint Sensor</span><br><span class="line">Bus 001 Device 018: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port</span><br><span class="line">Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> lsusb</span><br><span class="line">Bus 002 Device 003: ID 046d:c534 Logitech, Inc. Unifying Receiver</span><br><span class="line">Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 001 Device 005: ID 17ef:4816 Lenovo Integrated Webcam</span><br><span class="line">Bus 001 Device 004: ID 0a5c:217f Broadcom Corp. BCM2045B (BDC-2.1)</span><br><span class="line">Bus 001 Device 003: ID 147e:2016 Upek Biometric Touchchip/Touchstrip Fingerprint Sensor</span><br><span class="line">Bus 001 Device 018: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port</span><br><span class="line">Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
 <p>安装了libnfc之后，可以用以下命令看到读卡器已经可以找到，注意，必须用root权限，否则会有以下结果</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nfc-list</span><br><span class="line">nfc-list uses libnfc 1.7.1</span><br><span class="line">error</span><br><span class="line">libnfc.driver.pn532_uart</span><br><span class="line">Invalid serial port: /dev/ttyUSB0</span><br><span class="line">nfc-list: ERROR: Unable to open NFC device: pn532_uart:/dev/ttyUSB0</span><br></pre></td></tr></table></figure>
 <p>用root权限则是以下结果</p>
@@ -203,7 +203,10 @@
 <h2 id="合并卡"><a href="#合并卡" class="headerlink" title="合并卡"></a>合并卡</h2><p>我有两个卡，一个门禁一个电梯。门禁系统只用到了最后4个扇区，而且还没用到卡ID。另外一个电梯系统恰巧没用到最后4个扇区。</p>
 <p>所以我把门禁dump文件最后4个扇区的内容替换到电梯dump文件最后4个扇区。把新dump文件写到卡里就得到了一个合并的卡。</p>
 <p>注意: dump文件是1024字节的16进制文件。Windows下编辑可以用HxD编辑器。Linux下可以用bless编辑器。Windows下的notepad++加hexeditor插件打开dump文件显示内容可能是编码有问题。Linux下vi配合:%!xxd也有同样问题。但是用xxd命令直接显示dump文件则正确。</p>
-<h2 id="Linux下往空白卡写dump文件"><a href="#Linux下往空白卡写dump文件" class="headerlink" title="Linux下往空白卡写dump文件"></a>Linux下往空白卡写dump文件</h2><blockquote>
+<h2 id="Linux下往空白卡写dump文件"><a href="#Linux下往空白卡写dump文件" class="headerlink" title="Linux下往空白卡写dump文件"></a>Linux下往空白卡写dump文件</h2><h3 id="格式化（如果卡不是空白卡，需要格式化）"><a href="#格式化（如果卡不是空白卡，需要格式化）" class="headerlink" title="格式化（如果卡不是空白卡，需要格式化）"></a>格式化（如果卡不是空白卡，需要格式化）</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nfc-mfsetuid -f</span><br></pre></td></tr></table></figure>
+<p>or</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nfc-mfclassic f A blank-chinese.dmp keyfile.mfd f</span><br></pre></td></tr></table></figure>
+<blockquote>
 <p><a href="https://gist.github.com/alphazo/3303282" target="_blank" rel="noopener">Clone MiFare cards using chinesse UUID writable cards</a></p>
 </blockquote>
 <ul>
@@ -217,7 +220,10 @@
 <ul>
 <li>Write the Chinese card with the content of the other card including UUID</li>
 </ul>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w b cardtocopy.dmp blank-chinese.dmp</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w a cardtocopy.dmp blank-chinese.dmp</span></span><br></pre></td></tr></table></figure>
+<p>The W option allows writing of special MIFARE cards that can be ‘unlocked’ to allow  block 0 to be overwritten. This includes UID and manufacturer data. Take care when amending UIDs to set the correct BCC (UID checksum). Currently only 4 byte UIDs are supported.</p>
+<p>If use “w”, the block 0 will not be overwritten. Need to do extra step to set the UID.</p>
+<p>f      Force using the keyfile KEYS even if UID does not match (optional).</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic W b cardtocopy.dmp blank-chinese.dmp f</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic W a cardtocopy.dmp blank-chinese.dmp f</span></span><br></pre></td></tr></table></figure>
 <p>cardtocopy.dmp可以是已经准备好的dump文件</p>
 <ul>
 <li>Check that the card is the same</li>
@@ -227,9 +233,16 @@
 <li>Go back to blank card</li>
 </ul>
 <p>跟格式化步骤相同，区别在于这个有cardtocopy.dmp文件提供KEY,另外那个是用mfoc现破解</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w b blank-chinese.dmp cardtocopy.dmp</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w a blank-chinese.dmp cardtocopy.dmp</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w b blank-chinese.dmp cardtocopy.dmp f</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w a blank-chinese.dmp cardtocopy.dmp f</span></span><br></pre></td></tr></table></figure>
 <p>经比较，这个Linux下的命令与Windows下提供的软件做出来的卡内容相同。</p>
-
+<h2 id="some-commands"><a href="#some-commands" class="headerlink" title="some commands"></a>some commands</h2><ul>
+<li>Get the “to-be-copied” card UID</li>
+</ul>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-anticol|grep UID|awk <span class="string">'&#123;print $2&#125;'</span></span></span><br><span class="line">01234567</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Write UID into the card</li>
+</ul>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfsetuid 01234567</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
