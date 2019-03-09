@@ -163,7 +163,7 @@
 <p>带的软件里有libnfc.dll, mfoc.dll两个文件。驱动程序就是一个”Prolific Technology, Inc. PL2303 Serial Port“ USB转串口驱动。读卡器是USB接口的，安装驱动之后映射岛了COM3。<br>因此想到是否可以找到其他的软件使用这个读卡器。</p>
 <p>以下记录Linux(ubuntu)下找到的方法</p>
 <h1 id="Ubuntu-Linux下用NFC-reader破解复制M1卡"><a href="#Ubuntu-Linux下用NFC-reader破解复制M1卡" class="headerlink" title="Ubuntu Linux下用NFC reader破解复制M1卡"></a>Ubuntu Linux下用NFC reader破解复制M1卡</h1><p>linux自带了PL2303驱动，插上读卡器后用lsusb命令可以看到<br>”Bus 001 Device 018: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port“</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> lsusb</span><br><span class="line">Bus 002 Device 003: ID 046d:c534 Logitech, Inc. Unifying Receiver</span><br><span class="line">Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 001 Device 005: ID 17ef:4816 Lenovo Integrated Webcam</span><br><span class="line">Bus 001 Device 004: ID 0a5c:217f Broadcom Corp. BCM2045B (BDC-2.1)</span><br><span class="line">Bus 001 Device 003: ID 147e:2016 Upek Biometric Touchchip/Touchstrip Fingerprint Sensor</span><br><span class="line">Bus 001 Device 018: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port</span><br><span class="line">Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 002 Device 003: ID 046d:c534 Logitech, Inc. Unifying Receiver</span><br><span class="line">Bus 002 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br><span class="line">Bus 001 Device 005: ID 17ef:4816 Lenovo Integrated Webcam</span><br><span class="line">Bus 001 Device 004: ID 0a5c:217f Broadcom Corp. BCM2045B (BDC-2.1)</span><br><span class="line">Bus 001 Device 003: ID 147e:2016 Upek Biometric Touchchip/Touchstrip Fingerprint Sensor</span><br><span class="line">Bus 001 Device 018: ID 067b:2303 Prolific Technology, Inc. PL2303 Serial Port</span><br><span class="line">Bus 001 Device 002: ID 8087:0020 Intel Corp. Integrated Rate Matching Hub</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub</span><br></pre></td></tr></table></figure>
 <p>安装了libnfc之后，可以用以下命令看到读卡器已经可以找到，注意，必须用root权限，否则会有以下结果</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nfc-list</span><br><span class="line">nfc-list uses libnfc 1.7.1</span><br><span class="line">error</span><br><span class="line">libnfc.driver.pn532_uart</span><br><span class="line">Invalid serial port: /dev/ttyUSB0</span><br><span class="line">nfc-list: ERROR: Unable to open NFC device: pn532_uart:/dev/ttyUSB0</span><br></pre></td></tr></table></figure>
 <p>用root权限则是以下结果</p>
@@ -279,6 +279,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/03/09/x201-linux-tips/">IBM X201 Linux tips</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/03/08/my-sinablog/">我的新浪博客</a>
             </li>
             
@@ -288,10 +292,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/02/27/metasploit/">metasploit</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/02/27/ubuntu-ext-display/">ubuntu18.04双显示器</a>
             </li>
             
         </ul>
