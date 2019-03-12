@@ -218,12 +218,34 @@
 </ul>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mfoc -f KnownKeys.txt -O cardtocopy.dmp</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>Write the Chinese card with the content of the other card including UUID</li>
+<li>普通UID卡，可以直接复制64块(block),包括卡号和厂商信息</li>
 </ul>
-<p>The W option allows writing of special MIFARE cards that can be ‘unlocked’ to allow  block 0 to be overwritten. This includes UID and manufacturer data. Take care when amending UIDs to set the correct BCC (UID checksum). Currently only 4 byte UIDs are supported.</p>
-<p>If use “w”, the block 0 will not be overwritten. Need to do extra step to set the UID.</p>
-<p>f      Force using the keyfile KEYS even if UID does not match (optional).</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic W b cardtocopy.dmp blank-chinese.dmp f</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic W a cardtocopy.dmp blank-chinese.dmp f</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>CUID卡，需要分两步，先写63块，再写卡号</li>
+</ul>
+<ol>
+<li>复制63块</li>
+</ol>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w b cardtocopy.dmp blank-chinese.dmp f</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w a cardtocopy.dmp blank-chinese.dmp f</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>复制卡号</li>
+</ol>
+<p>Get the “to-be-copied” card UID</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-anticol|grep UID|awk <span class="string">'&#123;print $2&#125;'</span></span></span><br><span class="line">01234567</span><br></pre></td></tr></table></figure>
+<p>Write UID into the card</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfsetuid 01234567</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The W option allows writing of special MIFARE cards that can be ‘unlocked’ to allow  block 0 to be overwritten. This includes UID and manufacturer data. Take care when amending UIDs to set the correct BCC (UID checksum). Currently only 4 byte UIDs are supported.</p>
+</blockquote>
+<blockquote>
+<p>If use “w”, the block 0 will not be overwritten. Need to do extra step to set the UID.</p>
+</blockquote>
+<blockquote>
+<p>f      Force using the keyfile KEYS even if UID does not match (optional).</p>
+</blockquote>
+<p>如果用W复制CUID卡，回出现以下提示</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic W b tobecopied.dmp blank-chinese.dmp f</span></span><br><span class="line">NFC reader: pn532_uart:/dev/ttyUSB0 opened</span><br><span class="line">Expected MIFARE Classic card with UID starting as: 8d690831</span><br><span class="line">Got card with UID starting as:                     a0b0e18a</span><br><span class="line">Found MIFARE Classic card:</span><br><span class="line">ISO/IEC 14443A (106 kbps) target:</span><br><span class="line">    ATQA (SENS_RES): 00  04  </span><br><span class="line">       UID (NFCID1): a0  b0  e1  8a  </span><br><span class="line">      SAK (SEL_RES): 08  </span><br><span class="line">Guessing size: seems to be a 1024-byte card</span><br><span class="line">Sent bits:     50  00  57  cd  </span><br><span class="line">Sent bits:     40 (7 bits)</span><br><span class="line">unlock failure!</span><br></pre></td></tr></table></figure>
 <p>cardtocopy.dmp可以是已经准备好的dump文件</p>
 <ul>
 <li>Check that the card is the same</li>
@@ -234,15 +256,8 @@
 </ul>
 <p>跟格式化步骤相同，区别在于这个有cardtocopy.dmp文件提供KEY,另外那个是用mfoc现破解</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w b blank-chinese.dmp cardtocopy.dmp f</span></span><br><span class="line">or</span><br><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfclassic w a blank-chinese.dmp cardtocopy.dmp f</span></span><br></pre></td></tr></table></figure>
-<p>经比较，这个Linux下的命令与Windows下提供的软件做出来的卡内容相同。</p>
-<h2 id="some-commands"><a href="#some-commands" class="headerlink" title="some commands"></a>some commands</h2><ul>
-<li>Get the “to-be-copied” card UID</li>
-</ul>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-anticol|grep UID|awk <span class="string">'&#123;print $2&#125;'</span></span></span><br><span class="line">01234567</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Write UID into the card</li>
-</ul>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nfc-mfsetuid 01234567</span></span><br></pre></td></tr></table></figure>
+<p>经比较，这个Linux下的命令与Windows下提供的软件做出来的UID卡内容相同,CUID除了厂商信息其他都可以复制。</p>
+
     </div>
 
     
@@ -279,6 +294,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/03/12/gcloud-firewall-ufw-v2ray-ddns/">gcloud firewall ufw v2ray</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/03/09/x201-linux-tips/">IBM X201 Linux tips</a>
             </li>
             
@@ -288,10 +307,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/03/04/hexo-theme-AlphaDust/">hexo_theme_AlphaDust</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/02/27/metasploit/">metasploit</a>
             </li>
             
         </ul>
