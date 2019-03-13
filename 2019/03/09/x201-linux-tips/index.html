@@ -155,31 +155,29 @@
         
 
         <!-- Post Content -->
-        <h1 id="IBM-X201-Linux-（ubuntu-记录"><a href="#IBM-X201-Linux-（ubuntu-记录" class="headerlink" title="IBM X201 Linux （ubuntu) 记录"></a>IBM X201 Linux （ubuntu) 记录</h1><ul>
-<li><p>xxd, HEX editor</p>
-</li>
-<li><p>Linux Baidu Pan <a href="https://segmentfault.com/a/1190000015719430" target="_blank" rel="noopener">Post</a></p>
-</li>
-<li><p>X201过热</p>
-</li>
-</ul>
-<p>安装以下软件，Linux比安装之前降温10度左右</p>
+        <h1 id="IBM-X201-Linux-（ubuntu-记录"><a href="#IBM-X201-Linux-（ubuntu-记录" class="headerlink" title="IBM X201 Linux （ubuntu) 记录"></a>IBM X201 Linux （ubuntu) 记录</h1><p><a href="#X201过热">X201过热</a>； <a href="#指纹登录">指纹登录</a>； <a href="#更换启动界面">更换启动界面</a>； <a href="#不小心把分区表弄坏了">修复分区表和GRUB引导</a>; <a href="#Ubuntu18-04休眠">休眠</a></p>
+<h2 id="xxd-Linux-HEX-editor"><a href="#xxd-Linux-HEX-editor" class="headerlink" title="xxd - Linux HEX editor"></a>xxd - Linux HEX editor</h2><h2 id="Linux-Baidu-Pan"><a href="#Linux-Baidu-Pan" class="headerlink" title="Linux Baidu Pan"></a><a href="https://segmentfault.com/a/1190000015719430" target="_blank" rel="noopener">Linux Baidu Pan</a></h2><h2 id="X201过热"><a href="#X201过热" class="headerlink" title="X201过热"></a>X201过热</h2><p>安装以下软件，Linux比安装之前降温10度左右</p>
 <p>lm_sensor (and afterwards I did run sensors-detect)<br>thermald<br>TLP<br>intel-ucode</p>
-<h2 id="TLP"><a href="#TLP" class="headerlink" title="TLP"></a>TLP</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:linrunner/tlp</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># thinkpad</span></span></span><br><span class="line">sudo apt-get install tp-smapi-dkms acpi-call-dkms</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## uninstall</span></span></span><br><span class="line">sudo apt-get remove tlp</span><br><span class="line">sudo add-apt-repository --remove ppa:linrunner/tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line">/etc/default/tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line">sudo tlp start</span><br><span class="line">sudo tlp-stat</span><br></pre></td></tr></table></figure>
-<h2 id="thermald"><a href="#thermald" class="headerlink" title="thermald"></a>thermald</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install thermald</span><br></pre></td></tr></table></figure>
-<h2 id="CPU-freqs"><a href="#CPU-freqs" class="headerlink" title="CPU freqs"></a>CPU freqs</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install indicator-cpufreq</span><br></pre></td></tr></table></figure>
-<ul>
-<li>指纹登录</li>
-</ul>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># For Ubuntu 16.04 or greater:</span></span></span><br><span class="line">sudo apt install libpam-fprintd fprint-demo</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># For Ubuntu 15.04 or less</span></span></span><br><span class="line">sudo add-apt-repository -y ppa:fingerprint/fprint</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libfprint0 fprint-demo libpam-fprintd gksu-polkit</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># After that, you can test it by running fprint_demo and save the fingerprint with fprintd-enroll. This will automatically make your login screen require a finger swipe instead of a password.</span></span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>更换启动界面</li>
-</ul>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 测试命令</span></span></span><br><span class="line">sudo apt install plymouth-x11</span><br><span class="line"></span><br><span class="line">sudo plymouthd ; sudo plymouth --show-splash ; for ((I=0; I&lt;10; I++)); do sleep 1 ; sudo plymouth --update=test$I ; done ; sudo plymouth --quit</span><br></pre></td></tr></table></figure>
-<ul>
-<li>不小心把分区表弄坏了</li>
-</ul>
+<h3 id="TLP"><a href="#TLP" class="headerlink" title="TLP"></a>TLP</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:linrunner/tlp</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># thinkpad</span></span></span><br><span class="line">sudo apt-get install tp-smapi-dkms acpi-call-dkms</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## uninstall</span></span></span><br><span class="line">sudo apt-get remove tlp</span><br><span class="line">sudo add-apt-repository --remove ppa:linrunner/tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line">/etc/default/tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line">sudo tlp start</span><br><span class="line">sudo tlp-stat</span><br></pre></td></tr></table></figure>
+<h3 id="thermald"><a href="#thermald" class="headerlink" title="thermald"></a>thermald</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install thermald</span><br></pre></td></tr></table></figure>
+<h3 id="CPU-freqs"><a href="#CPU-freqs" class="headerlink" title="CPU freqs"></a>CPU freqs</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install indicator-cpufreq</span><br></pre></td></tr></table></figure>
+<h2 id="指纹登录"><a href="#指纹登录" class="headerlink" title="指纹登录"></a>指纹登录</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># For Ubuntu 16.04 or greater:</span></span></span><br><span class="line">sudo apt install libpam-fprintd fprint-demo</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># For Ubuntu 15.04 or less</span></span></span><br><span class="line">sudo add-apt-repository -y ppa:fingerprint/fprint</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libfprint0 fprint-demo libpam-fprintd gksu-polkit</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># After that, you can test it by running fprint_demo and save the fingerprint with fprintd-enroll. This will automatically make your login screen require a finger swipe instead of a password.</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="更换启动界面"><a href="#更换启动界面" class="headerlink" title="更换启动界面"></a>更换启动界面</h2><blockquote>
+<p><a href="https://askubuntu.com/questions/1046370/how-to-change-boot-splash-screen-in-18-04" target="_blank" rel="noopener">How to change boot splash screen in 18.04</a><br><a href="https://www.gnome-look.org/browse/cat/108/" target="_blank" rel="noopener">Plymouth Themes</a></p>
+</blockquote>
+<p>to install:</p>
 <ol>
+<li><p>copy file to /usr/share/plymouth/themes</p>
+</li>
+<li><p>run in terminal:</p>
+</li>
+</ol>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/&lt;your theme&gt;/&lt;your theme&gt;.plymouth 100</span><br><span class="line">sudo update-alternatives --config default.plymouth</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>initramfs: initramfs is a tiny version of the OS that gets loaded by the bootloader, right after the kernel. It lives in RAM, and it provides <em>just</em> enough tools and instructions to tell the kernel how to set up the real filesystem, mount the HDD read/write, and start loading all the system services. It includes the stub of init, PID #1. If your initramfs is broken, your boot fails.<br>update-initramfs is a script that updates initramfs to work with a new kernel. In the Debian universe, you shouldn’t need to run this command manually except under very unusual circumstances - a post-install script automatically handles it for you when you install a new kernel package.</p>
+</blockquote>
+<h3 id="测试命令"><a href="#测试命令" class="headerlink" title="测试命令"></a>测试命令</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install plymouth-x11</span><br><span class="line"></span><br><span class="line">sudo plymouthd ; sudo plymouth --show-splash ; for ((I=0; I&lt;10; I++)); do sleep 1 ; sudo plymouth --update=test$I ; done ; sudo plymouth --quit</span><br></pre></td></tr></table></figure>
+<h2 id="不小心把分区表弄坏了"><a href="#不小心把分区表弄坏了" class="headerlink" title="不小心把分区表弄坏了"></a>不小心把分区表弄坏了</h2><ol>
 <li><p>先别慌，别往硬盘里写东西</p>
 </li>
 <li><p>用晨风或类似WinPE工具盘启动电脑。用Partition Magic之类的软件提供的恢复丢失分区找回分区</p>
@@ -191,34 +189,28 @@
 <p><a href="https://www.howopensource.com/2011/08/restore-mbr-from-ubuntu-live-cd-usb/" target="_blank" rel="noopener">Restore MBR from Ubuntu live CD / USB</a></p>
 </blockquote>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:yannubuntu/boot-repair</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y boot-repair</span><br><span class="line">boot-repair</span><br></pre></td></tr></table></figure>
+<h2 id="Ubuntu18-04休眠"><a href="#Ubuntu18-04休眠" class="headerlink" title="Ubuntu18.04休眠"></a>Ubuntu18.04休眠</h2><p>注意<strong>如果用固态硬盘，不应该使用休眠功能，否则影响固态硬盘寿命</strong></p>
 <ul>
-<li>Ubuntu18.04休眠(我按照以下方法有时候能恢复，有时候不成功)</li>
+<li>1 先确定交换分区至少跟物理内存一样大。</li>
 </ul>
-<p>如果用固态硬盘，不应该使用休眠功能，否则影响固态硬盘寿命</p>
-<ol>
-<li>先确定交换分区至少跟物理内存一样大。</li>
-</ol>
 <p>理论上交换分区小于物理内存也可以成功。而且最好比物理内存大一点。（我就是在扩展交换分区大小时把分区表弄坏的，花了半天的时间才恢复原样）</p>
 <blockquote>
-<p><a href="http://ubuntuhandbook.org/index.php/2018/05/add-hibernate-option-ubuntu-18-04/" target="_blank" rel="noopener">Add ‘Hibernate’ Option in Power Menu in Ubuntu 18.04</a></p>
+<p><a href="http://ubuntuhandbook.org/index.php/2018/05/add-hibernate-option-ubuntu-18-04/" target="_blank" rel="noopener">Add ‘Hibernate’ Option in Power Menu in Ubuntu 18.04</a><br><a href="https://askubuntu.com/questions/768136/how-can-i-hibernate-on-ubuntu-16-04" target="_blank" rel="noopener">How can I hibernate on Ubuntu 16.04</a></p>
 </blockquote>
-<blockquote>
-<p><a href="https://askubuntu.com/questions/768136/how-can-i-hibernate-on-ubuntu-16-04" target="_blank" rel="noopener">How can I hibernate on Ubuntu 16.04</a></p>
-</blockquote>
-<ol>
-<li>测试系统支持休眠，注意，以下命令回立刻将系统休眠，执行前请确保已经保存你的工作。</li>
-</ol>
+<ul>
+<li>2 测试系统支持休眠，注意，以下命令回立刻将系统休眠，执行前请确保已经保存你的工作。</li>
+</ul>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl hibernate</span><br></pre></td></tr></table></figure>
-<ol>
-<li>在菜单上增加休眠按钮</li>
-</ol>
+<ul>
+<li>3 在菜单上增加休眠按钮</li>
+</ul>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla</span><br></pre></td></tr></table></figure>
 <p>It opens nano with an empty file. Copy the lines below and paste them into the nano window.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Re-enable hibernate by default in upower]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.upower.hibernate</span><br><span class="line">ResultActive=yes</span><br><span class="line"></span><br><span class="line">[Re-enable hibernate by default in logind]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit</span><br><span class="line">ResultActive=yes</span><br></pre></td></tr></table></figure>
 <p>Restart your computer and click the link to install the gnome extension: <strong>Hibernate Status Button</strong>.(第一个参考帖子里有截图)</p>
-<ol>
-<li>修改GRUB增加resume参数</li>
-</ol>
+<ul>
+<li>4 修改GRUB增加resume参数</li>
+</ul>
 <p>找到交换分区:</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep swap /etc/fstab</span><br></pre></td></tr></table></figure>
 <p>for me this returns (partial output)</p>
@@ -226,29 +218,45 @@
 <p>/dev/sda3是安装系统时用的交换分区，如果安装之后没改过的话。</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudoedit /etc/default/grub</span><br></pre></td></tr></table></figure>
 <p>To the line starting <strong>GRUB_CMDLINE_LINUX_DEFAULT</strong> add <strong>resume=/dev/YourSwapPartition</strong> to the section in quotes (replace with the the partition you identified earlier). Using my example:</p>
-<p><strong>GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash resume=/dev/sda3”</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash resume=/dev/sda3&quot;</span><br></pre></td></tr></table></figure>
 <p>更新/etc/default/grub文件之后，运行以下命令更新grub以使之生效</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-<p><strong>除了像上面使用交换分区，还可以使用交换文件实现休眠功能</strong></p>
+<p>注： <strong>除了像上面使用交换分区，还可以使用交换文件实现休眠功能</strong></p>
+<h3 id="我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置"><a href="#我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置" class="headerlink" title="我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置"></a>我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置</h3><blockquote>
+<p><a href="https://askubuntu.com/questions/196364/i-have-enabled-hibernate-but-it-isnt-working-what-can-i-do" target="_blank" rel="noopener">I have enabled hibernate but it isn’t working. What can I do?</a></p>
+</blockquote>
+<p>以下方法在Ubuntu18.04测试有效</p>
+<p>There is two way to fix this.</p>
 <ul>
-<li>修改启动画面</li>
+<li><p>Editing the /etc/initramfs-tools/conf.d/resume file</p>
+<p>  First get the UUID of the swap partition.</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid | grep swap</span><br></pre></td></tr></table></figure>
+<p>  This will output a line similar to this:</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda12: UUID="a14f3380-810e-49a7-b42e-72169e66c432" TYPE="swap"</span><br></pre></td></tr></table></figure>
+<p>  The actually line will not match with this. Copy the value of UUID in between “…” double quote.</p>
+<p>  Open the resume file</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/initramfs-tools/conf.d/resume</span><br></pre></td></tr></table></figure>
+<p>  And in that file, add a line like this</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RESUME=UUID=a14f3380-810e-49a7-b42e-72169e66c432</span><br></pre></td></tr></table></figure>
+<p>  Don’t forget to replace the actual UUID value you get from step 1. Save the file and exit gedit</p>
+<p>  Then in terminal, execute this command</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<blockquote>
-<p><a href="https://askubuntu.com/questions/1046370/how-to-change-boot-splash-screen-in-18-04" target="_blank" rel="noopener">How to change boot splash screen in 18.04</a></p>
-</blockquote>
-<blockquote>
-<p><a href="https://www.gnome-look.org/browse/cat/108/" target="_blank" rel="noopener">Plymouth Themes</a></p>
-</blockquote>
-<p>to install:</p>
-<ol>
-<li><p>copy file to /usr/share/plymouth/themes</p>
+<p>You will now be able to resume from hibernation</p>
+<ul>
+<li><p>Editing the /etc/default/grub file.</p>
+<p>  Open a terminal and execute the below command to open it</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
+<p>  There will be a line like GRUB_CMDLINE_LINUX_DEFAULT=”quiet splash”<br>  . Edit the line to insert RESUME=UUID=&lt;your-uuid-value-here> after the word splash.</p>
+<p>  For example in my case, the line looks like this after editing</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash resume=UUID=a14f3380-810e-49a7-b42e-72169e66c432&quot;</span><br></pre></td></tr></table></figure>
+<p>  Make sure, you used your UUID value you get from sudo blkid | grep swap command.</p>
+<p>  Then do this command</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>run in terminal:</p>
-</li>
-</ol>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/&lt;your theme&gt;/&lt;your theme&gt;.plymouth 100</span><br><span class="line">sudo update-alternatives --config default.plymouth</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure>
-<p>initramfs: initramfs is a tiny version of the OS that gets loaded by the bootloader, right after the kernel. It lives in RAM, and it provides <em>just</em> enough tools and instructions to tell the kernel how to set up the real filesystem, mount the HDD read/write, and start loading all the system services. It includes the stub of init, PID #1. If your initramfs is broken, your boot fails.</p>
-<p>update-initramfs is a script that updates initramfs to work with a new kernel. In the Debian universe, you shouldn’t need to run this command manually except under very unusual circumstances - a post-install script automatically handles it for you when you install a new kernel package.</p>
+</ul>
+<p>This also enable you to successfully get resumed from hibernate.</p>
 
     </div>
 
