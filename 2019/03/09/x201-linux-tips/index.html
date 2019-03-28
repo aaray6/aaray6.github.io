@@ -222,7 +222,8 @@
 <p>更新/etc/default/grub文件之后，运行以下命令更新grub以使之生效</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
 <p>注： <strong>除了像上面使用交换分区，还可以使用交换文件实现休眠功能</strong></p>
-<h3 id="我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置"><a href="#我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置" class="headerlink" title="我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置"></a>我了扩大扩展分区，我重新创建了扩展分区，导致分区号和UUID都变了，于是需要用以下方法重新设置</h3><blockquote>
+<h3 id="在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置"><a href="#在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置" class="headerlink" title="在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置"></a>在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置</h3><p>注:<strong>我曾经试过不用休眠功能，于是我把/etc/initramfs-tools/conf.d/resume文件删了，删掉后，Linux启动特别慢，内核启动大概10多秒，恢复这个文件并更新ramfs之后，变回3秒之内</strong></p>
+<blockquote>
 <p><a href="https://askubuntu.com/questions/196364/i-have-enabled-hibernate-but-it-isnt-working-what-can-i-do" target="_blank" rel="noopener">I have enabled hibernate but it isn’t working. What can I do?</a></p>
 </blockquote>
 <p>以下方法在Ubuntu18.04测试有效</p>
@@ -257,6 +258,18 @@
 </li>
 </ul>
 <p>This also enable you to successfully get resumed from hibernate.</p>
+<h3 id="更改Login登录界面背景"><a href="#更改Login登录界面背景" class="headerlink" title="更改Login登录界面背景"></a>更改Login登录界面背景</h3><blockquote>
+<p><a href="https://vitux.com/how-to-change-login-lock-screen-background-in-ubuntu/" target="_blank" rel="noopener">How to Change the Ubuntu Login screen</a></p>
+</blockquote>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /usr/share/gnome-shell/theme/ubuntu.css</span><br></pre></td></tr></table></figure>
+<p>替换lockDialogGroup段如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#lockDialogGroup</span> &#123;</span><br><span class="line"><span class="attribute">background</span>: <span class="number">#2c001e</span> <span class="built_in">url</span>(file:///usr/share/backgrounds/gdmlock.jpg);</span><br><span class="line"><span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line"><span class="attribute">background-size</span>: cover;</span><br><span class="line"><span class="attribute">background-position</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Alt-F2 -&gt; r</p>
+<h3 id="电脑挂起后，禁用鼠标唤醒"><a href="#电脑挂起后，禁用鼠标唤醒" class="headerlink" title="电脑挂起后，禁用鼠标唤醒"></a>电脑挂起后，禁用鼠标唤醒</h3><blockquote>
+<p><a href="https://www.helplib.com/ubuntu/article_157796" target="_blank" rel="noopener">鼠标移动唤醒计算机从挂起如何禁用这里操作？</a></p>
+</blockquote>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls -l /lib/systemd/system-sleep</span></span><br><span class="line">-rwxr-xr-x 1 root root  92 2月  22  2018 hdparm</span><br><span class="line">-rwxr-xr-x 1 root root 212 3月  27 17:36 mouse_logitech</span><br><span class="line">-rwxr-xr-x 1 root root 219 2月  21 21:58 unattended-upgrades</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> cat /lib/systemd/system-sleep/mouse_logitech</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">if [! -r /sys/devices/pci0000:00/0000:00:1d.0/usb2/2-1/2-1.2/power/wakeup ]; then</span><br><span class="line"> exit 0</span><br><span class="line">fi</span><br><span class="line">case"$1" in</span><br><span class="line"> pre )</span><br><span class="line"> echo disabled &gt; /sys/devices/pci0000:00/0000:00:1d.0/usb2/2-1/2-1.2/power/wakeup</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<h3 id="用CloneZilla拷贝硬盘-分区"><a href="#用CloneZilla拷贝硬盘-分区" class="headerlink" title="用CloneZilla拷贝硬盘/分区"></a>用<a href="https://clonezilla.org/" target="_blank" rel="noopener">CloneZilla</a>拷贝硬盘/分区</h3><p>有linux的分区用Ghost复制后不好用，不知道是不是我用的版本太老了。用CloneZilla好用。下载iso，做启动盘，启动，复制</p>
 
     </div>
 
@@ -294,7 +307,11 @@
         <ul>
             
             <li>
-                <a class="footer-post" href="/2019/03/18/treeline-myinventory/">myinventory by treeline</a>
+                <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/18/treeline-myinventory/">MyInventory by TreeLine</a>
             </li>
             
             <li>
@@ -303,10 +320,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/03/09/x201-linux-tips/">IBM X201 Linux tips</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/08/my-sinablog/">我的新浪博客</a>
             </li>
             
         </ul>
