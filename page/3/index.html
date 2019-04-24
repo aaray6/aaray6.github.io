@@ -139,6 +139,48 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2018/02/24/lubuntu-eeepc901/">
+                install lubuntu on eeepc901
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2018-02-24</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="My-notes-for-installing-lubuntu-on-eeepc901"><a href="#My-notes-for-installing-lubuntu-on-eeepc901" class="headerlink" title="My notes for installing lubuntu on eeepc901"></a>My notes for installing lubuntu on eeepc901</h1><h2 id="How-to-show-GRUB-memu-if-it-skips"><a href="#How-to-show-GRUB-memu-if-it-skips" class="headerlink" title="How to show GRUB memu if it skips"></a>How to show GRUB memu if it skips</h2><p>Hold “shift” key after BIOS load.</p>
+<h2 id="How-to-edit-GRUB-parameter"><a href="#How-to-edit-GRUB-parameter" class="headerlink" title="How to edit GRUB parameter"></a>How to edit GRUB parameter</h2><p>Select a entry and press “e”<br>After edit the parameter, press Ctrl-X or F10 to boot</p>
+<h2 id="lubuntu-Linux-can’t-display-correctly-after-boot"><a href="#lubuntu-Linux-can’t-display-correctly-after-boot" class="headerlink" title="lubuntu Linux can’t display correctly after boot"></a>lubuntu Linux can’t display correctly after boot</h2><p>First, edit GRUB paramter and delete parameter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfxmode $linux_gfx_mode</span><br></pre></td></tr></table></figure>
+<p>then start lubuntu Linux.<br>After start lubuntu Linux, open terminal LXTerminal</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo vi /etc/default/grub</span></span><br></pre></td></tr></table></figure>
+<p>Uncomment line</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#GRUB_TERMINAL=console</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo update-grub</span></span><br></pre></td></tr></table></figure>
+<p>This issue is about “eeepc 901 resolution can’t be set 1024x600”</p>
+<h2 id="VNC"><a href="#VNC" class="headerlink" title="VNC"></a>VNC</h2><p><a href="https://www.server-world.info/en/note?os=Ubuntu_17.04&amp;p=desktop&amp;f=6" target="_blank" rel="noopener">Configure VNC Server</a></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt -y install vnc4server</span><br></pre></td></tr></table></figure>
+<h3 id="set-VNC-password"><a href="#set-VNC-password" class="headerlink" title="set VNC password"></a>set VNC password</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncpasswd </span><br><span class="line">Password:</span><br><span class="line">Verify:</span><br></pre></td></tr></table></figure>
+<h3 id="start-VNC-server"><a href="#start-VNC-server" class="headerlink" title="start VNC server"></a>start VNC server</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncserver :1 </span><br><span class="line"></span><br><span class="line">New 'dlp:1 (ubuntu)' desktop is dlp:1</span><br><span class="line"></span><br><span class="line">Creating default startup script /home/ubuntu/.vnc/xstartup</span><br><span class="line">Starting applications specified in /home/ubuntu/.vnc/xstartup</span><br><span class="line">Log file is /home/ubuntu/.vnc/dlp:1.log</span><br></pre></td></tr></table></figure>
+<h3 id="stop-once"><a href="#stop-once" class="headerlink" title="stop once"></a>stop once</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncserver -kill :1 </span><br><span class="line">Killing Xvnc4 process ID 2675</span><br></pre></td></tr></table></figure>
+<h3 id="modify-vnc-xstartup-and-add-following-line-to-the-end"><a href="#modify-vnc-xstartup-and-add-following-line-to-the-end" class="headerlink" title="modify ~/.vnc/xstartup and add following line to the end"></a>modify ~/.vnc/xstartup and add following line to the end</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vi ~/.vnc/xstartup</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> add to the end</span></span><br><span class="line">exec /usr/bin/mate-session &amp;</span><br></pre></td></tr></table></figure>
+<h3 id="start-with-diplay-number-‘1’-screen-resolution-‘800x600’-color-depth-‘24’"><a href="#start-with-diplay-number-‘1’-screen-resolution-‘800x600’-color-depth-‘24’" class="headerlink" title="start with diplay number ‘1’, screen resolution ‘800x600’, color depth ‘24’"></a>start with diplay number ‘1’, screen resolution ‘800x600’, color depth ‘24’</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncserver :1 -geometry 1024x600 -depth 16 </span><br><span class="line">New 'ubuntu:1 (ubuntu)' desktop is ubuntu:1</span><br><span class="line"></span><br><span class="line">Starting applications specified in /home/ubuntu/.vnc/xstartup</span><br><span class="line">Log file is /home/ubuntu/.vnc/ubuntu:1.log</span><br></pre></td></tr></table></figure>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2018/02/24/My-New-Post/">
                 My New Post
             </a>
@@ -285,6 +327,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
             </li>
             
@@ -294,10 +340,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/03/12/gcloud-firewall-ufw-v2ray-ddns/">gcloud firewall ufw v2ray</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/09/x201-linux-tips/">IBM X201 Linux tips</a>
             </li>
             
         </ul>

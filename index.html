@@ -139,6 +139,69 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/04/23/lede-lubuntu-eeepc901/">
+                lede_lubuntu_eeepc901
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-04-23</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="LEDE-amp-Lubuntu-on-eeepc901"><a href="#LEDE-amp-Lubuntu-on-eeepc901" class="headerlink" title="LEDE &amp; Lubuntu on eeepc901"></a>LEDE &amp; Lubuntu on eeepc901</h1><p>install LEDE and Lubuntu dual-boot on eeepc901</p>
+<h2 id="1-install-lubuntu-on-dev-sdb"><a href="#1-install-lubuntu-on-dev-sdb" class="headerlink" title="1. install lubuntu on /dev/sdb"></a>1. install lubuntu on /dev/sdb</h2><h2 id="2-假设-dev-sda是空的，安装LEDE到-dev-sda上"><a href="#2-假设-dev-sda是空的，安装LEDE到-dev-sda上" class="headerlink" title="2. 假设/dev/sda是空的，安装LEDE到/dev/sda上"></a>2. 假设/dev/sda是空的，安装LEDE到/dev/sda上</h2><h3 id="download-LEDE-x86"><a href="#download-LEDE-x86" class="headerlink" title="download LEDE x86"></a>download LEDE x86</h3><p><a href="https://www.right.com.cn/forum/thread-252795-1-1.html" target="_blank" rel="noopener">https://www.right.com.cn/forum/thread-252795-1-1.html</a><br><a href="https://pan.baidu.com/s/1gfmuJOB" target="_blank" rel="noopener">https://pan.baidu.com/s/1gfmuJOB</a> 提取码:f33q</p>
+<p>得到文件LEDE-17.01.2-R7.3.3-x86-combined-squashfs.rar<br>解压得到LEDE-17.01.2-R7.3.3-x86-combined-squashfs.img</p>
+<h3 id="假设lubuntu的grub是安装在-dev-sda上的，先备份mgr"><a href="#假设lubuntu的grub是安装在-dev-sda上的，先备份mgr" class="headerlink" title="假设lubuntu的grub是安装在/dev/sda上的，先备份mgr"></a>假设lubuntu的grub是安装在/dev/sda上的，先备份mgr</h3><p>用命令</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=512 count=1 if=/dev/sda of=~/mbr_sda.bak</span><br></pre></td></tr></table></figure>
+<h3 id="安装LEDE"><a href="#安装LEDE" class="headerlink" title="安装LEDE"></a>安装LEDE</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=512 if=LEDE-17.01.2-R7.3.3-x86-combined-squashfs.img of=/dev/sda &amp;&amp; sync</span><br></pre></td></tr></table></figure>
+<h3 id="恢复mbr"><a href="#恢复mbr" class="headerlink" title="恢复mbr"></a>恢复mbr</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dd bs=446 count=1 if=~/mbr_sda.bak of=/dev/sda &amp;&amp; sync</span><br></pre></td></tr></table></figure>
+<h2 id="3-设置双启动"><a href="#3-设置双启动" class="headerlink" title="3. 设置双启动"></a>3. 设置双启动</h2><p>LEDE在/dev/sda上, /dev/sda1是ext4的boot分区，/dev/sda2是squashfs的/分区<br>Lubuntu在/dev/sdb上，/dev/sdb1是ext4的/分区</p>
+<p>先进lubuntu，假如grub不在/dev/sda上，可以用以下命令安装grub,或者用以下命令确保grub安装到/dev/sda的mbr上</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> grub-install /dev/sda</span><br></pre></td></tr></table></figure>
+<p>增加LEDE菜单</p>
+<p>检查LEDE原本的grub菜单配置，配置内容在/dev/sda1中，menuentry是我们要找的内容<br>用blkid获取新的/dev/sda2的PARTUUID<br>/dev/sda1/boot_rm/vmlinz是LEDE的引导内核，需要复制到lubuntu的/boot中<br>因为用lubuntu的update-grub无法自动获取并添加LEDE到grub菜单中，需要手工添加到/etc/grub.d/40_custom文件中<br>并且需要添加savedefault以便能够记录最后一次启动的选项<br>最后修改/etc/default/grub</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">GRUB_DEFAULT=saved</span><br><span class="line">GRUB_SAVEDEFAULT=true</span><br><span class="line">GRUB_TIMEOUT_STYLE=menu</span><br></pre></td></tr></table></figure>
+<p>并运行sudo update-grub</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> mount /dev/sda1 /mnt</span><br><span class="line"><span class="meta">#</span> cat /mnt/boot_rm/grub/grub.cfg</span><br><span class="line">serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1 --rtscts=off</span><br><span class="line">terminal_input console serial; terminal_output console serial</span><br><span class="line"></span><br><span class="line">set default="0"</span><br><span class="line">set timeout="0"</span><br><span class="line">set root='(hd0,msdos1)'</span><br><span class="line"></span><br><span class="line">menuentry "LEDE" &#123;</span><br><span class="line">	linux /boot/vmlinuz root=PARTUUID=5cd62fdc-02 rootfstype=squashfs rootwait console=tty0 console=ttyS0,115200n8 noinitrd</span><br><span class="line">&#125;</span><br><span class="line">menuentry "LEDE (failsafe)" &#123;</span><br><span class="line">	linux /boot/vmlinuz failsafe=true root=PARTUUID=5cd62fdc-02 rootfstype=squashfs rootwait console=tty0 console=ttyS0,115200n8 noinitrd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> blkid</span><br><span class="line">/dev/sda1: UUID="57f8f4bc-abf4-655f-bf67-946fc0f9f25b" TYPE="ext4" PARTUUID="ec399030-01"</span><br><span class="line">/dev/sda2: TYPE="squashfs" PARTUUID="ec399030-02"</span><br><span class="line">/dev/sda3: UUID="0314c9ce-bae9-42b8-bb4b-485f6fa23b3c" TYPE="swap" PARTUUID="ec399030-03"</span><br><span class="line">/dev/sdb1: UUID="55cefc34-63db-44ac-af8e-20b3ab6472f5" TYPE="ext4" PARTUUID="f9d6ea38-01"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> cp /mnt/boot_rm/vmlinuz /boot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> vi /etc/grub.d/40_custom</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> cat /etc/grub.d/40_custom</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>!/bin/sh</span><br><span class="line">exec tail -n +3 $0</span><br><span class="line"><span class="meta">#</span> This file provides an easy way to add custom menu entries.  Simply type the</span><br><span class="line"><span class="meta">#</span> menu entries you want to add after this comment.  Be careful not to change</span><br><span class="line"><span class="meta">#</span> the 'exec tail' line above.</span><br><span class="line"></span><br><span class="line">menuentry "LEDE" &#123;</span><br><span class="line">        savedefault</span><br><span class="line">        linux /boot/vmlinuz root=PARTUUID=ec399030-02 rootfstype=squashfs rootwait console=tty0 console=ttyS0,115200n8 noinitrd</span><br><span class="line">&#125;</span><br><span class="line">menuentry "LEDE (failsafe)" &#123;</span><br><span class="line">	linux /boot/vmlinuz failsafe=true root=PARTUUID=ec399030-02 rootfstype=squashfs rootwait console=tty0 console=ttyS0,115200n8 noinitrd</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> vi /etc/default/grub</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> more /etc/default/grub</span><br><span class="line">GRUB_DEFAULT=saved</span><br><span class="line">GRUB_SAVEDEFAULT=true</span><br><span class="line">GRUB_TIMEOUT_STYLE=menu</span><br><span class="line">GRUB_TIMEOUT=10</span><br><span class="line">GRUB_DISTRIBUTOR='Lubuntu 18.10'</span><br><span class="line">GRUB_CMDLINE_LINUX_DEFAULT="quiet resume=UUID=052fd2f3-ce2d-4b60-8af2-307</span><br><span class="line">a64f6bd0a"</span><br><span class="line">GRUB_CMDLINE_LINUX=""</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> update-grub</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> reboot</span><br></pre></td></tr></table></figure>
+<h2 id="4-设置LEDE"><a href="#4-设置LEDE" class="headerlink" title="4. 设置LEDE"></a>4. 设置LEDE</h2><p>家里的主路由/默认网关是192.168.1.1<br><strong>eeepc901必须用网线接主路由</strong>，eeepc901的LEDE作为旁路由，并且打开科学上网功能，IP是192.168.1.252。DHCP是不需要开启的，以避免跟主路由的DHCP冲突<br>其他机器无论是电脑，PS4还是iPad/iphone，如果需要科学上网，可以修改网络地址从自动获取改为手工配置。<br>只要设置默认网关是192.168.1.252，DNS1 192.168.1.252 DNS2 8.8.8.8就可以<br>但是我有一台公司电脑，因为没有管理员权限，所以无法手工更改IP设置，只能用DHCP的默认选项。这时需要打开LEDE的DHCP。并且设置让DHCP自动指定网关和DNS为192.168.1.252。这样当公司电脑连接旁路由的WIFI时，会被旁路由的DHCP分配IP以及设置网关/DNS<br>最后，可以在LEDE的DHCP服务中设置只给指定的MAC地址分配IP并把公司电脑的MAC地址添加进去，这样就对主路由的DHCP尽可能减少干扰。</p>
+<h3 id="修改LEDE-IP"><a href="#修改LEDE-IP" class="headerlink" title="修改LEDE IP"></a>修改LEDE IP</h3><p>启动到LEDE中</p>
+<p>update /etc/config/network文件</p>
+<p>默认是192.168.1.1,更新以下IP避免跟网络默认路由冲突,修改后重启<br>config interface ‘lan’<br>    …<br>    option ipaddr ‘192.168.1.252’<br>    …</p>
+<h3 id="Web-UI配置"><a href="#Web-UI配置" class="headerlink" title="Web UI配置"></a>Web UI配置</h3><p>浏览器打开192.168.1.252,默认用户名密码是root/password.可以到 系统-&gt;管理权中修改</p>
+<p><img src="/myimages/lede_01.png" alt="LEDE"></p>
+<p><img src="/myimages/lede_02.png" alt="LEDE"></p>
+<p><img src="/myimages/lede_03.png" alt="LEDE"></p>
+<p><img src="/myimages/lede_04.png" alt="LEDE"></p>
+<p>根据需要在这里打开或者关闭DHCP,默认不需要DHCP,只有当我上面提到的那种无法手工设置网络参数时才需要打开。一个网段里有两个DHCP会互相有影响的。<br><img src="/myimages/lede_05.png" alt="LEDE"></p>
+<p>DHCP选项6,192.168.1.252意思是DNS:192.168.1.252</p>
+<blockquote>
+<p><a href="http://www.networksorcery.com/enp/protocol/bootp/options.htm" target="_blank" rel="noopener">BOOTP / DHCP options</a><br><img src="/myimages/lede_06.png" alt="LEDE"></p>
+</blockquote>
+<p>WIFI设置<br><img src="/myimages/lede_07.png" alt="LEDE"></p>
+<p><img src="/myimages/lede_08.png" alt="LEDE"></p>
+<p><img src="/myimages/lede_09.png" alt="LEDE"></p>
+<p>这里设置静态地址分配，可以只给指定MAC地址的机器分配DHCP IP<br><img src="/myimages/lede_10.png" alt="LEDE"></p>
+<p>科学上网<br><img src="/myimages/lede_11.png" alt="LEDE"></p>
+<p><img src="/myimages/lede_12.png" alt="LEDE"></p>
+<h2 id="关于旁路由"><a href="#关于旁路由" class="headerlink" title="关于旁路由"></a>关于旁路由</h2><p>旁路由除了可以像上面那样用物理机器，还可以用virtualbox/vmware等虚拟机。但是注意，<strong>host主机必须用网线连接网络，虚拟机bridge的网卡也必须是有线网卡</strong>,我尝试过host连wifi，无论怎样都无法让虚拟机里的旁路由正常工作，但只要换上有线，就没问题。原因不清楚。</p>
+<p>如果用虚拟机做旁路由，对于我的那台没有管理员权限的公司电脑，需要有一个DHCP服务器给它设置IP/网关。<br>一个方法就是找一个WIFI路由器，连接LAN口到主路由的LAN口。然后打开副路由的DHCP，设置相应参数，当电脑连接副路由的WIFI时，就会被副路由的DHCP设置网关/DNS为虚拟机的旁路由IP.</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/03/20/win10-explorer-sort-by-num/">
                 win10_explorer_sort_by_num
             </a>
@@ -619,78 +682,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/02/20/kali-linux/">
-                Kali linux
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-02-20</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="Kali-Linux-Notes"><a href="#Kali-Linux-Notes" class="headerlink" title="Kali Linux Notes"></a>Kali Linux Notes</h1><p>Install Kali Linux on VirtualBox. The host is ubuntu</p>
-<p>Set 1G memory and 2 CPUs.</p>
-<h2 id="MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><a href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox" class="headerlink" title="MT7601U Wireless Adapter in Kali in VirtualBox"></a>MT7601U Wireless Adapter in Kali in VirtualBox</h2><p>MT7601U Wireless Adapter can be used in my host system. No need to do any setting. The ubuntu has driver already.</p>
-<p>But in guest VirtualBox Kali linux, it can’t work by default.</p>
-<p>lsusb command shows the device after the adapter pluged and set in VirtualBox USB device.</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 001 Device 000: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br></pre></td></tr></table></figure>
-<p>but the iwconfig can’t show the device.</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /sbin/iwconfig</span></span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">eth0      no wireless extensions.</span><br></pre></td></tr></table></figure>
-<p>dmesg shows message like below</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dmesg|grep mt7</span></span><br><span class="line">[ 188.388139] mt7601u: probe of 8-3:1.0 failed with error -110</span><br></pre></td></tr></table></figure>
-<p>The issue is not about the adapter driver. It’s about the USB.</p>
-<p>After change the VirtualBox USB device setting from USB2.0 (EHCI) Controller to USB1.1 (OHCI) Controller and restart guest system, it works.</p>
-<p><img src="/myimages/kali_linux_wireless_usb01.png" alt="VirtualBox USB setting"></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 001 Device 000: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line"><span class="meta">$</span><span class="bash"> /sbin/iwconfig</span></span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">wlan0     IEEE 802.11  ESSID:off/any  </span><br><span class="line">          Mode:Managed  Access Point: Not-Associated   Tx-Power=20 dBm   </span><br><span class="line">          Retry short limit:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Power Management:off</span><br></pre></td></tr></table></figure>
-<h2 id="Install-Chinese-font"><a href="#Install-Chinese-font" class="headerlink" title="Install Chinese font"></a>Install Chinese font</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ttf-wqy-zenhei</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><a href="https://blog.csdn.net/l1028386804/article/details/83107900" target="_blank" rel="noopener">Kali之——kali精简版安装后中文乱码</a><br><a href="https://blog.csdn.net/qq_29343201/article/details/51880719" target="_blank" rel="noopener">kali linux系统中文乱码问题的解决</a></p>
-</blockquote>
-<h2 id="add-new-user-by-root-and-add-sudo-group"><a href="#add-new-user-by-root-and-add-sudo-group" class="headerlink" title="add new user by root and add sudo group"></a>add new user by root and add sudo group</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd newuser</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> /sbin/usermod -a -G sudo newuser</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> passwd newuser</span></span><br></pre></td></tr></table></figure>
-<h2 id="wordlist"><a href="#wordlist" class="headerlink" title="wordlist"></a>wordlist</h2><blockquote>
-<p><a href="https://github.com/danielmiessler/SecLists" target="_blank" rel="noopener">SecLists</a></p>
-</blockquote>
-<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><p><strong> Zip </strong></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip \</span><br><span class="line">  &amp;&amp; unzip SecList.zip \</span><br><span class="line">  &amp;&amp; rm -f SecList.zip</span><br></pre></td></tr></table></figure>
-<p><strong> Git (Small) </strong></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth 1 https://github.com/danielmiessler/SecLists.git</span><br></pre></td></tr></table></figure>
-<p><strong> Git (Complete) </strong></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:danielmiessler/SecLists.git</span><br></pre></td></tr></table></figure>
-<p><strong> Kali Linux </strong><br>(<a href="https://tools.kali.org/password-attacks/seclists" target="_blank" rel="noopener">Tool Page</a>)</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -y install seclists</span><br></pre></td></tr></table></figure>
-<h2 id="Kali-Linux-install-VirtualBox-addition-fails"><a href="#Kali-Linux-install-VirtualBox-addition-fails" class="headerlink" title="Kali Linux install VirtualBox addition fails"></a>Kali Linux install VirtualBox addition fails</h2><p>Both VirtualBox 5.2.x and 6.0.x addition show error message</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VirtualBox Guest Additions: modprobe vboxsf failed</span><br></pre></td></tr></table></figure>
-<p>The /var/log/vboxadd-setup.log shows</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/tmp/vbox.0/utils.c: In function ‘sf_init_inode’:</span><br><span class="line">/tmp/vbox.0/utils.c:165:28: error: passing argument 1 of ‘sf_ftime_from_timespec’ from incompatible pointer type [-Werror=incompatible-pointer-types]</span><br><span class="line">     sf_ftime_from_timespec(&amp;inode-&gt;i_atime, &amp;info-&gt;AccessTime);</span><br><span class="line">                            ^~~~~~~~~~~~~~~</span><br><span class="line">/tmp/vbox.0/utils.c:53:53: note: expected ‘struct timespec *’ but argument is of type ‘struct timespec64 *’</span><br><span class="line"> static void sf_ftime_from_timespec(struct timespec *tv, RTTIMESPEC *ts)</span><br></pre></td></tr></table></figure>
-<p>Reason is the new Kali linux kernal version is 4.19.x, the virtualbox addtion utils.c code has issue from kernal version 4.18</p>
-<p><strong> solution </strong></p>
-<p>Download the Development version addition iso (5.2.97 and 6.0.29). Use this Addition iso. The issue is fixed in latest development version.</p>
-<p><a href="https://www.virtualbox.org/wiki/Testbuilds#Developmentsnapshots" target="_blank" rel="noopener">Virtualbox download page</a></p>
-<p><a href="https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_6.0.97-128917.iso" target="_blank" rel="noopener">VBoxGuestAdditions_6.0.97-128917.iso for VirtualBox6.0.x</a>. So far (2019.02.21), I install latest VirtualBox6.0.4, the Addition in the package doesn’t work. 6.0.97 Addition works.</p>
-<blockquote>
-<p><a href="https://forums.virtualbox.org/viewtopic.php?f=3&amp;t=89455" target="_blank" rel="noopener">topic</a><br><a href="https://superuser.com/questions/1268741/virtualbox-ubuntu-guest-additions-not-installing-modprobe-vboxsf-failed" target="_blank" rel="noopener">topic, Simon South’s answer</a><br><a href="https://www.virtualbox.org/ticket/17981" target="_blank" rel="noopener">ticket</a></p>
-</blockquote>
-<h2 id="How-to-upgrade-VirtualBox-from-5-2-to-6-0"><a href="#How-to-upgrade-VirtualBox-from-5-2-to-6-0" class="headerlink" title="How to upgrade VirtualBox from 5.2 to 6.0"></a>How to upgrade VirtualBox from 5.2 to 6.0</h2><blockquote>
-<p><a href="https://websiteforstudents.com/virtualbox-6-0-is-out-heres-how-to-install-upgrade-on-ubuntu-16-04-18-04-18-10/" target="_blank" rel="noopener">VirtualBox 6.0 Is Out — Here’s How To Install / Upgrade On Ubuntu 16.04 / 18.04 / 18.10</a></p>
-</blockquote>
-<p>Use following command to get current Virtualbox version</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vboxmanage --version</span></span><br><span class="line">6.0.4r128413</span><br></pre></td></tr></table></figure>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -733,6 +724,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
             </li>
             
@@ -742,10 +737,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/03/12/gcloud-firewall-ufw-v2ray-ddns/">gcloud firewall ufw v2ray</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/09/x201-linux-tips/">IBM X201 Linux tips</a>
             </li>
             
         </ul>

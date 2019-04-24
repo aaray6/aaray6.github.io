@@ -139,6 +139,78 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2019/02/20/kali-linux/">
+                Kali linux
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-20</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h1 id="Kali-Linux-Notes"><a href="#Kali-Linux-Notes" class="headerlink" title="Kali Linux Notes"></a>Kali Linux Notes</h1><p>Install Kali Linux on VirtualBox. The host is ubuntu</p>
+<p>Set 1G memory and 2 CPUs.</p>
+<h2 id="MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><a href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox" class="headerlink" title="MT7601U Wireless Adapter in Kali in VirtualBox"></a>MT7601U Wireless Adapter in Kali in VirtualBox</h2><p>MT7601U Wireless Adapter can be used in my host system. No need to do any setting. The ubuntu has driver already.</p>
+<p>But in guest VirtualBox Kali linux, it can’t work by default.</p>
+<p>lsusb command shows the device after the adapter pluged and set in VirtualBox USB device.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 001 Device 000: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br></pre></td></tr></table></figure>
+<p>but the iwconfig can’t show the device.</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> /sbin/iwconfig</span></span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">eth0      no wireless extensions.</span><br></pre></td></tr></table></figure>
+<p>dmesg shows message like below</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dmesg|grep mt7</span></span><br><span class="line">[ 188.388139] mt7601u: probe of 8-3:1.0 failed with error -110</span><br></pre></td></tr></table></figure>
+<p>The issue is not about the adapter driver. It’s about the USB.</p>
+<p>After change the VirtualBox USB device setting from USB2.0 (EHCI) Controller to USB1.1 (OHCI) Controller and restart guest system, it works.</p>
+<p><img src="/myimages/kali_linux_wireless_usb01.png" alt="VirtualBox USB setting"></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> lsusb</span></span><br><span class="line">Bus 001 Device 000: ID 148f:7601 Ralink Technology, Corp. MT7601U Wireless Adapter</span><br><span class="line">Bus 001 Device 002: ID 80ee:0021 VirtualBox USB Tablet</span><br><span class="line">Bus 001 Device 001: ID 1d6b:0001 Linux Foundation 1.1 root hub</span><br><span class="line"><span class="meta">$</span><span class="bash"> /sbin/iwconfig</span></span><br><span class="line">lo        no wireless extensions.</span><br><span class="line"></span><br><span class="line">eth0      no wireless extensions.</span><br><span class="line"></span><br><span class="line">wlan0     IEEE 802.11  ESSID:off/any  </span><br><span class="line">          Mode:Managed  Access Point: Not-Associated   Tx-Power=20 dBm   </span><br><span class="line">          Retry short limit:7   RTS thr:off   Fragment thr:off</span><br><span class="line">          Power Management:off</span><br></pre></td></tr></table></figure>
+<h2 id="Install-Chinese-font"><a href="#Install-Chinese-font" class="headerlink" title="Install Chinese font"></a>Install Chinese font</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ttf-wqy-zenhei</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://blog.csdn.net/l1028386804/article/details/83107900" target="_blank" rel="noopener">Kali之——kali精简版安装后中文乱码</a><br><a href="https://blog.csdn.net/qq_29343201/article/details/51880719" target="_blank" rel="noopener">kali linux系统中文乱码问题的解决</a></p>
+</blockquote>
+<h2 id="add-new-user-by-root-and-add-sudo-group"><a href="#add-new-user-by-root-and-add-sudo-group" class="headerlink" title="add new user by root and add sudo group"></a>add new user by root and add sudo group</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> useradd newuser</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> /sbin/usermod -a -G sudo newuser</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> passwd newuser</span></span><br></pre></td></tr></table></figure>
+<h2 id="wordlist"><a href="#wordlist" class="headerlink" title="wordlist"></a>wordlist</h2><blockquote>
+<p><a href="https://github.com/danielmiessler/SecLists" target="_blank" rel="noopener">SecLists</a></p>
+</blockquote>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><p><strong> Zip </strong></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip \</span><br><span class="line">  &amp;&amp; unzip SecList.zip \</span><br><span class="line">  &amp;&amp; rm -f SecList.zip</span><br></pre></td></tr></table></figure>
+<p><strong> Git (Small) </strong></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --depth 1 https://github.com/danielmiessler/SecLists.git</span><br></pre></td></tr></table></figure>
+<p><strong> Git (Complete) </strong></p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:danielmiessler/SecLists.git</span><br></pre></td></tr></table></figure>
+<p><strong> Kali Linux </strong><br>(<a href="https://tools.kali.org/password-attacks/seclists" target="_blank" rel="noopener">Tool Page</a>)</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt -y install seclists</span><br></pre></td></tr></table></figure>
+<h2 id="Kali-Linux-install-VirtualBox-addition-fails"><a href="#Kali-Linux-install-VirtualBox-addition-fails" class="headerlink" title="Kali Linux install VirtualBox addition fails"></a>Kali Linux install VirtualBox addition fails</h2><p>Both VirtualBox 5.2.x and 6.0.x addition show error message</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VirtualBox Guest Additions: modprobe vboxsf failed</span><br></pre></td></tr></table></figure>
+<p>The /var/log/vboxadd-setup.log shows</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/tmp/vbox.0/utils.c: In function ‘sf_init_inode’:</span><br><span class="line">/tmp/vbox.0/utils.c:165:28: error: passing argument 1 of ‘sf_ftime_from_timespec’ from incompatible pointer type [-Werror=incompatible-pointer-types]</span><br><span class="line">     sf_ftime_from_timespec(&amp;inode-&gt;i_atime, &amp;info-&gt;AccessTime);</span><br><span class="line">                            ^~~~~~~~~~~~~~~</span><br><span class="line">/tmp/vbox.0/utils.c:53:53: note: expected ‘struct timespec *’ but argument is of type ‘struct timespec64 *’</span><br><span class="line"> static void sf_ftime_from_timespec(struct timespec *tv, RTTIMESPEC *ts)</span><br></pre></td></tr></table></figure>
+<p>Reason is the new Kali linux kernal version is 4.19.x, the virtualbox addtion utils.c code has issue from kernal version 4.18</p>
+<p><strong> solution </strong></p>
+<p>Download the Development version addition iso (5.2.97 and 6.0.29). Use this Addition iso. The issue is fixed in latest development version.</p>
+<p><a href="https://www.virtualbox.org/wiki/Testbuilds#Developmentsnapshots" target="_blank" rel="noopener">Virtualbox download page</a></p>
+<p><a href="https://www.virtualbox.org/download/testcase/VBoxGuestAdditions_6.0.97-128917.iso" target="_blank" rel="noopener">VBoxGuestAdditions_6.0.97-128917.iso for VirtualBox6.0.x</a>. So far (2019.02.21), I install latest VirtualBox6.0.4, the Addition in the package doesn’t work. 6.0.97 Addition works.</p>
+<blockquote>
+<p><a href="https://forums.virtualbox.org/viewtopic.php?f=3&amp;t=89455" target="_blank" rel="noopener">topic</a><br><a href="https://superuser.com/questions/1268741/virtualbox-ubuntu-guest-additions-not-installing-modprobe-vboxsf-failed" target="_blank" rel="noopener">topic, Simon South’s answer</a><br><a href="https://www.virtualbox.org/ticket/17981" target="_blank" rel="noopener">ticket</a></p>
+</blockquote>
+<h2 id="How-to-upgrade-VirtualBox-from-5-2-to-6-0"><a href="#How-to-upgrade-VirtualBox-from-5-2-to-6-0" class="headerlink" title="How to upgrade VirtualBox from 5.2 to 6.0"></a>How to upgrade VirtualBox from 5.2 to 6.0</h2><blockquote>
+<p><a href="https://websiteforstudents.com/virtualbox-6-0-is-out-heres-how-to-install-upgrade-on-ubuntu-16-04-18-04-18-10/" target="_blank" rel="noopener">VirtualBox 6.0 Is Out — Here’s How To Install / Upgrade On Ubuntu 16.04 / 18.04 / 18.10</a></p>
+</blockquote>
+<p>Use following command to get current Virtualbox version</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vboxmanage --version</span></span><br><span class="line">6.0.4r128413</span><br></pre></td></tr></table></figure>
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/02/11/nfc/">
                 NFC Notes
             </a>
@@ -535,7 +607,7 @@
 <p>This must be changed from DROP to ACCEPT. It should look like this when done:</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEFAULT_FORWARD_POLICY="ACCEPT"</span><br></pre></td></tr></table></figure>
 <p>update <code>/etc/ufw/before.rules</code></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rules.before</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Rules that should be run before the ufw <span class="built_in">command</span> line added rules. Custom</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rules should be added to one of these chains:</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   ufw-before-input</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   ufw-before-output</span></span><br><span class="line"><span class="meta">#</span><span class="bash">   ufw-before-forward</span></span><br><span class="line"><span class="meta">#</span><span class="bash"></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> START OPENVPN RULES</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> NAT table rules</span></span><br><span class="line">*nat</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line"><span class="meta">#</span><span class="bash"> Allow traffic from OpenVPN client to eth0</span></span><br><span class="line">-A POSTROUTING -s 10.8.0.0/8 -o eth0 -j MASQUERADE</span><br><span class="line">COMMIT</span><br><span class="line"><span class="meta">#</span><span class="bash"> END OPENVPN RULES</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Don<span class="string">'t delete these required lines, otherwise there will be errors</span></span></span><br><span class="line">*filter</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> rules.before</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> Rules that should be run before the ufw command line added rules. Custom</span><br><span class="line"><span class="meta">#</span> rules should be added to one of these chains:</span><br><span class="line"><span class="meta">#</span>   ufw-before-input</span><br><span class="line"><span class="meta">#</span>   ufw-before-output</span><br><span class="line"><span class="meta">#</span>   ufw-before-forward</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> START OPENVPN RULES</span><br><span class="line"><span class="meta">#</span> NAT table rules</span><br><span class="line">*nat</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line"><span class="meta">#</span> Allow traffic from OpenVPN client to eth0</span><br><span class="line">-A POSTROUTING -s 10.8.0.0/8 -o eth0 -j MASQUERADE</span><br><span class="line">COMMIT</span><br><span class="line"><span class="meta">#</span> END OPENVPN RULES</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> Don't delete these required lines, otherwise there will be errors</span><br><span class="line">*filter</span><br></pre></td></tr></table></figure>
 <p>enable it</p>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ufw enable</span><br></pre></td></tr></table></figure>
 <h3 id="gcloud-F-W-gcloud"><a href="#gcloud-F-W-gcloud" class="headerlink" title="gcloud F/W (gcloud)"></a>gcloud F/W (gcloud)</h3><p>By default, gcloud only open 80 and 443 port. If we need to open more ports, can use following commands</p>
@@ -623,53 +695,11 @@
 </blockquote>
 <p>start_ov_ss.sh</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#echo start kcptun</span></span><br><span class="line"><span class="comment">#/home/quxr/tool/kcptun/start.sh</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> start ssr</span><br><span class="line">sudo /root/tool/ssr start</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> connect openvpn</span><br><span class="line">sudo openvpn --config /home/quxr/client1.ovpn &amp;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> sleeping 15s</span><br><span class="line">sleep 15</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">set</span> iptables</span><br><span class="line">sudo iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE</span><br><span class="line">sudo iptables -A FORWARD -i tun0 -o enp3s0 -m state --state RELATED,ESTABLISHED -j ACCEPT</span><br><span class="line">sudo iptables -A FORWARD -i enp3s0 -o tun0 -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> start AP RAY_901</span><br><span class="line">sudo create_ap wlp1s0 enp3s0 RAY_901 THE_WIFI_PASSWORD &amp;</span><br></pre></td></tr></table></figure>
-<h5 id="use-2nd-router’s"><a href="#use-2nd-router’s" class="headerlink" title="use 2nd router’s"></a>use 2nd router’s</h5><p>TODO</p>
+<h5 id="use-2nd-router’s"><a href="#use-2nd-router’s" class="headerlink" title="use 2nd router’s"></a>use 2nd router’s</h5><p><a href="/2019/04/23/lede-lubuntu-eeepc901/#关于旁路由">2nd router</a></p>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><blockquote>
 <p><a href="https://dcamero.azurewebsites.net/shadowsocks-openvpn.html" target="_blank" rel="noopener">OpenVPN over Shadowsocks</a><br><a href="https://gist.github.com/wynemo/149ab6ef43f48b4ce9f32a5d5f868203" target="_blank" rel="noopener">openvpn over shadowsocks.txt</a></p>
 </blockquote>
 
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/02/24/lubuntu-eeepc901/">
-                install lubuntu on eeepc901
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-02-24</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="My-notes-for-installing-lubuntu-on-eeepc901"><a href="#My-notes-for-installing-lubuntu-on-eeepc901" class="headerlink" title="My notes for installing lubuntu on eeepc901"></a>My notes for installing lubuntu on eeepc901</h1><h2 id="How-to-show-GRUB-memu-if-it-skips"><a href="#How-to-show-GRUB-memu-if-it-skips" class="headerlink" title="How to show GRUB memu if it skips"></a>How to show GRUB memu if it skips</h2><p>Hold “shift” key after BIOS load.</p>
-<h2 id="How-to-edit-GRUB-parameter"><a href="#How-to-edit-GRUB-parameter" class="headerlink" title="How to edit GRUB parameter"></a>How to edit GRUB parameter</h2><p>Select a entry and press “e”<br>After edit the parameter, press Ctrl-X or F10 to boot</p>
-<h2 id="lubuntu-Linux-can’t-display-correctly-after-boot"><a href="#lubuntu-Linux-can’t-display-correctly-after-boot" class="headerlink" title="lubuntu Linux can’t display correctly after boot"></a>lubuntu Linux can’t display correctly after boot</h2><p>First, edit GRUB paramter and delete parameter</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gfxmode $linux_gfx_mode</span><br></pre></td></tr></table></figure>
-<p>then start lubuntu Linux.<br>After start lubuntu Linux, open terminal LXTerminal</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo vi /etc/default/grub</span></span><br></pre></td></tr></table></figure>
-<p>Uncomment line</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#GRUB_TERMINAL=console</span><br></pre></td></tr></table></figure>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">sudo update-grub</span></span><br></pre></td></tr></table></figure>
-<p>This issue is about “eeepc 901 resolution can’t be set 1024x600”</p>
-<h2 id="VNC"><a href="#VNC" class="headerlink" title="VNC"></a>VNC</h2><p><a href="https://www.server-world.info/en/note?os=Ubuntu_17.04&amp;p=desktop&amp;f=6" target="_blank" rel="noopener">Configure VNC Server</a></p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt -y install vnc4server</span><br></pre></td></tr></table></figure>
-<h3 id="set-VNC-password"><a href="#set-VNC-password" class="headerlink" title="set VNC password"></a>set VNC password</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncpasswd </span><br><span class="line">Password:</span><br><span class="line">Verify:</span><br></pre></td></tr></table></figure>
-<h3 id="start-VNC-server"><a href="#start-VNC-server" class="headerlink" title="start VNC server"></a>start VNC server</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncserver :1 </span><br><span class="line"></span><br><span class="line">New 'dlp:1 (ubuntu)' desktop is dlp:1</span><br><span class="line"></span><br><span class="line">Creating default startup script /home/ubuntu/.vnc/xstartup</span><br><span class="line">Starting applications specified in /home/ubuntu/.vnc/xstartup</span><br><span class="line">Log file is /home/ubuntu/.vnc/dlp:1.log</span><br></pre></td></tr></table></figure>
-<h3 id="stop-once"><a href="#stop-once" class="headerlink" title="stop once"></a>stop once</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncserver -kill :1 </span><br><span class="line">Killing Xvnc4 process ID 2675</span><br></pre></td></tr></table></figure>
-<h3 id="modify-vnc-xstartup-and-add-following-line-to-the-end"><a href="#modify-vnc-xstartup-and-add-following-line-to-the-end" class="headerlink" title="modify ~/.vnc/xstartup and add following line to the end"></a>modify ~/.vnc/xstartup and add following line to the end</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vi ~/.vnc/xstartup</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> add to the end</span></span><br><span class="line">exec /usr/bin/mate-session &amp;</span><br></pre></td></tr></table></figure>
-<h3 id="start-with-diplay-number-‘1’-screen-resolution-‘800x600’-color-depth-‘24’"><a href="#start-with-diplay-number-‘1’-screen-resolution-‘800x600’-color-depth-‘24’" class="headerlink" title="start with diplay number ‘1’, screen resolution ‘800x600’, color depth ‘24’"></a>start with diplay number ‘1’, screen resolution ‘800x600’, color depth ‘24’</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ubuntu@dlp:~$ vncserver :1 -geometry 1024x600 -depth 16 </span><br><span class="line">New 'ubuntu:1 (ubuntu)' desktop is ubuntu:1</span><br><span class="line"></span><br><span class="line">Starting applications specified in /home/ubuntu/.vnc/xstartup</span><br><span class="line">Log file is /home/ubuntu/.vnc/ubuntu:1.log</span><br></pre></td></tr></table></figure>
         </div>
     
 
@@ -717,6 +747,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
             </li>
             
@@ -726,10 +760,6 @@
             
             <li>
                 <a class="footer-post" href="/2019/03/12/gcloud-firewall-ufw-v2ray-ddns/">gcloud firewall ufw v2ray</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/09/x201-linux-tips/">IBM X201 Linux tips</a>
             </li>
             
         </ul>
