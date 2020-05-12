@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="My Tech Notes and Other stuff">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="Ray Qu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="trojan-gfw"/>
+    
+
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="My Tech Notes and Other stuff" />
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="My Notes"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+    <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>trojan-gfw - My Notes</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Google Analytics -->
+    
+
+
+</head>
+
+
+<body>
+
+<div class="bg-gradient"></div>
+<div class="bg-pattern"></div>
+
+<!-- Menu -->
+<!--Menu Links and Overlay-->
+<div class="menu-bg">
+    <div class="menu-container">
+        <ul>
+            
+            <li class="menu-item">
+                <a href="/">
+                    Home
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/archives">
+                    Archives
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/about.html">
+                    About
+                </a>
+            </li>
+            
+            <li class="menu-item">
+                <a href="/contact.html">
+                    Contact
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+<!--Hamburger Icon-->
+<nav>
+    <a href="#menu"></a>
+</nav>
+
+<div class="container">
+
+    <!-- Main Content -->
+    <div class="row">
+    <div class="col-sm-12">
+
+        <!--Title and Logo-->
+        <header>
+    <div class="logo">
+        <a href="/"><i class="logo-icon fa fa-cube" aria-hidden="true"></i></a>
+        
+    </div>
+</header>
+
+        <section class="main">
+            
+<div class="post">
+
+    <div class="post-header">
+        <h1 class="title">
+            <a href="/2020/05/12/trojan-gfw/">
+                trojan-gfw
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-05-12</span>
+            
+            
+            
+        </div>
+    </div>
+
+    <div class="content">
+
+        <!-- Gallery -->
+        
+
+        <!-- Post Content -->
+        <h2 id="Trojan-服务器端"><a href="#Trojan-服务器端" class="headerlink" title="Trojan 服务器端"></a>Trojan 服务器端</h2><h3 id="Create-VPS-google-and-open-80-443-ports"><a href="#Create-VPS-google-and-open-80-443-ports" class="headerlink" title="Create VPS (google) and open 80/443 ports"></a>Create VPS (google) and open 80/443 ports</h3><h3 id="申请-domain-name-xzy-ddnsfree-com-on-dynu-com-配置动态域名解析"><a href="#申请-domain-name-xzy-ddnsfree-com-on-dynu-com-配置动态域名解析" class="headerlink" title="申请 domain name (xzy.ddnsfree.com) on dynu.com,配置动态域名解析"></a>申请 domain name (xzy.ddnsfree.com) on dynu.com,配置动态域名解析</h3><h3 id="Login-VPS"><a href="#Login-VPS" class="headerlink" title="Login VPS"></a>Login VPS</h3><h3 id="Install-Trojan"><a href="#Install-Trojan" class="headerlink" title="Install Trojan"></a>Install Trojan</h3><p> (Binary &amp; Package Distributions) [<a href="https://github.com/trojan-gfw/trojan/wiki/Binary-&amp;-Package-Distributions]" target="_blank" rel="noopener">https://github.com/trojan-gfw/trojan/wiki/Binary-&amp;-Package-Distributions]</a></p>
+<h3 id="Quickstart-Script"><a href="#Quickstart-Script" class="headerlink" title="Quickstart Script"></a>Quickstart Script</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"</span><br></pre></td></tr></table></figure>
+<h3 id="Install自动获取证书工具"><a href="#Install自动获取证书工具" class="headerlink" title="Install自动获取证书工具"></a>Install自动获取证书工具</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wget</span><br><span class="line">sudo wget https://dl.eff.org/certbot-auto -P /usr/local/bin</span><br><span class="line">sudo chmod a+x /usr/local/bin/certbot-auto</span><br><span class="line">sudo certbot-auto certonly --standalone -d xyz.ddnsfree.com --email yourname@yourdomain.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem</span><br><span class="line">   Your cert will expire on 2020-04-22. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot-auto</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   &quot;certbot-auto renew&quot;</span><br><span class="line"> - Your account credentials have been saved in your Certbot</span><br><span class="line">   configuration directory at /etc/letsencrypt. You should make a</span><br><span class="line">   secure backup of this folder now. This configuration directory will</span><br><span class="line">   also contain certificates and private keys obtained by Certbot so</span><br><span class="line">   making regular backups of this folder is ideal.</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>/etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem</strong><br><strong>/etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem</strong><br><strong>certbot-auto renew</strong></p>
+</blockquote>
+<h3 id="配置trojan服务器"><a href="#配置trojan服务器" class="headerlink" title="配置trojan服务器"></a>配置trojan服务器</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/trojan</span><br><span class="line">vi config.json</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">    "password": [</span><br><span class="line">        "yourpassword1",</span><br><span class="line">        "yourpassword2"</span><br><span class="line">    ],</span><br><span class="line">...</span><br><span class="line">    "ssl": &#123;</span><br><span class="line">        "cert": "/etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem",</span><br><span class="line">        "key": "/etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem",</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="运行trojan"><a href="#运行trojan" class="headerlink" title="运行trojan"></a>运行trojan</h3><p>sudo systemctl start trojan<br>sudo systemctl status trojan</p>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>下载<a href="https://github.com/trojan-gfw/trojan/releases/tag/v1.14.0" target="_blank" rel="noopener">Linux release 1.14.0</a><br>解压，修改配置文件(~/tool/trojan/config.json),运行(~/tool/trojan/trojan)</p>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载<a href="https://github.com/trojan-gfw/trojan/releases/tag/v1.14.0" target="_blank" rel="noopener">Windows release 1.14</a><br>解压，安装运行库，运行</p>
+
+    </div>
+
+    
+
+    
+
+    <!-- Comments -->
+    
+
+</div>
+        </section>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- Footer -->
+<div class="push"></div>
+
+<footer class="footer-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 footer-about">
+                <h2>About</h2>
+                <p>
+                    <a href="/about.html">I love games</a>
+                </p>
+            </div>
+            
+    <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 recent-posts">
+        <h2>Recent Posts</h2>
+        <ul>
+            
+            <li>
+                <a class="footer-post" href="/2020/05/12/trojan-gfw/">trojan-gfw</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/05/12/v2ray-heroku/">v2ray-heroku</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
+            </li>
+            
+        </ul>
+    </div>
+
+
+
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <ul class="list-inline footer-social-icons">
+                    
+                    <li class="list-inline-item">
+                        <a href="https://github.com/aaray6">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-github"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li class="list-inline-item">
+                        <a href="mailto:aaray@21cn.com">
+                            <span class="footer-icon-container">
+                                <i class="fa fa-envelope-o"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="footer-copyright">
+                    Copyleft
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- After footer scripts -->
+
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!-- Tween Max -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.18.5/TweenMax.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Custom JavaScript -->
+<script src="/js/main.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>

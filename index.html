@@ -139,6 +139,80 @@
 
     <div class="post-header index">
         <h1 class="title">
+            <a href="/2020/05/12/trojan-gfw/">
+                trojan-gfw
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-05-12</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <h2 id="Trojan-服务器端"><a href="#Trojan-服务器端" class="headerlink" title="Trojan 服务器端"></a>Trojan 服务器端</h2><h3 id="Create-VPS-google-and-open-80-443-ports"><a href="#Create-VPS-google-and-open-80-443-ports" class="headerlink" title="Create VPS (google) and open 80/443 ports"></a>Create VPS (google) and open 80/443 ports</h3><h3 id="申请-domain-name-xzy-ddnsfree-com-on-dynu-com-配置动态域名解析"><a href="#申请-domain-name-xzy-ddnsfree-com-on-dynu-com-配置动态域名解析" class="headerlink" title="申请 domain name (xzy.ddnsfree.com) on dynu.com,配置动态域名解析"></a>申请 domain name (xzy.ddnsfree.com) on dynu.com,配置动态域名解析</h3><h3 id="Login-VPS"><a href="#Login-VPS" class="headerlink" title="Login VPS"></a>Login VPS</h3><h3 id="Install-Trojan"><a href="#Install-Trojan" class="headerlink" title="Install Trojan"></a>Install Trojan</h3><p> (Binary &amp; Package Distributions) [<a href="https://github.com/trojan-gfw/trojan/wiki/Binary-&amp;-Package-Distributions]" target="_blank" rel="noopener">https://github.com/trojan-gfw/trojan/wiki/Binary-&amp;-Package-Distributions]</a></p>
+<h3 id="Quickstart-Script"><a href="#Quickstart-Script" class="headerlink" title="Quickstart Script"></a>Quickstart Script</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"</span><br></pre></td></tr></table></figure>
+<h3 id="Install自动获取证书工具"><a href="#Install自动获取证书工具" class="headerlink" title="Install自动获取证书工具"></a>Install自动获取证书工具</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wget</span><br><span class="line">sudo wget https://dl.eff.org/certbot-auto -P /usr/local/bin</span><br><span class="line">sudo chmod a+x /usr/local/bin/certbot-auto</span><br><span class="line">sudo certbot-auto certonly --standalone -d xyz.ddnsfree.com --email yourname@yourdomain.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem</span><br><span class="line">   Your cert will expire on 2020-04-22. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot-auto</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   &quot;certbot-auto renew&quot;</span><br><span class="line"> - Your account credentials have been saved in your Certbot</span><br><span class="line">   configuration directory at /etc/letsencrypt. You should make a</span><br><span class="line">   secure backup of this folder now. This configuration directory will</span><br><span class="line">   also contain certificates and private keys obtained by Certbot so</span><br><span class="line">   making regular backups of this folder is ideal.</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>/etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem</strong><br><strong>/etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem</strong><br><strong>certbot-auto renew</strong></p>
+</blockquote>
+<h3 id="配置trojan服务器"><a href="#配置trojan服务器" class="headerlink" title="配置trojan服务器"></a>配置trojan服务器</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/trojan</span><br><span class="line">vi config.json</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">    "password": [</span><br><span class="line">        "yourpassword1",</span><br><span class="line">        "yourpassword2"</span><br><span class="line">    ],</span><br><span class="line">...</span><br><span class="line">    "ssl": &#123;</span><br><span class="line">        "cert": "/etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem",</span><br><span class="line">        "key": "/etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem",</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<h3 id="运行trojan"><a href="#运行trojan" class="headerlink" title="运行trojan"></a>运行trojan</h3><p>sudo systemctl start trojan<br>sudo systemctl status trojan</p>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>下载<a href="https://github.com/trojan-gfw/trojan/releases/tag/v1.14.0" target="_blank" rel="noopener">Linux release 1.14.0</a><br>解压，修改配置文件(~/tool/trojan/config.json),运行(~/tool/trojan/trojan)</p>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>下载<a href="https://github.com/trojan-gfw/trojan/releases/tag/v1.14.0" target="_blank" rel="noopener">Windows release 1.14</a><br>解压，安装运行库，运行</p>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2020/05/12/v2ray-heroku/">
+                v2ray-heroku
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2020-05-12</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>v2ray-heroku</p>
+<p>概述</p>
+<p>用于在 Heroku 上部署 V2Ray Websocket。</p>
+<p>Heroku 为我们提供了免费的容器服务，我们不应该滥用它，所以本项目不宜做为长期翻墙使用。</p>
+<p>可以部署两个以上的应用，实现 负载均衡，避免长时间大流量连接某一应用而被 Heroku 判定为滥用。</p>
+<p>Heroku 的网络并不稳定，部署前请三思。<br>镜像</p>
+<p>本镜像不会因为大量占用资源而被封号。</p>
+<p><a href="https://github.com/bclswl0827/v2ray-heroku" target="_blank" rel="noopener">Official site</a></p>
+<blockquote>
+<p><a href="https://www.youtube.com/watch?v=U7vUfGVyWSs" target="_blank" rel="noopener">Youtube 【IT常识】Github上免费VPS，自动部署v2ray,免费使用！</a><br><a href="https://www.uuidgenerator.net/" target="_blank" rel="noopener">Online UUID Generator</a></p>
+</blockquote>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
             <a href="/2019/04/23/lede-lubuntu-eeepc901/">
                 lede_lubuntu_eeepc901
             </a>
@@ -599,90 +673,6 @@
 
 </div>
             
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/02/27/ubuntu-ext-display/">
-                ubuntu18.04双显示器
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-02-27</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="ubuntu18-04双显示器配置"><a href="#ubuntu18-04双显示器配置" class="headerlink" title="ubuntu18.04双显示器配置"></a>ubuntu18.04双显示器配置</h1><p>环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口</p>
-<blockquote>
-<p><a href="https://askubuntu.com/questions/138408/how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem" target="_blank" rel="noopener">how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem</a></p>
-</blockquote>
-<p>First, use cvt to create a new resolution mode.</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo cvt 1920 1080 60</span></span><br><span class="line">[sudo] xxxx 的密码：</span><br><span class="line"><span class="meta">#</span><span class="bash"> 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz</span></span><br><span class="line">Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync</span><br></pre></td></tr></table></figure>
-<p>Next, declare a new resolution mode.</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xrandr --newmode "1920x1080_60.00" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync</span><br></pre></td></tr></table></figure>
-<p>Next, find out the name of your video device.</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">sudo xrandr -q</span><br><span class="line">Screen 0: minimum 320 x 200, current 1280 x 1568, maximum 8192 x 8192</span><br><span class="line">LVDS-1 connected primary 1280x800+0+768 (normal left inverted right x axis y axis) 261mm x 163mm</span><br><span class="line">   1280x800      60.16*+  59.99    59.97    59.81    59.91    50.00  </span><br><span class="line">   1280x720      60.00    59.99    59.86    59.74  </span><br><span class="line">   1024x768      60.04    60.00  </span><br><span class="line">   960x720       60.00  </span><br><span class="line">   928x696       60.05  </span><br><span class="line">   896x672       60.01  </span><br><span class="line">   1024x576      59.95    59.96    59.90    59.82  </span><br><span class="line">   960x600       59.93    60.00  </span><br><span class="line">   960x540       59.96    59.99    59.63    59.82  </span><br><span class="line">   800x600       60.00    60.32    56.25  </span><br><span class="line">   840x525       60.01    59.88  </span><br><span class="line">   864x486       59.92    59.57  </span><br><span class="line">   800x512       60.17  </span><br><span class="line">   700x525       59.98  </span><br><span class="line">   800x450       59.95    59.82  </span><br><span class="line">   640x512       60.02  </span><br><span class="line">   720x450       59.89  </span><br><span class="line">   700x450       59.96    59.88  </span><br><span class="line">   640x480       60.00    59.94  </span><br><span class="line">   720x405       59.51    58.99  </span><br><span class="line">   684x384       59.88    59.85  </span><br><span class="line">   680x384       59.80    59.96  </span><br><span class="line">   640x400       59.88    59.98  </span><br><span class="line">   576x432       60.06  </span><br><span class="line">   640x360       59.86    59.83    59.84    59.32  </span><br><span class="line">   512x384       60.00  </span><br><span class="line">   512x288       60.00    59.92  </span><br><span class="line">   480x270       59.63    59.82  </span><br><span class="line">   400x300       60.32    56.34  </span><br><span class="line">   432x243       59.92    59.57  </span><br><span class="line">   320x240       60.05  </span><br><span class="line">   360x202       59.51    59.13  </span><br><span class="line">   320x180       59.84    59.32  </span><br><span class="line">VGA-1 connected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm</span><br><span class="line">   1024x768      60.00* </span><br><span class="line">   800x600       60.32    56.25  </span><br><span class="line">   848x480       60.00  </span><br><span class="line">   640x480       59.94  </span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">DP-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">  1920x1080_60.00 (0x1c8) 173.000MHz -HSync +VSync</span><br><span class="line">        h: width  1920 start 2048 end 2248 total 2576 skew    0 clock  67.16KHz</span><br><span class="line">        v: height 1080 start 1083 end 1088 total 1120           clock  59.96Hz</span><br></pre></td></tr></table></figure>
-<p>Mine was named “VGA-1”. Finally, add your new resolution mode to the device/system.</p>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">sudo xrandr --addmode VGA-1 1920x1080_60.00</span><br><span class="line">quxr@quxr-ThinkPad-X201:~$ sudo xrandr -q</span><br><span class="line">Screen 0: minimum 320 x 200, current 1280 x 1568, maximum 8192 x 8192</span><br><span class="line">LVDS-1 connected primary 1280x800+0+768 (normal left inverted right x axis y axis) 261mm x 163mm</span><br><span class="line">   1280x800      60.16*+  59.99    59.97    59.81    59.91    50.00  </span><br><span class="line">   1280x720      60.00    59.99    59.86    59.74  </span><br><span class="line">   1024x768      60.04    60.00  </span><br><span class="line">   960x720       60.00  </span><br><span class="line">   928x696       60.05  </span><br><span class="line">   896x672       60.01  </span><br><span class="line">   1024x576      59.95    59.96    59.90    59.82  </span><br><span class="line">   960x600       59.93    60.00  </span><br><span class="line">   960x540       59.96    59.99    59.63    59.82  </span><br><span class="line">   800x600       60.00    60.32    56.25  </span><br><span class="line">   840x525       60.01    59.88  </span><br><span class="line">   864x486       59.92    59.57  </span><br><span class="line">   800x512       60.17  </span><br><span class="line">   700x525       59.98  </span><br><span class="line">   800x450       59.95    59.82  </span><br><span class="line">   640x512       60.02  </span><br><span class="line">   720x450       59.89  </span><br><span class="line">   700x450       59.96    59.88  </span><br><span class="line">   640x480       60.00    59.94  </span><br><span class="line">   720x405       59.51    58.99  </span><br><span class="line">   684x384       59.88    59.85  </span><br><span class="line">   680x384       59.80    59.96  </span><br><span class="line">   640x400       59.88    59.98  </span><br><span class="line">   576x432       60.06  </span><br><span class="line">   640x360       59.86    59.83    59.84    59.32  </span><br><span class="line">   512x384       60.00  </span><br><span class="line">   512x288       60.00    59.92  </span><br><span class="line">   480x270       59.63    59.82  </span><br><span class="line">   400x300       60.32    56.34  </span><br><span class="line">   432x243       59.92    59.57  </span><br><span class="line">   320x240       60.05  </span><br><span class="line">   360x202       59.51    59.13  </span><br><span class="line">   320x180       59.84    59.32  </span><br><span class="line">VGA-1 connected 1024x768+0+0 (normal left inverted right x axis y axis) 0mm x 0mm</span><br><span class="line">   1024x768      60.00* </span><br><span class="line">   800x600       60.32    56.25  </span><br><span class="line">   848x480       60.00  </span><br><span class="line">   640x480       59.94  </span><br><span class="line">   1920x1080_60.00  59.96  </span><br><span class="line">HDMI-1 disconnected (normal left inverted right x axis y axis)</span><br><span class="line">DP-1 disconnected (normal left inverted right x axis y axis)</span><br></pre></td></tr></table></figure>
-<p>setup in UI</p>
-<p><img src="/myimages/ubuntu-ext-display-setup.png" alt="setup"></p>
-
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2019/02/22/kali-usage/">
-                Kali Linux应用
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2019-02-22</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="Kali-Linux破解WPA-WPA2-Wifi密码"><a href="#Kali-Linux破解WPA-WPA2-Wifi密码" class="headerlink" title="Kali Linux破解WPA/WPA2 Wifi密码"></a>Kali Linux破解WPA/WPA2 Wifi密码</h1><blockquote>
-<p><a href="http://topspeedsnail.com/kali-linux-crack-wifi-wpa/" target="_blank" rel="noopener">Kali Linux使用Aircrack破解wifi密码(wpa/wpa2)</a><br><a href="http://lewiscomputerhowto.blogspot.com/2014/06/how-to-hack-wpawpa2-wi-fi-with-kali.html" target="_blank" rel="noopener">How To Hack WPA/WPA2 Wi-Fi With Kali Linux &amp; Aircrack-ng</a><br><a href="https://www.sunnyhoi.com/how-to-crack-wpawpa2-wi-fi-passwords-using-aircrack-ng-in-kali/" target="_blank" rel="noopener">How To Crack WPA/WPA2 Wi-Fi Passwords Using Aircrack-Ng In Kali</a></p>
-</blockquote>
-<p>Notes:</p>
-<ul>
-<li><code>airodump-ng -c &lt;channel&gt; --bssid &lt;WIFI BSSID&gt; -w &lt;Work directory&gt; wlan0mon</code></li>
-</ul>
-<p><code>&lt;Work directory&gt;</code>不光写目录，也要写目录下的文件前缀。例如/root/work/wifi/my.这样就会生成/root/work/wifi/my-01.*文件</p>
-<ul>
-<li><p>抓到包后用airmon-ng stop wlan0mon命令结束网卡监听模式</p>
-</li>
-<li><p>如果对方密码不在字典里，也足够复杂，那就不用指望能破解出来了，所以这个要看运气</p>
-</li>
-</ul>
-<h1 id="Kali-Metasploit"><a href="#Kali-Metasploit" class="headerlink" title="Kali Metasploit"></a>Kali Metasploit</h1><p><a href="/2019/02/27/metasploit/">Metasploit</a></p>
-<h1 id="apt-package"><a href="#apt-package" class="headerlink" title="apt package"></a>apt package</h1><ul>
-<li>netstat</li>
-</ul>
-<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install net-tools</span><br></pre></td></tr></table></figure>
-        </div>
-    
-
-</div>
-            
         </section>
     </div>
 </div>
@@ -725,19 +715,19 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/05/12/trojan-gfw/">trojan-gfw</a>
+            </li>
+            
+            <li>
+                <a class="footer-post" href="/2020/05/12/v2ray-heroku/">v2ray-heroku</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
             </li>
             
             <li>
                 <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/18/treeline-myinventory/">MyInventory by TreeLine</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/12/gcloud-firewall-ufw-v2ray-ddns/">gcloud firewall ufw v2ray</a>
             </li>
             
         </ul>
