@@ -20,7 +20,7 @@
 
     <!--Open Graph Title-->
     
-        <meta property="og:title" content="IBM X201 Linux tips"/>
+        <meta property="og:title" content="IBM X201 Linux (ubuntu) 记录"/>
     
 
     <!--Open Graph Description-->
@@ -44,7 +44,7 @@
 
     <!-- Title -->
     
-    <title>IBM X201 Linux tips - My Notes</title>
+    <title>IBM X201 Linux (ubuntu) 记录 - My Notes</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
@@ -137,7 +137,7 @@
     <div class="post-header">
         <h1 class="title">
             <a href="/2019/03/09/x201-linux-tips/">
-                IBM X201 Linux tips
+                IBM X201 Linux (ubuntu) 记录
             </a>
         </h1>
         <div class="post-info">
@@ -155,7 +155,7 @@
         
 
         <!-- Post Content -->
-        <h1 id="IBM-X201-Linux-（ubuntu-记录"><a href="#IBM-X201-Linux-（ubuntu-记录" class="headerlink" title="IBM X201 Linux （ubuntu) 记录"></a>IBM X201 Linux （ubuntu) 记录</h1><p><a href="#X201过热">X201过热</a>； <a href="#指纹登录">指纹登录</a>； <a href="#更换启动界面">更换启动界面</a>； <a href="#不小心把分区表弄坏了">修复分区表和GRUB引导</a>; <a href="#Ubuntu18-04休眠">休眠</a></p>
+        <p><a href="#X201过热">X201过热</a>； <a href="#指纹登录">指纹登录</a>； <a href="#更换启动界面">更换启动界面</a>； <a href="#不小心把分区表弄坏了">修复分区表和GRUB引导</a>; <a href="#Ubuntu18-04休眠">休眠</a></p>
 <h2 id="xxd-Linux-HEX-editor"><a href="#xxd-Linux-HEX-editor" class="headerlink" title="xxd - Linux HEX editor"></a>xxd - Linux HEX editor</h2><h2 id="Linux-Baidu-Pan"><a href="#Linux-Baidu-Pan" class="headerlink" title="Linux Baidu Pan"></a><a href="https://segmentfault.com/a/1190000015719430" target="_blank" rel="noopener">Linux Baidu Pan</a></h2><h2 id="X201过热"><a href="#X201过热" class="headerlink" title="X201过热"></a>X201过热</h2><p>安装以下软件，Linux比安装之前降温10度左右</p>
 <p>lm_sensor (and afterwards I did run sensors-detect)<br>thermald<br>TLP<br>intel-ucode</p>
 <h3 id="TLP"><a href="#TLP" class="headerlink" title="TLP"></a>TLP</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:linrunner/tlp</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># thinkpad</span></span></span><br><span class="line">sudo apt-get install tp-smapi-dkms acpi-call-dkms</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## uninstall</span></span></span><br><span class="line">sudo apt-get remove tlp</span><br><span class="line">sudo add-apt-repository --remove ppa:linrunner/tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line">/etc/default/tlp</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#</span></span></span><br><span class="line">sudo tlp start</span><br><span class="line">sudo tlp-stat</span><br></pre></td></tr></table></figure>
@@ -307,6 +307,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/05/13/sqlplus/">sqlplus</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/05/12/trojan-gfw/">trojan-gfw</a>
             </li>
             
@@ -315,11 +319,7 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
+                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">LEDE &amp; Lubuntu on eeepc90</a>
             </li>
             
         </ul>

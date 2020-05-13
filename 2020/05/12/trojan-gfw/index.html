@@ -159,9 +159,7 @@
 <h3 id="Quickstart-Script"><a href="#Quickstart-Script" class="headerlink" title="Quickstart Script"></a>Quickstart Script</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)"</span><br></pre></td></tr></table></figure>
 <h3 id="Install自动获取证书工具"><a href="#Install自动获取证书工具" class="headerlink" title="Install自动获取证书工具"></a>Install自动获取证书工具</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install wget</span><br><span class="line">sudo wget https://dl.eff.org/certbot-auto -P /usr/local/bin</span><br><span class="line">sudo chmod a+x /usr/local/bin/certbot-auto</span><br><span class="line">sudo certbot-auto certonly --standalone -d xyz.ddnsfree.com --email yourname@yourdomain.com</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">IMPORTANT NOTES:</span><br><span class="line"> - Congratulations! Your certificate and chain have been saved at:</span><br><span class="line">   /etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem</span><br><span class="line">   Your key file has been saved at:</span><br><span class="line">   /etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem</span><br><span class="line">   Your cert will expire on 2020-04-22. To obtain a new or tweaked</span><br><span class="line">   version of this certificate in the future, simply run certbot-auto</span><br><span class="line">   again. To non-interactively renew *all* of your certificates, run</span><br><span class="line">   &quot;certbot-auto renew&quot;</span><br><span class="line"> - Your account credentials have been saved in your Certbot</span><br><span class="line">   configuration directory at /etc/letsencrypt. You should make a</span><br><span class="line">   secure backup of this folder now. This configuration directory will</span><br><span class="line">   also contain certificates and private keys obtained by Certbot so</span><br><span class="line">   making regular backups of this folder is ideal.</span><br><span class="line"> - If you like Certbot, please consider supporting our work by:</span><br><span class="line">   Donating to ISRG / Let&apos;s Encrypt:   https://letsencrypt.org/donate</span><br><span class="line">   Donating to EFF:                    https://eff.org/donate-le</span><br></pre></td></tr></table></figure>
-<blockquote>
 <p><strong>/etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem</strong><br><strong>/etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem</strong><br><strong>certbot-auto renew</strong></p>
-</blockquote>
 <h3 id="配置trojan服务器"><a href="#配置trojan服务器" class="headerlink" title="配置trojan服务器"></a>配置trojan服务器</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/etc/trojan</span><br><span class="line">vi config.json</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">    "password": [</span><br><span class="line">        "yourpassword1",</span><br><span class="line">        "yourpassword2"</span><br><span class="line">    ],</span><br><span class="line">...</span><br><span class="line">    "ssl": &#123;</span><br><span class="line">        "cert": "/etc/letsencrypt/live/xyz.ddnsfree.com/fullchain.pem",</span><br><span class="line">        "key": "/etc/letsencrypt/live/xyz.ddnsfree.com/privkey.pem",</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <h3 id="运行trojan"><a href="#运行trojan" class="headerlink" title="运行trojan"></a>运行trojan</h3><p>sudo systemctl start trojan<br>sudo systemctl status trojan</p>
 <h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>下载<a href="https://github.com/trojan-gfw/trojan/releases/tag/v1.14.0" target="_blank" rel="noopener">Linux release 1.14.0</a><br>解压，修改配置文件(~/tool/trojan/config.json),运行(~/tool/trojan/trojan)</p>
@@ -203,6 +201,10 @@
         <ul>
             
             <li>
+                <a class="footer-post" href="/2020/05/13/sqlplus/">sqlplus</a>
+            </li>
+            
+            <li>
                 <a class="footer-post" href="/2020/05/12/trojan-gfw/">trojan-gfw</a>
             </li>
             
@@ -211,11 +213,7 @@
             </li>
             
             <li>
-                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">lede_lubuntu_eeepc901</a>
-            </li>
-            
-            <li>
-                <a class="footer-post" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_nu</a>
+                <a class="footer-post" href="/2019/04/23/lede-lubuntu-eeepc901/">LEDE &amp; Lubuntu on eeepc90</a>
             </li>
             
         </ul>
