@@ -7,7 +7,15 @@
     error: 'Copy error',
     noSupport: 'The browser does not support'
   }
-} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Ray Qu</div><div class="author-info__description text-center">My Tech Notes and Other stuff</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">31</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">My Notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/about.html">About</a><a class="site-page" href="/contact.html">Contact</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">My Notes</div><div id="site-sub-title">I love games</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/26/synology-virtualbox/">Linux/Windows虚拟机virtualbox上安装黑群晖synology</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-26</time><div class="content">参考用PC玩群晖NAS，虚拟机安装DSM原文是用Windows下vmware安装。尝试用其提供的文件synoboot.img和DSM_DS3617xs_23739.pat并用VBoxManage转换img文件为vdi文件，用nmap命令取代群晖助手获得虚拟机mac地址。 原文提供的下载,链接: https://pan.baidu.com/s/18xrtSiHxeIsP... 提取码: bhrg
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="false"><div class="author-info"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Ray Qu</div><div class="author-info__description text-center">My Tech Notes and Other stuff</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">33</span></a></div></div></div><nav class="no-bg" id="nav"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">My Notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/about.html">About</a><a class="site-page" href="/contact.html">Contact</a></span><span class="pull-right"></span></div><div id="site-info"><div id="site-title">My Notes</div><div id="site-sub-title">I love games</div></div></nav><div id="content-outer"><div class="layout" id="content-inner"><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/29/onedrive-linux/">Linux(ubuntu 18.04)安装OneDrive Free</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-29</time><div class="content">安装OneDrive Free
+参考 如何实现 Microsoft OneDrive 与 Linux 的同步软件 OneDrive Free Client https://github.com/skilion/onedrive
+
+按照https://github.com/skilion/onedrive的文档安装。
+sudo apt install libcurl4-openssl-devsudo apt install libsqlite3-devsudo snap install –classic dmd &amp;&amp; sudo snap install –classic dub
+ ...</div><a class="more" href="/2020/05/29/onedrive-linux/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/28/synology-32bit-eeepc-todo/">synology 32位eeepc901做NAS尝试</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-28</time><div class="content">还是我的那台eeepc901,尝试了虚拟机装黑群晖后，想把eeepc改造成黑群晖。但是最终没有尝试完，因为群晖不能使用外接usb硬盘，只能用内部存储，而我的eeepc901是4G+16G，就算变成NAS，也没有什么实用价值。所以在尝试到虚拟机后，暂停了。
+下载需要的引导和系统文件因为eeepc901的CPU是N720，是32位的，所以必须找32位的系统才行。最新的群晖系统只支持64位的。我能找到的只有5.0的32位系统。
+下载32位5.0黑群晖文件 链接: https://pan.baidu.com/s/1sc-EC5upNVsHDQUyolmIVg 密码: 6ode
+文件如下NB_x86_5 ...</div><a class="more" href="/2020/05/28/synology-32bit-eeepc-todo/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/26/synology-virtualbox/">Linux/Windows虚拟机virtualbox上安装黑群晖synology</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-26</time><div class="content">参考用PC玩群晖NAS，虚拟机安装DSM原文是用Windows下vmware安装。尝试用其提供的文件synoboot.img和DSM_DS3617xs_23739.pat并用VBoxManage转换img文件为vdi文件，用nmap命令取代群晖助手获得虚拟机mac地址。 原文提供的下载,链接: https://pan.baidu.com/s/18xrtSiHxeIsP... 提取码: bhrg
 下载启动文件和DSM文件并转换格式1VBoxManage convertfromraw --format VDI synoboot.img synoboot.img.vdi
 在virtualbox中创建 ...</div><a class="more" href="/2020/05/26/synology-virtualbox/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2020/05/23/bgm-tenkou/">bgm.tv导出工具bgm_tenkou</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2020-05-23</time><div class="content">获取最新代码12cd ~/Dropboxgit clone git@github.com:aaray6/bgm_tenkou.git bgm_tenkou
 准备环境123cd ~/Dropbox/bgm_tenkoumkdir aaraychmod +x *.py
@@ -38,8 +46,9 @@ Official site
 Youtube 【IT常识】Github上免费VPS，自动部署v2ray,免费使用！Online UUID Generator
 
 </div><a class="more" href="/2020/05/12/v2ray-heroku/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/04/23/lede-lubuntu-eeepc901/">LEDE &amp; Lubuntu on eeepc901</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-23</time><div class="content">install LEDE and Lubuntu dual-boot on eeepc901
-1. install lubuntu on /dev/sdb2. 假设/dev/sda是空的，安装LEDE到/dev/sda上download LEDE x86https://www.right.com.cn/forum/thread-252795-1-1.htmlhttps://pan.baidu.com/s/1gfmuJOB 提取码:f33q
-得到文件LEDE-17.01.2-R7.3.3-x86-combined-squashfs.rar解压得到LEDE-17.01.2-R7.3.3-x86-c ...</div><a class="more" href="/2019/04/23/lede-lubuntu-eeepc901/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_num</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-20</time><div class="content">Win10资源管理器中文件名排序中，数字部分是把数字装换为数值后进行排序
+1. install lubuntu on /dev/sdb参考这里install lubuntu on eeepc901
+2. 假设/dev/sda是空的，安装LEDE到/dev/sda上download LEDE x86链接: https://pan.baidu.com/s/159Ph4Pi-VpXV3bcAlDDUTg  密码: gg9e
+得到文件LEDE-17.01.2-R7.3.3-x86-combined-squashfs.rar解压得到LEDE-17.01.2-R7.3.3-x86-co ...</div><a class="more" href="/2019/04/23/lede-lubuntu-eeepc901/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2019/03/20/win10-explorer-sort-by-num/">win10_explorer_sort_by_num</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-20</time><div class="content">Win10资源管理器中文件名排序中，数字部分是把数字装换为数值后进行排序
 比如
 123201801AAA201901BBB20180101CCC
 而我们通常是希望如下排序
@@ -92,10 +101,10 @@ But in guest VirtualBox Kali linux, it can’t work by default. ...</div><a clas
 
 
 带了Windows版的软件和驱动
+2020-05-28更新，最开始的软件有序列号，过期了。厂家更新了一个新的不需要序列号的软件。
+下载NFC小黑3.0(1909)链接: https://pan.baidu.com/s/13G_Sgu1j_h_LzgJXgDvJwg  密码: eqc0
 
-带的软件里有libnfc.dll, mfoc.dll两个文件。驱动程序就是一个”Prolific Technology, Inc. PL2303 Serial Port“ USB转串口驱动。读卡器是USB接口的，安装驱动之后映射岛了COM3。因此想到是否可以找到其他的软件使用这个读卡器。
-以下记录Linux(ubuntu)下找到的方法
-Ubuntu Linux下用NFC reader破解复制M1卡linux自带了PL2303驱动，插上读卡器后用lsusb命令可以看到”Bus 001 Device 018: ID 067b: ...</div><a class="more" href="/2019/02/11/nfc/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/03/22/springboot/">Spring boot notes</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-22</time><div class="content">Official site
+带的软件里有libnfc.dll, mfoc.dll两个文件。驱动程序就是一个”Prolific Technology, Inc. PL2303 Serial Port“ USB转串口驱动。读卡器是USB接口的，安装驱动之后映射岛了COM3。因此想到是否可以找到其他的软件使用 ...</div><a class="more" href="/2019/02/11/nfc/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/03/22/springboot/">Spring boot notes</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-22</time><div class="content">Official site
 Start a new Spring boot projectTool to generate base framework
 
 </div><a class="more" href="/2018/03/22/springboot/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/03/22/gradle/">Gradle Notes</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-03-22</time><div class="content">Gradle是一个基于Apache Ant和Apache Maven概念的项目自动化建构工具。它使用一种基于Groovy的特定领域语言来声明项目设置，而不是传统的XML。 当前其支持的语言限于Java、Groovy和Scala，计划未来将支持更多的语言
@@ -118,44 +127,7 @@ Click Compute EngineCreate new instance
 shadowsocks serverRefer to this post
 PC (install lubuntu on eeepc901)Some notes about lubuntu on eeepc901
 shadowsocks clientRefer to this post
-server si ...</div><a class="more" href="/2018/02/24/openvpn-over-ssr-on-gcloud/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/02/24/lubuntu-eeepc901/">install lubuntu on eeepc901</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-02-24</time><div class="content">How to show GRUB memu if it skipsHold “shift” key after BIOS load.
-How to edit GRUB parameterSelect a entry and press “e”After edit the parameter, press Ctrl-X or F10 to boot
-lubuntu Linux can’t display correctly after bootFirst, edit GRUB paramter and delete parameter
-1gfxmode $linux_gfx_mode
-then  ...</div><a class="more" href="/2018/02/24/lubuntu-eeepc901/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2018/02/24/My-New-Post/">Markdown语法示例</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2018-02-24</time><div class="content">参考Markdown语法介绍实验了一些makrdown语法。用hexo解析放到github上。
-但不知道为什么有些内容不正确。比如勾选，表格。难道我装的hexo解析有问题？
-
-列表1
-列表2
-
-
-有序列表1
-有序列表2
-
-勾选功能(好像不对，不知道是hexo的问题还是别的原因)
-
-[ ] no checked
-[x] checked
-
-代码
-12import java.io.*;import mytest.*;
-加粗_斜体_斜体加粗
-
-一位伟人曾经说过…
-
-表格
-
-
-
-First Header
-Second Header
-Third Header
-
-
-
-
-Content Cell
-Conten ...</div><a class="more" href="/2018/02/24/My-New-Post/#more" style="margin-top: 14px">Read more</a><hr></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Ray Qu</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+server si ...</div><a class="more" href="/2018/02/24/openvpn-over-ssr-on-gcloud/#more" style="margin-top: 14px">Read more</a><hr></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2020 By Ray Qu</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_site_uv"><i class="fa fa-user"></i><span id="busuanzi_value_site_uv"></span><span></span></span><span class="footer-separator">|</span><span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i><span id="busuanzi_value_site_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
   $('#nav').addClass('is-mobile')
   $('footer').addClass('is-mobile')
   $('#top-container').addClass('is-mobile')
