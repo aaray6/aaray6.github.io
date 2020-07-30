@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>anbox</title>
+      <link href="/2020/07/30/anbox/"/>
+      <url>/2020/07/30/anbox/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/myimages/anbox_1.png" alt="anbox" title="anbox"></p><p>Anbox是Linux下的安桌“模拟器”。与其他模拟器不同，它不是虚拟机。性能较快。</p><p><a href="https://anbox.io/" target="_blank" rel="noopener">Anbox主页</a></p><p>如果没有声音，可以参考<a href="https://github.com/anbox/anbox/issues/904" target="_blank" rel="noopener">这个帖子</a></p><p>基本思路是，需要拷几个文件到anbox下，但是anbox文件系统是只读的，所以anbox提供了“Android rootfs overlay”，可以在Linux下添加文件到anbox文件系统中。</p><p><a href="https://docs.anbox.io/userguide/advanced/rootfs_overlay.html" target="_blank" rel="noopener">Android rootfs overlay</a></p><p>需要添加的文件在<a href="https://github.com/anbox/anbox/tree/master/android/media" target="_blank" rel="noopener">这里 https://github.com/anbox/anbox/tree/master/android/media</a></p><p>Anbox默认只能运行x86的程序，这个<a href="https://www.linuxuprising.com/2018/07/anbox-how-to-install-google-play-store.html" target="_blank" rel="noopener">教程 Anbox: How To Install Google Play Store And Enable ARM (libhoudini) Support, The Easy Way</a>提供了一个脚本，可以安装Google Play和libhoudini, libhoudini可以让anbox运行ARM的代码。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java jws handshake_failure</title>
       <link href="/2020/06/30/jws-handshake-failure/"/>
       <url>/2020/06/30/jws-handshake-failure/</url>
