@@ -17,8 +17,7 @@ https://docs.paperless-ngx.com/setup/
 1bash -c "$(curl -L https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/install-paperless-ngx.sh)"
 我的安装目录如下~/docker/paperless-ngx此目录下放docker-compose.yml，docker-compose.env文件和consum ...</div><a class="more" href="/2023/01/28/paperless-ngx/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2023/01/25/vaultwarden/">vaultwarden 用docker搭建vaultwarden(bitwarden)服务器</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-01-25</time><div class="content">安装vaultwarden1234cdmkdir -p docker/vaultwarden/datadocker pull vaultwarden/server:latestdocker run -d --name vaultwarden -v ~/docker/vaultwarden/data/:/data/ -p 11080:80 vaultwarden/server:latest
 如果需要备份，~/docker/vaultwarden/data目录下有所有需要备份的内容。
-设置frp服务器端打开防火墙8888端口。
-下载frp (https://github.com/fatedier/ ...</div><a class="more" href="/2023/01/25/vaultwarden/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/12/14/caddy-syncthing/">Docker Caddy反向代理syncthing</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-12-14</time><div class="content">配置Caddy-&gt;syncthing的反向代理，并通过syncthing自动更新Caddy上的hexo网页。
+docker-compose.yml12345678910version: "2.1"services:  vau ...</div><a class="more" href="/2023/01/25/vaultwarden/#more" style="margin-top: 14px">Read more</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/2022/12/14/caddy-syncthing/">Docker Caddy反向代理syncthing</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2022-12-14</time><div class="content">配置Caddy-&gt;syncthing的反向代理，并通过syncthing自动更新Caddy上的hexo网页。
 Caddy是装代理的时候用docker装的。Caddy和代理在同一个docker-compose.yml里。
 在docker-compose.yml里添加syncthing并映射到/syncthing/下。
 Docker Compose设置docker-compose.yml中添加如下一段
