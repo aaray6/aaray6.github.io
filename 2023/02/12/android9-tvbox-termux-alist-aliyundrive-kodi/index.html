@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Android9 tvbox用termux,alist和kodi播放阿里云盘视频"><meta name="keywords" content=""><meta name="author" content="Ray Qu"><meta name="copyright" content="Ray Qu"><title>Android9 tvbox用termux,alist和kodi播放阿里云盘视频 | My Notes</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 7.3.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">下载安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AETermux%E5%AE%89%E8%A3%85Alist"><span class="toc-number">2.</span> <span class="toc-text">设置Termux安装Alist</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Termux%E4%B8%AD%E5%AE%89%E8%A3%85alist"><span class="toc-number">2.1.</span> <span class="toc-text">Termux中安装alist</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEalist%E5%92%8Csshd%E8%87%AA%E5%8A%A8%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">设置alist和sshd自动开机启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEKODI"><span class="toc-number">4.</span> <span class="toc-text">设置KODI</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Ray Qu</div><div class="author-info__description text-center">My Tech Notes and Other stuff</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">75</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">My Notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/about.html">About</a><a class="site-page" href="/contact.html">Contact</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">Android9 tvbox用termux,alist和kodi播放阿里云盘视频</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2023-02-12</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p>Android9 tvbox用termux,alist和kodi播放阿里云盘视频</p>
+<p>在Bilibili上看到LeoHao-o的教程“仅用安卓盒子&#x2F;电视打造高清家庭影院”。根据其教程在魔百盒CM311-1sa ZG上设置成功。</p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p>电视盒子是安卓9系统，根据Termux的说明，安卓11不能用Termux。</p>
+<p>在F-Droid下载Termux和Termux:Boot</p>
+<p><a href="https://f-droid.org/packages/com.termux/">https://f-droid.org/packages/com.termux/</a><br><a href="https://f-droid.org/packages/com.termux.boot/">https://f-droid.org/packages/com.termux.boot/</a></p>
+<p>在电视盒应用市场(当贝市场)下载Kodi并安装</p>
+<p>通过U盘安装Termux和Termux:Boot。</p>
+<h2 id="设置Termux安装Alist"><a href="#设置Termux安装Alist" class="headerlink" title="设置Termux安装Alist"></a>设置Termux安装Alist</h2><p>盒子打开应用Termux。第一次可能提示错误。再次打开安装boot-strap之后就能启动。</p>
+<p>根据bilibili教程</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">termux-change-repo</span><br></pre></td></tr></table></figure>
+
+<p>修改源。我选择BFSU源。</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br><span class="line">apt upgrade</span><br></pre></td></tr></table></figure>
+
+<p>遇到提问直接回车选默认值</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pkg install alist</span><br><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
+
+<p>openssh是可选的，为了ssh远程连接。</p>
+<p>运行sshd命令启动sshd<br>注: 监听端口是8022</p>
+<p>远程登录电视盒子</p>
+<blockquote>
+<p><a href="https://joeprevite.com/ssh-termux-from-computer/">https://joeprevite.com/ssh-termux-from-computer/</a></p>
+</blockquote>
+<p>ifconfig命令获取盒子IP<br>whoami命令获取username (u0_a34 on cm311-1sa, u0_a23 on e900v22c)<br>passwd命令设置密码</p>
+<p>在电脑上用ssh <username>@IP -p8022登录</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">cm311-1sa</span></span><br><span class="line">ssh u0_a33@192.168.1.42 -p8022</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">e900v22c</span></span><br><span class="line">ssh u0_a23@192.168.1.67 -p8022</span><br></pre></td></tr></table></figure>
+
+<h3 id="Termux中安装alist"><a href="#Termux中安装alist" class="headerlink" title="Termux中安装alist"></a>Termux中安装alist</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install alist</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置alist和sshd自动开机启动"><a href="#设置alist和sshd自动开机启动" class="headerlink" title="设置alist和sshd自动开机启动"></a>设置alist和sshd自动开机启动</h2><blockquote>
+<p><a href="https://wiki.termux.com/wiki/Termux:Boot">https://wiki.termux.com/wiki/Termux:Boot</a></p>
+</blockquote>
+<p>盒子里运行一次Termux:Boot并关闭</p>
+<p>创建脚本~&#x2F;.termux&#x2F;boot&#x2F;start-sshd内容如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/data/data/com.termux/files/usr/bin/sh</span></span><br><span class="line">termux-wake-lock</span><br><span class="line">sshd</span><br></pre></td></tr></table></figure>
+
+<p>创建脚本~&#x2F;.termux&#x2F;boot&#x2F;start-alist内容如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/data/data/com.termux/files/usr/bin/sh</span></span><br><span class="line">termux-wake-lock</span><br><span class="line">alist server &gt; ~/alist.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<p>重启盒子就可以自动启动alist<br>看&#x2F;data&#x2F;data&#x2F;com.termux&#x2F;files&#x2F;home&#x2F;alist.log文件可以获取alist管理员密码。管理员帐号admin</p>
+<p>或者用命令<br>alist admin显示密码<br>一定要在<del>下执行，如果在</del>&#x2F;.termux&#x2F;boot下执行，会在目录下生成data目录<br>这个额外的data目录会导致termux_boot脚本无法自动运行。删除~&#x2F;.termux&#x2F;boot目录下额外的data目录即可。</p>
+<p>电脑上用浏览器打开 http:&#x2F;&#x2F;&lt;盒子IP&gt;:5244 ，输入admin和管理员密码进入alist管理页面。</p>
+<p>修改默认密码</p>
+<p>添加阿里云盘</p>
+<h2 id="设置KODI"><a href="#设置KODI" class="headerlink" title="设置KODI"></a>设置KODI</h2><p>打开电视盒子的Kodi应用。添加视频源。</p>
+<p>源类型webdav (不加s)<br>IP: 127.0.0.1<br>端口: 5244<br>路径: dav<br>用户名: admin<br>密码: 管理员密码</p>
+</div></article><div class="post-meta__tag-list"></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2023/02/14/gitnote/"><i class="fa fa-chevron-left">  </i><span>gitnote</span></a></div><div class="next-post pull-right"><a href="/2023/02/09/tinymediamanager-clouddrive-aliyundrive/"><span>用tinymediamanager通过clouddrive更新aliyundrive上的视频信息</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2025 By Ray Qu</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>

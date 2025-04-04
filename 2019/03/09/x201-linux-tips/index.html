@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="IBM X201 Linux (ubuntu) 记录"><meta name="keywords" content=""><meta name="author" content="Ray Qu"><meta name="copyright" content="Ray Qu"><title>IBM X201 Linux (ubuntu) 记录 | My Notes</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.7.0"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script><meta name="generator" content="Hexo 7.3.0"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#xxd-Linux-HEX-editor"><span class="toc-number">1.</span> <span class="toc-text">xxd - Linux HEX editor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-Baidu-Pan"><span class="toc-number">2.</span> <span class="toc-text">Linux Baidu Pan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#X201%E8%BF%87%E7%83%AD"><span class="toc-number">3.</span> <span class="toc-text">X201过热</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TLP"><span class="toc-number">3.1.</span> <span class="toc-text">TLP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#thermald"><span class="toc-number">3.2.</span> <span class="toc-text">thermald</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CPU-freqs"><span class="toc-number">3.3.</span> <span class="toc-text">CPU freqs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E7%BA%B9%E7%99%BB%E5%BD%95"><span class="toc-number">4.</span> <span class="toc-text">指纹登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%8D%A2%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2"><span class="toc-number">5.</span> <span class="toc-text">更换启动界面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%91%BD%E4%BB%A4"><span class="toc-number">5.1.</span> <span class="toc-text">测试命令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%8A%8A%E5%88%86%E5%8C%BA%E8%A1%A8%E5%BC%84%E5%9D%8F%E4%BA%86"><span class="toc-number">6.</span> <span class="toc-text">不小心把分区表弄坏了</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu18-04%E4%BC%91%E7%9C%A0"><span class="toc-number">7.</span> <span class="toc-text">Ubuntu18.04休眠</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%88%91%E9%87%8D%E6%96%B0%E5%88%9B%E5%BB%BA%E4%BA%86%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%E5%90%8E%EF%BC%8C%E4%BA%A4%E6%8D%A2%E5%88%86%E5%8C%BA%E5%8F%B7%E5%92%8CUUID%E9%83%BD%E5%8F%98%E4%BA%86%EF%BC%8C%E4%BA%8E%E6%98%AF%E9%9C%80%E8%A6%81%E7%94%A8%E4%BB%A5%E4%B8%8B%E6%96%B9%E6%B3%95%E9%87%8D%E6%96%B0%E8%AE%BE%E7%BD%AE"><span class="toc-number">7.1.</span> <span class="toc-text">在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9Login%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2%E8%83%8C%E6%99%AF"><span class="toc-number">7.2.</span> <span class="toc-text">更改Login登录界面背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%B5%E8%84%91%E6%8C%82%E8%B5%B7%E5%90%8E%EF%BC%8C%E7%A6%81%E7%94%A8%E9%BC%A0%E6%A0%87%E5%94%A4%E9%86%92"><span class="toc-number">7.3.</span> <span class="toc-text">电脑挂起后，禁用鼠标唤醒</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8CloneZilla%E6%8B%B7%E8%B4%9D%E7%A1%AC%E7%9B%98-%E5%88%86%E5%8C%BA"><span class="toc-number">7.4.</span> <span class="toc-text">用CloneZilla拷贝硬盘&#x2F;分区</span></a></li></ol></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="/img/avatar.png"></div><div class="author-info__name text-center">Ray Qu</div><div class="author-info__description text-center">My Tech Notes and Other stuff</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">75</span></a></div></div></div><div id="content-outer"><div class="no-bg" id="top-container"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">My Notes</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/about.html">About</a><a class="site-page" href="/contact.html">Contact</a></span><span class="pull-right"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a></span></div><div id="post-info"><div id="post-title">IBM X201 Linux (ubuntu) 记录</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-03-09</time></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><p><a href="#X201%E8%BF%87%E7%83%AD">X201过热</a>； <a href="#%E6%8C%87%E7%BA%B9%E7%99%BB%E5%BD%95">指纹登录</a>； <a href="#%E6%9B%B4%E6%8D%A2%E5%90%AF%E5%8A%A8%E7%95%8C%E9%9D%A2">更换启动界面</a>； <a href="#%E4%B8%8D%E5%B0%8F%E5%BF%83%E6%8A%8A%E5%88%86%E5%8C%BA%E8%A1%A8%E5%BC%84%E5%9D%8F%E4%BA%86">修复分区表和GRUB引导</a>; <a href="#Ubuntu18-04%E4%BC%91%E7%9C%A0">休眠</a></p>
+<h2 id="xxd-Linux-HEX-editor"><a href="#xxd-Linux-HEX-editor" class="headerlink" title="xxd - Linux HEX editor"></a>xxd - Linux HEX editor</h2><h2 id="Linux-Baidu-Pan"><a href="#Linux-Baidu-Pan" class="headerlink" title="Linux Baidu Pan"></a><a href="https://segmentfault.com/a/1190000015719430">Linux Baidu Pan</a></h2><h2 id="X201过热"><a href="#X201过热" class="headerlink" title="X201过热"></a>X201过热</h2><p>安装以下软件，Linux比安装之前降温10度左右</p>
+<p>lm_sensor (and afterwards I did run sensors-detect)<br>thermald<br>TLP<br>intel-ucode</p>
+<h3 id="TLP"><a href="#TLP" class="headerlink" title="TLP"></a>TLP</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:linrunner/tlp</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install tlp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># thinkpad</span></span></span><br><span class="line">sudo apt-get install tp-smapi-dkms acpi-call-dkms</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## uninstall</span></span></span><br><span class="line">sudo apt-get remove tlp</span><br><span class="line">sudo add-apt-repository --remove ppa:linrunner/tlp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#</span></span></span><br><span class="line">/etc/default/tlp</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#</span></span></span><br><span class="line">sudo tlp start</span><br><span class="line">sudo tlp-stat</span><br></pre></td></tr></table></figure>
+
+<h3 id="thermald"><a href="#thermald" class="headerlink" title="thermald"></a>thermald</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install thermald</span><br></pre></td></tr></table></figure>
+
+<h3 id="CPU-freqs"><a href="#CPU-freqs" class="headerlink" title="CPU freqs"></a>CPU freqs</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install indicator-cpufreq</span><br></pre></td></tr></table></figure>
+
+<h2 id="指纹登录"><a href="#指纹登录" class="headerlink" title="指纹登录"></a>指纹登录</h2><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># For Ubuntu 16.04 or greater:</span></span></span><br><span class="line">sudo apt install libpam-fprintd fprint-demo</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># For Ubuntu 15.04 or less</span></span></span><br><span class="line">sudo add-apt-repository -y ppa:fingerprint/fprint</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install libfprint0 fprint-demo libpam-fprintd gksu-polkit</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># After that, you can test it by running fprint_demo and save the fingerprint with fprintd-enroll. This will automatically make your login screen require a finger swipe instead of a password.</span></span></span><br></pre></td></tr></table></figure>
+
+<h2 id="更换启动界面"><a href="#更换启动界面" class="headerlink" title="更换启动界面"></a>更换启动界面</h2><blockquote>
+<p><a href="https://askubuntu.com/questions/1046370/how-to-change-boot-splash-screen-in-18-04">How to change boot splash screen in 18.04</a><br><a href="https://www.gnome-look.org/browse/cat/108/">Plymouth Themes</a></p>
+</blockquote>
+<p>to install:</p>
+<ol>
+<li><p>copy file to &#x2F;usr&#x2F;share&#x2F;plymouth&#x2F;themes</p>
+</li>
+<li><p>run in terminal:</p>
+</li>
+</ol>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/&lt;your theme&gt;/&lt;your theme&gt;.plymouth 100</span><br><span class="line">sudo update-alternatives --config default.plymouth</span><br><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>initramfs: initramfs is a tiny version of the OS that gets loaded by the bootloader, right after the kernel. It lives in RAM, and it provides <em>just</em> enough tools and instructions to tell the kernel how to set up the real filesystem, mount the HDD read&#x2F;write, and start loading all the system services. It includes the stub of init, PID #1. If your initramfs is broken, your boot fails.<br>update-initramfs is a script that updates initramfs to work with a new kernel. In the Debian universe, you shouldn’t need to run this command manually except under very unusual circumstances - a post-install script automatically handles it for you when you install a new kernel package.</p>
+</blockquote>
+<h3 id="测试命令"><a href="#测试命令" class="headerlink" title="测试命令"></a>测试命令</h3><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install plymouth-x11</span><br><span class="line"></span><br><span class="line">sudo plymouthd ; sudo plymouth --show-splash ; for ((I=0; I&lt;10; I++)); do sleep 1 ; sudo plymouth --update=test$I ; done ; sudo plymouth --quit</span><br></pre></td></tr></table></figure>
+
+<h2 id="不小心把分区表弄坏了"><a href="#不小心把分区表弄坏了" class="headerlink" title="不小心把分区表弄坏了"></a>不小心把分区表弄坏了</h2><ol>
+<li><p>先别慌，别往硬盘里写东西</p>
+</li>
+<li><p>用晨风或类似WinPE工具盘启动电脑。用Partition Magic之类的软件提供的恢复丢失分区找回分区</p>
+</li>
+<li><p>修复GRUB2.制作Ubuntu&#x2F;Xubuntu&#x2F;Lubuntu启动盘引导系统,用Boot Repair修复引导扇区，这个方法对双、多系统也有效，工具会识别出所有的可引导系统并加到Grub2菜单中。</p>
+</li>
+</ol>
+<blockquote>
+<p><a href="https://www.howopensource.com/2011/08/restore-mbr-from-ubuntu-live-cd-usb/">Restore MBR from Ubuntu live CD &#x2F; USB</a></p>
+</blockquote>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:yannubuntu/boot-repair</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y boot-repair</span><br><span class="line">boot-repair</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ubuntu18-04休眠"><a href="#Ubuntu18-04休眠" class="headerlink" title="Ubuntu18.04休眠"></a>Ubuntu18.04休眠</h2><p>注意<strong>如果用固态硬盘，不应该使用休眠功能，否则影响固态硬盘寿命</strong></p>
+<ul>
+<li>1 先确定交换分区至少跟物理内存一样大。</li>
+</ul>
+<p>理论上交换分区小于物理内存也可以成功。而且最好比物理内存大一点。（我就是在扩展交换分区大小时把分区表弄坏的，花了半天的时间才恢复原样）</p>
+<blockquote>
+<p><a href="http://ubuntuhandbook.org/index.php/2018/05/add-hibernate-option-ubuntu-18-04/">Add ‘Hibernate’ Option in Power Menu in Ubuntu 18.04</a><br><a href="https://askubuntu.com/questions/768136/how-can-i-hibernate-on-ubuntu-16-04">How can I hibernate on Ubuntu 16.04</a></p>
+</blockquote>
+<ul>
+<li>2 测试系统支持休眠，注意，以下命令回立刻将系统休眠，执行前请确保已经保存你的工作。</li>
+</ul>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl hibernate</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3 在菜单上增加休眠按钮</li>
+</ul>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla</span><br></pre></td></tr></table></figure>
+
+<p>It opens nano with an empty file. Copy the lines below and paste them into the nano window.</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Re-enable hibernate by default in upower]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.upower.hibernate</span><br><span class="line">ResultActive=yes</span><br><span class="line"></span><br><span class="line">[Re-enable hibernate by default in logind]</span><br><span class="line">Identity=unix-user:*</span><br><span class="line">Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit</span><br><span class="line">ResultActive=yes</span><br></pre></td></tr></table></figure>
+
+<p>Restart your computer and click the link to install the gnome extension: <strong>Hibernate Status Button</strong>.(第一个参考帖子里有截图)</p>
+<ul>
+<li>4 修改GRUB增加resume参数</li>
+</ul>
+<p>找到交换分区:</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep swap /etc/fstab</span><br></pre></td></tr></table></figure>
+
+<p>for me this returns (partial output)</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">swap was on /dev/sda3 during installation</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;dev&#x2F;sda3是安装系统时用的交换分区，如果安装之后没改过的话。</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudoedit /etc/default/grub</span><br></pre></td></tr></table></figure>
+
+<p>To the line starting <strong>GRUB_CMDLINE_LINUX_DEFAULT</strong> add <strong>resume&#x3D;&#x2F;dev&#x2F;YourSwapPartition</strong> to the section in quotes (replace with the the partition you identified earlier). Using my example:</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash resume=/dev/sda3&quot;</span><br></pre></td></tr></table></figure>
+
+<p>更新&#x2F;etc&#x2F;default&#x2F;grub文件之后，运行以下命令更新grub以使之生效</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
+
+<p>注： <strong>除了像上面使用交换分区，还可以使用交换文件实现休眠功能</strong></p>
+<h3 id="在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置"><a href="#在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置" class="headerlink" title="在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置"></a>在我重新创建了交换分区后，交换分区号和UUID都变了，于是需要用以下方法重新设置</h3><p>注:<strong>我曾经试过不用休眠功能，于是我把&#x2F;etc&#x2F;initramfs-tools&#x2F;conf.d&#x2F;resume文件删了，删掉后，Linux启动特别慢，内核启动大概10多秒，恢复这个文件并更新ramfs之后，变回3秒之内</strong></p>
+<blockquote>
+<p><a href="https://askubuntu.com/questions/196364/i-have-enabled-hibernate-but-it-isnt-working-what-can-i-do">I have enabled hibernate but it isn’t working. What can I do?</a></p>
+</blockquote>
+<p>以下方法在Ubuntu18.04测试有效</p>
+<p>There is two way to fix this.</p>
+<ul>
+<li><p>Editing the &#x2F;etc&#x2F;initramfs-tools&#x2F;conf.d&#x2F;resume file</p>
+<p>  First get the UUID of the swap partition.</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo blkid | grep swap</span><br></pre></td></tr></table></figure>
+
+<p>  This will output a line similar to this:</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda12: UUID=&quot;a14f3380-810e-49a7-b42e-72169e66c432&quot; TYPE=&quot;swap&quot;</span><br></pre></td></tr></table></figure>
+
+<p>  The actually line will not match with this. Copy the value of UUID in between “…” double quote.</p>
+<p>  Open the resume file</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/initramfs-tools/conf.d/resume</span><br></pre></td></tr></table></figure>
+
+<p>  And in that file, add a line like this</p>
+  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RESUME=UUID=a14f3380-810e-49a7-b42e-72169e66c432</span><br></pre></td></tr></table></figure>
+
+<p>  Don’t forget to replace the actual UUID value you get from step 1. Save the file and exit gedit</p>
+<p>  Then in terminal, execute this command</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-initramfs -u</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>You will now be able to resume from hibernation</p>
+<ul>
+<li><p>Editing the &#x2F;etc&#x2F;default&#x2F;grub file.</p>
+<p>  Open a terminal and execute the below command to open it</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/default/grub </span><br></pre></td></tr></table></figure>
+
+<p>  There will be a line like GRUB_CMDLINE_LINUX_DEFAULT&#x3D;”quiet splash”<br>  . Edit the line to insert RESUME&#x3D;UUID&#x3D;&lt;your-uuid-value-here&gt; after the word splash.</p>
+<p>  For example in my case, the line looks like this after editing</p>
+  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash resume=UUID=a14f3380-810e-49a7-b42e-72169e66c432&quot; </span><br></pre></td></tr></table></figure>
+
+<p>  Make sure, you used your UUID value you get from sudo blkid | grep swap command.</p>
+<p>  Then do this command</p>
+  <figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>This also enable you to successfully get resumed from hibernate.</p>
+<h3 id="更改Login登录界面背景"><a href="#更改Login登录界面背景" class="headerlink" title="更改Login登录界面背景"></a>更改Login登录界面背景</h3><blockquote>
+<p><a href="https://vitux.com/how-to-change-login-lock-screen-background-in-ubuntu/">How to Change the Ubuntu Login screen</a></p>
+</blockquote>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /usr/share/gnome-shell/theme/ubuntu.css</span><br></pre></td></tr></table></figure>
+
+<p>替换lockDialogGroup段如下</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#lockDialogGroup</span> &#123;</span><br><span class="line"><span class="attribute">background</span>: <span class="number">#2c001e</span> <span class="built_in">url</span>(<span class="string">file:///usr/share/backgrounds/gdmlock.jpg</span>);</span><br><span class="line"><span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line"><span class="attribute">background-size</span>: cover;</span><br><span class="line"><span class="attribute">background-position</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Alt-F2 -&gt; r</p>
+<h3 id="电脑挂起后，禁用鼠标唤醒"><a href="#电脑挂起后，禁用鼠标唤醒" class="headerlink" title="电脑挂起后，禁用鼠标唤醒"></a>电脑挂起后，禁用鼠标唤醒</h3><blockquote>
+<p><a href="https://www.helplib.com/ubuntu/article_157796">鼠标移动唤醒计算机从挂起如何禁用这里操作？</a></p>
+</blockquote>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l /lib/systemd/system-sleep</span></span><br><span class="line">-rwxr-xr-x 1 root root  92 2月  22  2018 hdparm</span><br><span class="line">-rwxr-xr-x 1 root root 212 3月  27 17:36 mouse_logitech</span><br><span class="line">-rwxr-xr-x 1 root root 219 2月  21 21:58 unattended-upgrades</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> /lib/systemd/system-sleep/mouse_logitech</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/sh</span></span><br><span class="line">if [! -r /sys/devices/pci0000:00/0000:00:1d.0/usb2/2-1/2-1.2/power/wakeup ]; then</span><br><span class="line"> exit 0</span><br><span class="line">fi</span><br><span class="line">case&quot;$1&quot; in</span><br><span class="line"> pre )</span><br><span class="line"> echo disabled &gt; /sys/devices/pci0000:00/0000:00:1d.0/usb2/2-1/2-1.2/power/wakeup</span><br><span class="line">;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+<h3 id="用CloneZilla拷贝硬盘-分区"><a href="#用CloneZilla拷贝硬盘-分区" class="headerlink" title="用CloneZilla拷贝硬盘&#x2F;分区"></a>用<a href="https://clonezilla.org/">CloneZilla</a>拷贝硬盘&#x2F;分区</h3><p>有linux的分区用Ghost复制后不好用，不知道是不是我用的版本太老了。用CloneZilla好用。下载iso，做启动盘，启动，复制</p>
+</div></article><div class="post-meta__tag-list"></div><nav id="pagination"><div class="prev-post pull-left"><a href="/2019/03/12/gcloud-firewall-ufw-v2ray-ddns/"><i class="fa fa-chevron-left">  </i><span>gcloud firewall ufw v2ray ddns</span></a></div><div class="next-post pull-right"><a href="/2019/03/08/my-sinablog/"><span>我的新浪博客</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2025 By Ray Qu</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.7.0"></script><script src="/js/fancybox.js?version=1.7.0"></script><script src="/js/sidebar.js?version=1.7.0"></script><script src="/js/copy.js?version=1.7.0"></script><script src="/js/fireworks.js?version=1.7.0"></script><script src="/js/transition.js?version=1.7.0"></script><script src="/js/scroll.js?version=1.7.0"></script><script src="/js/head.js?version=1.7.0"></script><script src="/js/search/local-search.js"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div></body></html>
