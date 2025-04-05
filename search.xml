@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>syncthing</title>
+      <link href="/2025/04/04/syncthing-1/"/>
+      <url>/2025/04/04/syncthing-1/</url>
+      
+        <content type="html"><![CDATA[<p>X201上syncthing地址<a href="http://localhost:8384/">http://localhost:8384</a><br>syncthing的目录创建之后不能修改，但是可以接受符号链接。<br>我建立了链接~&#x2F;dev&#x2F;mynotes&#x2F;public-&gt;..&#x2F;blog_heroku_github&#x2F;caddy_srv<br>这个目录下一定要建个.stfolder的目录，没有内容，只是标记，否则syncthing不认。</p><p>直接链接到public这个方法方便但有不好的地方。hexo编译后直接就发布上去了。<br>我还是改回老方法。~&#x2F;dev&#x2F;blog_heroku_github&#x2F;caddy_srv是目录。需要发布的时候用命令</p><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp -pR ~/dev/mynotes/public/* ~/dev/blog_heroku_github/caddy_srv/</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Uptime Kuma监控</title>
       <link href="/2025/04/01/uptime-kuma/"/>
       <url>/2025/04/01/uptime-kuma/</url>
