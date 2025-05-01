@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>Vmware(Omnissa) Horizon Client on ubuntu 24.04</title>
+      <link href="/2025/05/01/horizon-on-ubuntu/"/>
+      <url>/2025/05/01/horizon-on-ubuntu/</url>
+      
+        <content type="html"><![CDATA[<p>由于Debian12下我的wifi经常出问题，所以换回ubuntu24.04</p><p>安装Horizon Client后遇到几个问题</p><h2 id="不支持您正在使用的显示服务协议，建议配置X11显示法服务协议后登录"><a href="#不支持您正在使用的显示服务协议，建议配置X11显示法服务协议后登录" class="headerlink" title="不支持您正在使用的显示服务协议，建议配置X11显示法服务协议后登录"></a>不支持您正在使用的显示服务协议，建议配置X11显示法服务协议后登录</h2><p><a href="https://blog.csdn.net/Tears__Liu/article/details/129406330">https://blog.csdn.net/Tears__Liu/article/details/129406330</a></p><p>编辑&#x2F;etc&#x2F;gdm3&#x2F;custom.conf</p><p>把WaylandEnable&#x3D;false前面的注释去掉，重启。</p><h2 id="VDPCONNECT-FAILURE"><a href="#VDPCONNECT-FAILURE" class="headerlink" title="VDPCONNECT_FAILURE"></a>VDPCONNECT_FAILURE</h2><p>日志显示i965_drv_video.so找不到</p><p><a href="https://forums.linuxmint.com/viewtopic.php?t=298620">https://forums.linuxmint.com/viewtopic.php?t=298620</a></p><figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install i965-va-driver libvdpau-va-gl1</span><br></pre></td></tr></table></figure><p>安装驱动后解决</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在我的安卓手机上安装Code(code-server)</title>
       <link href="/2025/04/05/code-server/"/>
       <url>/2025/04/05/code-server/</url>
